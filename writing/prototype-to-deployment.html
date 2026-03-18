@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why ecology tools fail between prototype and deployment | Tom Armstrong</title>
+  <meta name="description" content="Most conservation tech prototypes look promising in the lab. Most never make it to sustained field use. Here's what I've noticed about why." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .article-body p {
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #2a2a28;
+    }
+    .article-body h2 {
+      font-size: 1.25rem;
+      margin-top: 2.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .article-body ul {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+    .article-body ul li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #2a2a28;
+    }
+    .back-link {
+      font-size: 0.875rem;
+      color: #6a6a68;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .back-link::before {
+      content: "←";
+    }
+    .back-link:hover {
+      color: #2d6a4f;
+      text-decoration: none;
+    }
+    .article-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid #e8e8e4;
+    }
+    .article-content {
+      padding: 3rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Tom Armstrong</a>
+      <button class="nav__toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../writing.html">Writing</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="article-body">
+      <a href="../writing.html" class="back-link">All writing</a>
+      <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Build Notes</p>
+      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;font-size:clamp(1.6rem,4vw,2.4rem);">Why ecology tools fail between prototype and deployment</h1>
+      <p style="font-size:1.05rem;color:#5a5a58;max-width:58ch;margin-bottom:1.5rem;">
+        Most conservation tech prototypes look promising in the lab. Most never make it to sustained
+        field use. Here's what I've noticed about why — and what makes the difference.
+      </p>
+      <div style="display:flex;gap:1.5rem;font-size:0.85rem;color:#8a8a88;flex-wrap:wrap;">
+        <span>March 2026</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="article-content">
+    <div class="article-body">
+
+      <p>
+        There is an enormous amount of conservation technology being prototyped right now.
+        Acoustic recorders, camera traps, wildlife sensors, biodiversity dashboards, remote
+        sensing pipelines. Much of it is exciting in principle.
+      </p>
+      <p>
+        A far smaller amount of it is being used consistently in the field by the ecological teams
+        it was designed for. That gap — between prototype and deployment — is where most
+        conservation technology disappears.
+      </p>
+      <p>
+        Having built things that failed to cross that gap, and spent time trying to understand why,
+        here's what I've noticed.
+      </p>
+
+      <h2>1. Lab conditions are not field conditions</h2>
+      <p>
+        This sounds obvious, but it's the root cause of more failures than anything else. A device
+        that works in a warm, dry environment with stable power, a wifi connection, and a developer
+        on hand to debug it is not a field-ready device.
+      </p>
+      <p>
+        Field conditions mean rain, mud, extreme temperatures, connection interruptions, power
+        fluctuations, physically awkward deployment locations, and nobody around to fix things
+        when they go wrong. The first time you deploy something properly in the field, you will
+        discover failure modes you couldn't have imagined on a desk.
+      </p>
+      <p>
+        The implication is that the only way to properly test a monitoring system is to deploy it
+        in the field, as early and as often as possible. Every lab-only iteration is borrowed time.
+      </p>
+
+      <h2>2. Complexity grows in the wrong direction</h2>
+      <p>
+        When you're building something, the temptation is always to add. Add another sensor,
+        another feature, another configuration option. The system becomes richer. It also becomes
+        harder to deploy, harder to debug, and harder to maintain.
+      </p>
+      <p>
+        Field monitoring needs the opposite approach. The question isn't "what could this system do?"
+        It's "what is the minimum viable capability that actually answers the ecological question?"
+      </p>
+      <p>
+        Most failed prototypes I've seen have been too capable. They fell apart in the field because
+        there were too many things that could go wrong, and not enough simplicity buffer when they did.
+      </p>
+
+      <h2>3. Power is always underestimated</h2>
+      <p>
+        Every system that runs in the field eventually encounters a power problem. The battery lasts
+        less long than expected. The solar panel doesn't deliver in overcast conditions. The power
+        management chip has a quirk nobody noticed.
+      </p>
+      <p>
+        Power management is one of those problems that looks solved until it isn't. And it usually
+        isn't until you've had a deployment fail because the device died three days into a planned
+        four-week recording.
+      </p>
+
+      <h2>4. The people doing the deploying aren't the people who built it</h2>
+      <p>
+        This is the one that most technology developers miss entirely. You designed the system.
+        You know how it works. You know why you have to hold the reset button for exactly 2 seconds,
+        not 1 second. You know which LED pattern means "operating normally" versus "error state."
+      </p>
+      <p>
+        The ecologist in the field six months from now does not know any of this.
+        They have a field notebook, a packed schedule, and questionable mobile signal.
+        If your deployment procedure requires technical knowledge to execute, it will be
+        executed incorrectly. Repeatedly.
+      </p>
+      <p>
+        Configuration must be simple. Failure states must be obvious and interpretable.
+        The indicator that something has gone wrong should be impossible to miss.
+      </p>
+
+      <h2>5. Data management is an afterthought</h2>
+      <p>
+        You built a system that records data for three weeks. You deploy it. You retrieve it.
+        Now what?
+      </p>
+      <p>
+        If the answer to that question wasn't settled before the device was deployed, the data
+        will sit on a hard drive for six months and then be processed inadequately under time pressure.
+      </p>
+      <p>
+        The data pipeline — ingestion, validation, storage, analysis — needs to be as designed
+        as the hardware. It's the other half of the monitoring system, and it's the half that
+        connects field observation to ecological insight.
+      </p>
+
+      <h2>What makes the difference</h2>
+      <p>
+        The systems that do make it from prototype to sustained deployment tend to share
+        a few characteristics. They are simpler than you'd expect. They were tested in the field
+        early. They fail obviously when they fail. And the people who built them spent
+        significant time watching other people try to use them, rather than assuming good design
+        was self-evident.
+      </p>
+      <p>
+        That last part is perhaps the most important. The builder's knowledge is invisible to
+        the user. Every assumption you made while building is a potential failure point in
+        the field. The only way to find those assumptions is to watch someone else use the thing.
+      </p>
+      <p>
+        Conservation technology that actually gets deployed is built by people who take that
+        seriously.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Related -->
+  <div style="background:#f4f4f2; border-top:1px solid #e8e8e4; padding:3rem 0;">
+    <div style="max-width:680px;margin:0 auto;padding:0 1.5rem;">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8a8a88;margin-bottom:1.5rem;">Related notes</p>
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <div>
+          <p style="font-size:0.75rem;color:#2d6a4f;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.3rem;">Build Notes</p>
+          <a href="environmental-sensor-lessons.html" style="font-size:1rem;font-weight:600;color:#111110;">Lessons from building environmental sensor systems</a>
+        </div>
+        <div>
+          <p style="font-size:0.75rem;color:#2d6a4f;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.3rem;">Ecology &amp; Monitoring</p>
+          <a href="conservation-tech-field-ready.html" style="font-size:1rem;font-weight:600;color:#111110;">What makes conservation technology useful in the field</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__brand">Tom Armstrong</span>
+      <ul class="footer__links">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../writing.html">Writing</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <ul class="footer__links">
+        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/tomarmstrong" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">© 2026 Tom Armstrong</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

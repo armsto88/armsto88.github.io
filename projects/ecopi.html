@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ecoPi — Conservation Tech Platform | Tom Armstrong</title>
+  <meta name="description" content="A modular, field-deployable monitoring system for wildlife and biodiversity monitoring, built around the Raspberry Pi ecosystem." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .project-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .project-body p {
+      margin-bottom: 1.1rem;
+    }
+    .back-link {
+      font-size: 0.875rem;
+      color: #6a6a68;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+    .back-link::before {
+      content: "←";
+    }
+    .back-link:hover {
+      color: #2d6a4f;
+      text-decoration: none;
+    }
+    .project-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      background: #f4f4f2;
+      border: 1px solid #e8e8e4;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .project-meta-strip__item label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a8a88;
+      margin-bottom: 0.2rem;
+    }
+    .project-meta-strip__item span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1a1a18;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Tom Armstrong</a>
+      <button class="nav__toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../writing.html">Writing</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Project Hero -->
+  <div class="project-hero" style="padding-top:4rem; padding-bottom:3rem; border-bottom:1px solid #e8e8e4;">
+    <div class="project-body">
+      <a href="../projects.html" class="back-link">All projects</a>
+      <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Hardware / IoT</p>
+      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">ecoPi — Conservation Tech Platform</h1>
+      <p style="font-size:1.1rem;color:#4a4a48;max-width:60ch;margin-bottom:0;">
+        A modular, field-deployable monitoring system for wildlife and biodiversity monitoring,
+        built around the Raspberry Pi ecosystem and designed for low-power remote deployment.
+      </p>
+    </div>
+  </div>
+
+  <!-- Meta strip -->
+  <div style="padding:2rem 0; border-bottom:1px solid #e8e8e4;">
+    <div class="project-body">
+      <div class="project-meta-strip">
+        <div class="project-meta-strip__item">
+          <label>Status</label>
+          <span><span class="card__status card__status--dev">In Development</span></span>
+        </div>
+        <div class="project-meta-strip__item">
+          <label>Timeframe</label>
+          <span>2024–present</span>
+        </div>
+        <div class="project-meta-strip__item">
+          <label>Category</label>
+          <span>Hardware / IoT</span>
+        </div>
+        <div class="project-meta-strip__item">
+          <label>Tools</label>
+          <span>Raspberry Pi, Python, Linux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project content sections -->
+  <article>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">The problem</h3>
+        <p>
+          Biodiversity monitoring often relies on expensive proprietary hardware that is difficult to
+          repair, impossible to modify, and priced out of reach for many conservation projects.
+          Alternatively, it relies on generic consumer devices that weren't designed for the field
+          and fail quickly under real deployment conditions.
+        </p>
+        <p>
+          There is a gap between what's technically possible with low-cost open hardware and
+          what's available as a reliable, field-ready monitoring solution for ecologists.
+          ecoPi is an attempt to close that gap.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Why it matters</h3>
+        <p>
+          Field monitoring generates the data that underpins conservation decision-making. If the
+          tools to collect that data are unreliable, expensive, or difficult to deploy, monitoring
+          doesn't happen — or it produces inadequate data that can't support strong conclusions.
+        </p>
+        <p>
+          A modular, open-hardware monitoring platform would make it possible for small conservation
+          organisations, researchers, and field ecologists to deploy robust monitoring at a fraction
+          of the cost of commercial alternatives.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Approach</h3>
+        <p>
+          The core concept is a modular system where different monitoring capabilities — acoustic
+          recording, camera triggering, microclimate logging, GPS position — can be combined into
+          a single deployable unit based on what a site requires. The Raspberry Pi provides the
+          computational core, with Python managing sensor orchestration, data logging, and
+          scheduled operations.
+        </p>
+        <p>
+          Key design principles are: low power draw for multi-week autonomous deployment; local
+          data storage with optional remote transmission; field-repairable components; and a
+          configuration system simple enough to be managed by ecologists with limited coding experience.
+        </p>
+        <p>
+          The platform is being developed iteratively — each field deployment informs the next
+          revision of the hardware and software configuration.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">My role</h3>
+        <p>
+          This is a personal project. I'm doing everything: hardware selection and prototyping,
+          enclosure design, Python software, power management, field testing, and iteration.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Tools &amp; technologies</h3>
+        <div class="tech-list">
+          <span class="tag-pill">Raspberry Pi Zero 2W</span>
+          <span class="tag-pill">Python</span>
+          <span class="tag-pill">Linux (Raspberry Pi OS)</span>
+          <span class="tag-pill">USB audio</span>
+          <span class="tag-pill">I2C sensors</span>
+          <span class="tag-pill">SSD1306 OLED</span>
+          <span class="tag-pill">LiPo power management</span>
+          <span class="tag-pill">systemd services</span>
+          <span class="tag-pill">SQLite</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Challenges &amp; tradeoffs</h3>
+        <p>
+          Power management is the central constraint. The Raspberry Pi is not inherently a
+          low-power device — achieving multi-week deployment autonomy requires careful management
+          of sleep states, peripheral power switching, and recording schedules. Getting this right
+          without compromising data capture reliability took several field iterations.
+        </p>
+        <p>
+          Weatherproofing without overheating (particularly in summer in enclosed enclosures)
+          is a real and ongoing challenge. The simplest enclosure solutions create thermal problems
+          that affect electronics longevity.
+        </p>
+        <p>
+          Simplifying configuration for non-technical users while keeping flexibility for different
+          deployment types is still an open design problem.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Current outcome</h3>
+        <p>
+          A working prototype has been deployed in the field for acoustic and microclimate monitoring.
+          The current focus is on improving power management reliability and simplifying the
+          configuration and deployment workflow. The project is ongoing.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-section" style="padding:2.5rem 0;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Links</h3>
+        <div class="project-links">
+          <a href="https://github.com/armsto88" target="_blank" rel="noopener" class="btn btn--secondary">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- Next project suggestion -->
+  <div style="background:#f4f4f2; border-top:1px solid #e8e8e4; padding:3rem 0;">
+    <div class="project-body">
+      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8a8a88;margin-bottom:1rem;">Next project</p>
+      <h3 style="margin-bottom:0.5rem;"><a href="acoustic-monitor.html" style="color:#111110;">Environmental Acoustic Monitor →</a></h3>
+      <p style="font-size:0.9rem;color:#5a5a58;margin:0;">A portable acoustic recording unit with automated species detection workflows.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__brand">Tom Armstrong</span>
+      <ul class="footer__links">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../writing.html">Writing</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <ul class="footer__links">
+        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/tomarmstrong" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">© 2026 Tom Armstrong</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

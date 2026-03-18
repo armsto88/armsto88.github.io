@@ -1,0 +1,6 @@
+# GitHub Pages configuration
+# Using plain HTML/CSS — no Jekyll processing needed for these files
+# This file keeps GitHub Pages from trying to use Jekyll on the build
+
+exclude:
+  - README.md

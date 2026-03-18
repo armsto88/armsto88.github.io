@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Tom Armstrong</title>
+  <meta name="description" content="Conservation technology projects spanning eco-acoustics, environmental IoT, ecological data tools, and remote sensing." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Tom Armstrong</a>
+      <button class="nav__toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Projects</p>
+      <h1 class="hero__title">Builds, tools,<br />and investigations</h1>
+      <p class="hero__subtitle">
+        A curated set of projects spanning eco-acoustics, environmental hardware, ecological data tools,
+        remote sensing, and field monitoring systems. Some are finished. Most are ongoing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Project Grid -->
+  <section>
+    <div class="container">
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="hardware">Hardware / IoT</button>
+        <button class="filter-btn" data-filter="ecoacoustics">Eco-acoustics</button>
+        <button class="filter-btn" data-filter="datatools">Data Tools</button>
+        <button class="filter-btn" data-filter="remotesensing">Remote Sensing</button>
+        <button class="filter-btn" data-filter="research">Research</button>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- ecoPi -->
+        <div class="card" data-category="hardware">
+          <span class="card__tag">Hardware / IoT</span>
+          <h3 class="card__title"><a href="projects/ecopi.html">ecoPi — Conservation Tech Platform</a></h3>
+          <p class="card__desc">A modular, field-deployable monitoring system built around the Raspberry Pi ecosystem. Designed for low-power, long-duration deployments in remote habitats.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--dev">In Development</span>
+            <span>2024–present</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">Raspberry Pi</span>
+            <span class="tag-pill">Python</span>
+            <span class="tag-pill">IoT</span>
+            <span class="tag-pill">Linux</span>
+          </div>
+          <a href="projects/ecopi.html" class="card__link">View project</a>
+        </div>
+
+        <!-- Acoustic Monitor -->
+        <div class="card" data-category="ecoacoustics">
+          <span class="card__tag">Eco-acoustics</span>
+          <h3 class="card__title"><a href="projects/acoustic-monitor.html">Environmental Acoustic Monitor</a></h3>
+          <p class="card__desc">A portable acoustic recording unit with automated species detection workflows, optimised for deployment in remote habitats without active maintenance.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--prototype">Prototype</span>
+            <span>2025</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">Python</span>
+            <span class="tag-pill">BirdNET</span>
+            <span class="tag-pill">Audio DSP</span>
+          </div>
+          <a href="projects/acoustic-monitor.html" class="card__link">View project</a>
+        </div>
+
+        <!-- Shiny Dashboard -->
+        <div class="card" data-category="datatools">
+          <span class="card__tag card__tag--blue">Data Tools</span>
+          <h3 class="card__title"><a href="projects/shiny-dashboard.html">Biodiversity Monitoring Dashboard</a></h3>
+          <p class="card__desc">An interactive R Shiny application for visualising ecological monitoring outputs — species trends, acoustic indices, and environmental covariates over time.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--live">Live</span>
+            <span>2025</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">R</span>
+            <span class="tag-pill">Shiny</span>
+            <span class="tag-pill">ggplot2</span>
+            <span class="tag-pill">tidyverse</span>
+          </div>
+          <a href="projects/shiny-dashboard.html" class="card__link">View project</a>
+        </div>
+
+        <!-- Solar Farm Ecology -->
+        <div class="card" data-category="remotesensing">
+          <span class="card__tag card__tag--amber">Remote Sensing</span>
+          <h3 class="card__title"><a href="projects/solar-farm-ecology.html">Solar Farm Habitat Analysis</a></h3>
+          <p class="card__desc">Integrating remote sensing and field survey data to assess biodiversity value across solar farm sites — combining vegetation indices with species presence records.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--research">Research</span>
+            <span>2024–2025</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">GIS</span>
+            <span class="tag-pill">R</span>
+            <span class="tag-pill">Sentinel-2</span>
+            <span class="tag-pill">QGIS</span>
+          </div>
+          <a href="projects/solar-farm-ecology.html" class="card__link">View project</a>
+        </div>
+
+        <!-- Microclimate Logger -->
+        <div class="card" data-category="hardware">
+          <span class="card__tag">Hardware / IoT</span>
+          <h3 class="card__title"><a href="projects/microclimate-logger.html">Microclimate Data Logger</a></h3>
+          <p class="card__desc">A low-cost, field-hardened environmental logger for continuous temperature, humidity, and light recording, designed around the ESP32 for low-power field deployment.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--prototype">Prototype</span>
+            <span>2024</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">ESP32</span>
+            <span class="tag-pill">C++</span>
+            <span class="tag-pill">MQTT</span>
+            <span class="tag-pill">Arduino</span>
+          </div>
+          <a href="projects/microclimate-logger.html" class="card__link">View project</a>
+        </div>
+
+        <!-- Acoustic Indices -->
+        <div class="card" data-category="ecoacoustics">
+          <span class="card__tag">Eco-acoustics</span>
+          <h3 class="card__title"><a href="projects/acoustic-indices.html">Acoustic Index Workflow</a></h3>
+          <p class="card__desc">A reproducible R pipeline for calculating and visualising soundscape complexity metrics from long-duration acoustic recordings.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--live">Live</span>
+            <span>2024</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">R</span>
+            <span class="tag-pill">soundecology</span>
+            <span class="tag-pill">tidyverse</span>
+          </div>
+          <a href="projects/acoustic-indices.html" class="card__link">View project</a>
+        </div>
+
+        <!-- Wildlife camera trap -->
+        <div class="card" data-category="hardware">
+          <span class="card__tag">Hardware / IoT</span>
+          <h3 class="card__title">Wildlife Camera Trap System</h3>
+          <p class="card__desc">Adapted camera trap hardware with Python-based image processing pipeline for automated species detection in trigger images.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--prototype">Prototype</span>
+            <span>2025</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">Python</span>
+            <span class="tag-pill">OpenCV</span>
+            <span class="tag-pill">Raspberry Pi</span>
+          </div>
+        </div>
+
+        <!-- Ecological data pipeline -->
+        <div class="card" data-category="datatools">
+          <span class="card__tag card__tag--blue">Data Tools</span>
+          <h3 class="card__title">Ecological Survey Data Pipeline</h3>
+          <p class="card__desc">A structured R workflow for ingesting, cleaning, and summarising multi-year bird and invertebrate survey data for reporting and trend analysis.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--live">Live</span>
+            <span>2023–2024</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">R</span>
+            <span class="tag-pill">tidyverse</span>
+            <span class="tag-pill">RMarkdown</span>
+          </div>
+        </div>
+
+        <!-- Vegetation mapping -->
+        <div class="card" data-category="remotesensing">
+          <span class="card__tag card__tag--amber">Remote Sensing</span>
+          <h3 class="card__title">Habitat Vegetation Mapping</h3>
+          <p class="card__desc">A vegetation classification workflow using Sentinel-2 imagery and field-verified reference data to map grassland and woodland habitat condition.</p>
+          <div class="card__meta">
+            <span class="card__status card__status--research">Research</span>
+            <span>2024</span>
+          </div>
+          <div class="card__tags">
+            <span class="tag-pill">Sentinel-2</span>
+            <span class="tag-pill">QGIS</span>
+            <span class="tag-pill">R</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Working on something similar?</h2>
+      <p>
+        I'm always interested in conversations about conservation technology, ecological monitoring
+        hardware, or practical data tools. Get in touch.
+      </p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn--primary">Get in touch</a>
+        <a href="https://github.com/armsto88" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__brand">Tom Armstrong</span>
+      <ul class="footer__links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <ul class="footer__links">
+        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/tomarmstrong" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer__copy">© 2026 Tom Armstrong</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
