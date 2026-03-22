@@ -34,6 +34,7 @@ class STLViewer extends HTMLElement {
       const colorAttr = this.getAttribute('color') || '#2d6a4f';
       const bgAttr = this.getAttribute('background') || '#1f2428';
       const rotateSpeedAttr = parseFloat(this.getAttribute('rotate-speed') || '0.25');
+      const cameraDistanceAttr = parseFloat(this.getAttribute('camera-distance') || '130');
 
       const container = document.createElement('div');
       container.style.cssText = `width:100%;height:100%;background:${bgAttr};`;
@@ -51,11 +52,14 @@ class STLViewer extends HTMLElement {
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setPixelRatio(window.devicePixelRatio || 1);
       renderer.setSize(width, height);
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 0.95;
       container.appendChild(renderer.domElement);
 
-      scene.add(new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1.2));
-      const dir = new THREE.DirectionalLight(0xffffff, 0.5);
-      dir.position.set(1, 1, 2);
+      scene.add(new THREE.HemisphereLight(0xe9edf2, 0x3a3f47, 0.75));
+      const dir = new THREE.DirectionalLight(0xf7f3ea, 0.38);
+      dir.position.set(1.2, 1, 1.5);
       scene.add(dir);
 
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -86,11 +90,20 @@ class STLViewer extends HTMLElement {
 
           const mesh = new THREE.Mesh(
             geometry,
-            new THREE.MeshPhongMaterial({ color: meshColor, shininess: 80 })
+            new THREE.MeshStandardMaterial({
+              color: meshColor,
+              roughness: 0.74,
+              metalness: 0.04
+            })
           );
+          mesh.rotation.x = -Math.PI / 2;
           scene.add(mesh);
 
-          camera.position.set(0, 0, 150);
+          // Start with a side-on profile view instead of top-down.
+          const cameraDistance = Number.isFinite(cameraDistanceAttr) ? cameraDistanceAttr : 130;
+          camera.position.set(cameraDistance, cameraDistance * 0.123, 0);
+          controls.target.set(0, 0, 0);
+          controls.update();
 
           const animate = () => {
             if (!this.connected) return;
