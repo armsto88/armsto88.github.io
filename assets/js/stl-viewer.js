@@ -1,3 +1,7 @@
+import * as THREE from "https://unpkg.com/three@0.128.0/build/three.module.js";
+import { OrbitControls } from "https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js";
+import { STLLoader } from "https://unpkg.com/three@0.128.0/examples/jsm/loaders/STLLoader.js";
+
 class STLViewer extends HTMLElement {
   constructor() {
     super();
@@ -13,21 +17,7 @@ class STLViewer extends HTMLElement {
       return;
     }
 
-    const waitForDeps = () => {
-      if (!window.THREE) {
-        setTimeout(waitForDeps, 100);
-        return;
-      }
-
-      if (!window.THREE.OrbitControls || !window.THREE.STLLoader) {
-        setTimeout(waitForDeps, 100);
-        return;
-      }
-
-      this.initViewer();
-    };
-
-    waitForDeps();
+    this.initViewer();
   }
 
   initViewer() {
@@ -61,12 +51,12 @@ class STLViewer extends HTMLElement {
       dir.position.set(1, 1, 2);
       scene.add(dir);
 
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.autoRotate = true;
       controls.autoRotateSpeed = 1.2;
 
-      const loader = new THREE.STLLoader();
+      const loader = new STLLoader();
       loader.load(
         modelUrl,
         (geometry) => {

@@ -331,29 +331,11 @@
         <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;">
           <div style="border:1px solid #e8e8e4;border-radius:8px;overflow:hidden;background:#fff;">
             <p style="background:#f9f9f7;margin:0;padding:0.75rem;font-size:0.85rem;font-weight:600;color:#1a1a18;">Version 2</p>
-            <iframe
-              id="stl-viewer-v2"
-              title="Version 2 STL viewer"
-              src="https://www.viewstl.com/?embedded"
-              data-stl-url="https://cdn.jsdelivr.net/gh/armsto88/armsto88.github.io@main/assets/project_pics/microclimate_logger/Version_2.stl"
-              style="display:block;width:100%;height:280px;border:0;background:#f4f4f2;"
-              loading="lazy"
-              referrerpolicy="no-referrer"
-              allowfullscreen>
-            </iframe>
+            <stl-viewer model="../assets/project_pics/microclimate_logger/Version_2.stl" style="display:block;height:280px;"></stl-viewer>
           </div>
           <div style="border:1px solid #e8e8e4;border-radius:8px;overflow:hidden;background:#fff;">
             <p style="background:#f9f9f7;margin:0;padding:0.75rem;font-size:0.85rem;font-weight:600;color:#1a1a18;">Version 2 (alternate)</p>
-            <iframe
-              id="stl-viewer-v2-alt"
-              title="Version 2 alternate STL viewer"
-              src="https://www.viewstl.com/?embedded"
-              data-stl-url="https://cdn.jsdelivr.net/gh/armsto88/armsto88.github.io@main/assets/project_pics/microclimate_logger/Version_2_.stl"
-              style="display:block;width:100%;height:280px;border:0;background:#f4f4f2;"
-              loading="lazy"
-              referrerpolicy="no-referrer"
-              allowfullscreen>
-            </iframe>
+            <stl-viewer model="../assets/project_pics/microclimate_logger/Version_2_.stl" style="display:block;height:280px;"></stl-viewer>
           </div>
         </div>
       </div>
@@ -394,43 +376,6 @@
   </footer>
   <script>
     (function () {
-      const stlIframes = document.querySelectorAll("iframe[data-stl-url]");
-      const VIEWSTL_ORIGIN = "https://www.viewstl.com";
-
-      const loadModelInIframe = (iframe) => {
-        const url = iframe.dataset.stlUrl;
-        if (!url || !iframe.contentWindow) return;
-
-        iframe.contentWindow.postMessage(
-          {
-            msg_type: "load",
-            url,
-          },
-          VIEWSTL_ORIGIN
-        );
-      };
-
-      const startAutoLoadRetries = (iframe) => {
-        let tries = 0;
-        const maxTries = 20;
-        const timer = setInterval(() => {
-          tries += 1;
-          loadModelInIframe(iframe);
-          if (tries >= maxTries) {
-            clearInterval(timer);
-          }
-        }, 500);
-      };
-
-      stlIframes.forEach((iframe) => {
-        iframe.addEventListener("load", () => {
-          startAutoLoadRetries(iframe);
-        });
-
-        // Also start retries immediately in case the iframe loads before listener binding.
-        startAutoLoadRetries(iframe);
-      });
-
       const modal = document.getElementById("image-lightbox");
       const image = document.getElementById("image-lightbox-image");
       const closeBtn = document.getElementById("image-lightbox-close");
@@ -497,6 +442,7 @@
       });
     })();
   </script>
+  <script type="module" src="../assets/js/stl-viewer.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
