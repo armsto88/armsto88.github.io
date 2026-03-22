@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Microclimate Data Logger | Tom Armstrong</title>
-  <meta name="description" content="A low-cost, field-hardened environmental logger for continuous temperature, humidity, and light recording." />
+  <title>Design and Initial Testing of a Low-Cost Open Microclimate Monitoring System | Tom Armstrong</title>
+  <meta name="description" content="An open, low-cost microclimate monitoring platform that helps ecologists measure the fine-scale environmental conditions organisms actually experience." />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +18,14 @@
     .project-meta-strip { display:flex; flex-wrap:wrap; gap:1.5rem; background:#f4f4f2; border:1px solid #e8e8e4; border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:3rem; }
     .project-meta-strip__item label { display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8a8a88; margin-bottom:0.2rem; }
     .project-meta-strip__item span { font-size:0.9rem; font-weight:500; color:#1a1a18; }
+    .partner-block { border:1px solid #e8e8e4; border-radius:8px; padding:0.9rem 1rem; background:#ffffff; }
+    .partner-block__label { display:block; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8a8a88; margin-bottom:0.45rem; }
+    .partner-logos { display:flex; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .partner-logo { display:flex; align-items:center; justify-content:center; border:1px solid #ecece8; border-radius:6px; background:#fff; width:158px; height:60px; padding:0.55rem; }
+    .partner-logo--une { width:182px; height:68px; }
+    .partner-logo img,
+    .partner-logo object { display:block; width:100%; height:100%; }
+    .partner-logo img { object-fit:contain; }
   </style>
 </head>
 <body>
@@ -38,19 +46,70 @@
     <div class="project-body">
       <a href="../projects.html" class="back-link">All projects</a>
       <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Hardware / IoT</p>
-      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">Microclimate Data Logger</h1>
-      <p style="font-size:1.1rem;color:#4a4a48;max-width:60ch;margin-bottom:0;">A low-cost, field-hardened environmental logger for continuous temperature, humidity, and light recording.</p>
+      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">Microclimate Data Logger with Ultrasonic Wind Anemometer</h1>
+      <p style="font-size:1.1rem;color:#4a4a48;max-width:60ch;margin-bottom:0;">A low-cost microclimate logger with built-in ultrasonic wind sensing, air temperature and humidity measurement, and integrated PAR monitoring for fine-scale ecological fieldwork.</p>
     </div>
   </div>
-  <div style="padding:2rem 0 3rem; border-bottom:1px solid #e8e8e4;">
+  <div style="padding:2rem 0; border-bottom:1px solid #e8e8e4;">
     <div class="project-body">
       <div class="project-meta-strip">
-        <div class="project-meta-strip__item"><label>Status</label><span><span class="card__status card__status--prototype">Prototype</span></span></div>
+        <div class="project-meta-strip__item"><label>Status</label><span><span class="card__status card__status--prototype">Research and Development</span></span></div>
         <div class="project-meta-strip__item"><label>Category</label><span>Hardware / IoT</span></div>
+        <div class="project-meta-strip__item"><label>Development focus</label><span>Firmware flow, custom PCB, 3D-printable enclosure</span></div>
       </div>
-      <p style="color:#5a5a58;">Full project write-up coming soon.</p>
+      <div class="partner-block">
+        <span class="partner-block__label">Project partners</span>
+        <div class="partner-logos">
+          <div class="partner-logo partner-logo--une">
+            <img src="../assets/UNE-PRIMARY-LOGO-RGB.webp" alt="University of New England logo" loading="lazy" />
+          </div>
+          <div class="partner-logo partner-logo--svg">
+            <object data="../assets/rewi-logo.svg" type="image/svg+xml" aria-label="REWI logo"></object>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <article>
+    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">The problem</h3>
+        <p>Ecologists often need climate data at the scale organisms actually experience, from centimeters to meters, not just from standard weather stations. Conventional stations are excellent for regional trends, but they can miss the strong local variation created by vegetation, soil, shade, and airflow. In heterogeneous landscapes such as solar PV farms, these fine-scale differences can be large and biologically important.</p>
+      </div>
+    </div>
+
+    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Why it matters</h3>
+        <p>Microclimate drives physiology, behavior, habitat use, and survival. If meter-scale variation is not resolved, key mechanisms behind ecological responses to climate change, restoration outcomes, and habitat quality can be missed. A practical, affordable way to deploy many sensors across complex sites is essential for better ecological inference and management.</p>
+      </div>
+    </div>
+
+    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">My approach</h3>
+        <p>I built a practical monitoring system that is straightforward to deploy in field ecology projects.</p>
+        <p><strong>Distributed network architecture:</strong> Multiple low-power sensor nodes send data wirelessly to a central mothership using ESP-NOW.</p>
+        <p><strong>Centralized, field-friendly operation:</strong> The mothership provides time synchronization, deployment control, and continuous CSV logging to SD card through a local web dashboard.</p>
+        <p><strong>Modular sensing:</strong> Core measurements include air temperature and humidity, PAR, and ultrasonic wind speed and direction, with expansion paths for soil and other sensors via standard interfaces.</p>
+        <p><strong>Reproducible design:</strong> Custom PCB, firmware, and a custom 3D-printable enclosure are documented as an integrated system to support transparent replication and adaptation.</p>
+        <p><strong>Deployment-focused engineering:</strong> I separated airflow-sensitive wind measurement geometry from electronics and power hardware in the enclosure design to reduce bias and improve field robustness.</p>
+      </div>
+    </div>
+
+    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Current status</h3>
+        <p>The project is currently in research and development.</p>
+        <p><strong>Working now:</strong> Firmware flow is tested and working with off-the-shelf modules.</p>
+        <p><strong>Current hardware:</strong> Custom PCB is currently in development.</p>
+        <p><strong>Mechanical design:</strong> Custom 3D-printable enclosure is complete.</p>
+        <p><strong>Next phase:</strong> Board bring-up and basic testing.</p>
+      </div>
+    </div>
+  </article>
+
   <div style="background:#f4f4f2; border-top:1px solid #e8e8e4; padding:3rem 0;">
     <div class="project-body">
       <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8a8a88;margin-bottom:1rem;">Next project</p>
