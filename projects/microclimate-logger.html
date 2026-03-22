@@ -20,12 +20,206 @@
     .project-meta-strip__item span { font-size:0.9rem; font-weight:500; color:#1a1a18; }
     .partner-block { border:1px solid #e8e8e4; border-radius:8px; padding:0.9rem 1rem; background:#ffffff; }
     .partner-block__label { display:block; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8a8a88; margin-bottom:0.45rem; }
-    .partner-logos { display:flex; align-items:center; flex-wrap:wrap; gap:1rem; }
-    .partner-logo { display:flex; align-items:center; justify-content:center; border:1px solid #ecece8; border-radius:6px; background:#fff; width:158px; height:60px; padding:0.55rem; }
-    .partner-logo--une { width:182px; height:68px; }
+    .partner-logos { display:flex; align-items:center; justify-content:space-evenly; gap:1rem; width:100%; }
+    .partner-logo { display:flex; align-items:center; justify-content:center; border:1px solid #ecece8; border-radius:6px; background:#fff; width:250px; height:96px; padding:0.82rem; }
+    .partner-logo--une { width:274px; height:104px; }
     .partner-logo img,
     .partner-logo object { display:block; width:100%; height:100%; }
     .partner-logo img { object-fit:contain; }
+    .partner-logo a { display:block; width:100%; height:100%; }
+    .partner-logo a object { display:block; width:100%; height:100%; }
+    .stl-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 13, 11, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 1300;
+    }
+    .stl-lightbox.is-open {
+      display: flex;
+    }
+    .stl-lightbox__panel {
+      position: relative;
+      width: min(980px, 95vw);
+      height: min(760px, 90vh);
+      border-radius: 10px;
+      background: #101310;
+      border: 1px solid #263028;
+      overflow: hidden;
+    }
+    .stl-lightbox__viewer {
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+    .stl-lightbox__viewer:active {
+      cursor: grabbing;
+    }
+    .stl-lightbox__close {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      width: 2rem;
+      height: 2rem;
+      border: 0;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #111110;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .stl-lightbox__hint {
+      position: absolute;
+      left: 0.8rem;
+      bottom: 0.7rem;
+      font-size: 0.75rem;
+      color: #cad7cc;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      z-index: 2;
+    }
+    .design-files {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+    .design-file {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #e8e8e4;
+      border-radius: 8px;
+      background: #fff;
+      flex-wrap: wrap;
+    }
+    .design-file__name {
+      font-size: 0.92rem;
+      color: #1a1a18;
+      font-weight: 500;
+    }
+    .design-file__actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+    .project-gallery figure {
+      margin: 0;
+      border: 1px solid #e8e8e4;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .project-gallery a {
+      display: block;
+      padding: 0.65rem;
+      background: #f8f8f6;
+    }
+    .project-gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      display: block;
+      background: #ffffff;
+      border-radius: 5px;
+    }
+    .project-gallery figcaption {
+      font-size: 0.78rem;
+      color: #6a6a68;
+      padding: 0.5rem 0.7rem;
+    }
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background: rgba(15, 18, 15, 0.9);
+      z-index: 1250;
+    }
+    .image-lightbox.is-open {
+      display: flex;
+    }
+    .image-lightbox__content {
+      position: relative;
+      width: min(1100px, 95vw);
+      max-height: 92vh;
+    }
+    .image-lightbox__image {
+      width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      background: #0f120f;
+    }
+    .image-lightbox__close {
+      position: absolute;
+      top: -0.7rem;
+      right: -0.7rem;
+      width: 2rem;
+      height: 2rem;
+      border: 0;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #111110;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+    .image-lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #111110;
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+    .image-lightbox__nav--prev { left: -1.2rem; }
+    .image-lightbox__nav--next { right: -1.2rem; }
+    .image-lightbox__counter {
+      position: absolute;
+      left: 50%;
+      bottom: -1.9rem;
+      transform: translateX(-50%);
+      color: #f2f2f0;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 740px) {
+      .project-gallery {
+        grid-template-columns: 1fr;
+      }
+      .image-lightbox__nav {
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+      .image-lightbox__nav--prev { left: 0.4rem; }
+      .image-lightbox__nav--next { right: 0.4rem; }
+      .image-lightbox__counter { bottom: 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -64,7 +258,9 @@
             <img src="../assets/UNE-PRIMARY-LOGO-RGB.webp" alt="University of New England logo" loading="lazy" />
           </div>
           <div class="partner-logo partner-logo--svg">
-            <object data="../assets/rewi-logo.svg" type="image/svg+xml" aria-label="REWI logo"></object>
+            <a href="https://rewi.org/about-us/our-work/solar/" target="_blank" rel="noopener" aria-label="Visit REWI solar work page">
+              <object data="../assets/rewi-logo.svg" type="image/svg+xml" aria-label="REWI logo"></object>
+            </a>
           </div>
         </div>
       </div>
@@ -108,7 +304,65 @@
         <p><strong>Next phase:</strong> Board bring-up and basic testing.</p>
       </div>
     </div>
+
+    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">PCB renders</h3>
+        <div class="project-gallery">
+          <figure>
+            <a href="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(2).png" data-lightbox="microclimate-gallery" data-alt="Microclimate logger PCB render view 1">
+              <img src="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(2).png" alt="Microclimate logger PCB render view 1" loading="lazy" />
+            </a>
+            <figcaption>PCB render 1</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).png" data-lightbox="microclimate-gallery" data-alt="Microclimate logger PCB render view 2">
+              <img src="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).png" alt="Microclimate logger PCB render view 2" loading="lazy" />
+            </a>
+            <figcaption>PCB render 2</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
+      <div class="project-body">
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Design files</h3>
+        <div class="design-files">
+          <div class="design-file">
+            <span class="design-file__name">Version_2.stl</span>
+            <div class="design-file__actions">
+              <a href="#" class="btn btn--secondary" data-stl="../assets/project_pics/microclimate_logger/Version_2.stl">View 3D</a>
+            </div>
+          </div>
+          <div class="design-file">
+            <span class="design-file__name">Version_2_.stl</span>
+            <div class="design-file__actions">
+              <a href="#" class="btn btn--secondary" data-stl="../assets/project_pics/microclimate_logger/Version_2_.stl">View 3D</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </article>
+
+  <div class="stl-lightbox" id="stl-lightbox" aria-hidden="true" role="dialog" aria-label="3D model viewer">
+    <div class="stl-lightbox__panel">
+      <button type="button" class="stl-lightbox__close" id="stl-lightbox-close" aria-label="Close 3D viewer">&times;</button>
+      <div class="stl-lightbox__viewer" id="stl-viewer"></div>
+      <p class="stl-lightbox__hint">Drag to rotate • Scroll to zoom</p>
+    </div>
+  </div>
+
+  <div class="image-lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-label="Expanded project image">
+    <div class="image-lightbox__content">
+      <button type="button" class="image-lightbox__nav image-lightbox__nav--prev" id="image-lightbox-prev" aria-label="Previous image">&#8249;</button>
+      <button type="button" class="image-lightbox__nav image-lightbox__nav--next" id="image-lightbox-next" aria-label="Next image">&#8250;</button>
+      <button type="button" class="image-lightbox__close" id="image-lightbox-close" aria-label="Close image">&times;</button>
+      <img class="image-lightbox__image" id="image-lightbox-image" src="" alt="" />
+      <p class="image-lightbox__counter" id="image-lightbox-counter"></p>
+    </div>
+  </div>
 
   <div style="background:#f4f4f2; border-top:1px solid #e8e8e4; padding:3rem 0;">
     <div class="project-body">
@@ -132,6 +386,262 @@
       <p class="footer__copy">© 2026 Tom Armstrong</p>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/loaders/STLLoader.js"></script>
+  <script>
+    (function () {
+      const modal = document.getElementById("stl-lightbox");
+      const closeBtn = document.getElementById("stl-lightbox-close");
+      const viewer = document.getElementById("stl-viewer");
+      const hint = document.querySelector(".stl-lightbox__hint");
+      const stlLinks = document.querySelectorAll("a[data-stl]");
+
+      let renderer;
+      let scene;
+      let camera;
+      let controls;
+      let mesh;
+      let animationId;
+      let controlsCtor;
+      let loaderCtor;
+
+      function resolveThreeIntegrations() {
+        const threeRef = window.THREE;
+        if (!threeRef) {
+          return false;
+        }
+
+        controlsCtor = threeRef.OrbitControls || window.OrbitControls || null;
+        loaderCtor = threeRef.STLLoader || window.STLLoader || null;
+        return Boolean(controlsCtor && loaderCtor);
+      }
+
+      function ensureViewer() {
+        if (renderer) {
+          return;
+        }
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x101310);
+
+        camera = new THREE.PerspectiveCamera(45, viewer.clientWidth / viewer.clientHeight, 0.1, 2000);
+        camera.position.set(0, 0, 140);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+        viewer.appendChild(renderer.domElement);
+
+        const hemi = new THREE.HemisphereLight(0xffffff, 0x3f4a40, 1.15);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+        dir.position.set(30, 40, 50);
+        scene.add(hemi, dir);
+
+        controls = new controlsCtor(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.minDistance = 20;
+        controls.maxDistance = 600;
+      }
+
+      function fitCameraToMesh(target) {
+        const box = new THREE.Box3().setFromObject(target);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+
+        target.position.sub(center);
+
+        const maxDim = Math.max(size.x, size.y, size.z) || 1;
+        const fov = camera.fov * (Math.PI / 180);
+        const distance = (maxDim / 2) / Math.tan(fov / 2) * 1.5;
+
+        camera.position.set(0, 0, distance);
+        camera.near = maxDim / 100;
+        camera.far = maxDim * 100;
+        camera.updateProjectionMatrix();
+        controls.target.set(0, 0, 0);
+        controls.update();
+      }
+
+      function renderLoop() {
+        controls.update();
+        renderer.render(scene, camera);
+        animationId = requestAnimationFrame(renderLoop);
+      }
+
+      function openModel(stlPath) {
+        if (!resolveThreeIntegrations()) {
+          if (hint) {
+            hint.textContent = "3D viewer failed to load. Please refresh and try again.";
+          }
+          return;
+        }
+
+        ensureViewer();
+
+        if (mesh) {
+          scene.remove(mesh);
+          mesh.geometry.dispose();
+          mesh.material.dispose();
+          mesh = null;
+        }
+
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (hint) {
+          hint.textContent = "Loading model...";
+        }
+
+        const loader = new loaderCtor();
+        loader.load(
+          stlPath,
+          function (geometry) {
+            geometry.computeVertexNormals();
+            const material = new THREE.MeshStandardMaterial({ color: 0x9ec5a8, metalness: 0.08, roughness: 0.65 });
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+            fitCameraToMesh(mesh);
+            if (hint) {
+              hint.textContent = "Drag to rotate • Scroll to zoom";
+            }
+          },
+          undefined,
+          function () {
+            if (hint) {
+              hint.textContent = "Could not load this STL file.";
+            }
+          }
+        );
+
+        if (!animationId) {
+          renderLoop();
+        }
+      }
+
+      function closeModel() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      stlLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          openModel(link.getAttribute("data-stl"));
+        });
+      });
+
+      closeBtn.addEventListener("click", closeModel);
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          closeModel();
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        if (!renderer || !camera) {
+          return;
+        }
+        const width = viewer.clientWidth;
+        const height = viewer.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModel();
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      const modal = document.getElementById("image-lightbox");
+      const image = document.getElementById("image-lightbox-image");
+      const closeBtn = document.getElementById("image-lightbox-close");
+      const prevBtn = document.getElementById("image-lightbox-prev");
+      const nextBtn = document.getElementById("image-lightbox-next");
+      const counter = document.getElementById("image-lightbox-counter");
+      const links = Array.from(document.querySelectorAll("a[data-lightbox='microclimate-gallery']"));
+      let index = -1;
+
+      function render(i) {
+        const target = links[i];
+        if (!target) {
+          return;
+        }
+        image.src = target.getAttribute("href");
+        image.alt = target.dataset.alt || "Expanded project image";
+        counter.textContent = `${i + 1} / ${links.length}`;
+        index = i;
+      }
+
+      function open(i) {
+        render(i);
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        image.src = "";
+        counter.textContent = "";
+        index = -1;
+        document.body.style.overflow = "";
+      }
+
+      function next() {
+        if (!links.length) {
+          return;
+        }
+        render((index + 1) % links.length);
+      }
+
+      function prev() {
+        if (!links.length) {
+          return;
+        }
+        render((index - 1 + links.length) % links.length);
+      }
+
+      links.forEach((link, i) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          open(i);
+        });
+      });
+
+      closeBtn.addEventListener("click", close);
+      prevBtn.addEventListener("click", prev);
+      nextBtn.addEventListener("click", next);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          close();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!modal.classList.contains("is-open")) {
+          return;
+        }
+        if (event.key === "Escape") {
+          close();
+        }
+        if (event.key === "ArrowRight") {
+          next();
+        }
+        if (event.key === "ArrowLeft") {
+          prev();
+        }
+      });
+    })();
+  </script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
