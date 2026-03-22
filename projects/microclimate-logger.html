@@ -271,26 +271,28 @@
     <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">The problem</h3>
-        <p>Ecologists often need climate data at the scale organisms actually experience, from centimeters to meters, not just from standard weather stations. Conventional stations are excellent for regional trends, but they can miss the strong local variation created by vegetation, soil, shade, and airflow. In heterogeneous landscapes such as solar PV farms, these fine-scale differences can be large and biologically important.</p>
+        <p>Organisms experience climate at centimeter-to-meter scales, not at the coarse scales represented by most standard weather stations. Conventional stations are intentionally standardized and well ventilated, which is essential for regional monitoring, but this setup often smooths out the local variation created by vegetation structure, soil moisture, topography, shading, and airflow. As a result, the conditions that actually drive biological responses can be under-sampled.</p>
+        <p>This scale mismatch is especially important in solar PV landscapes. Under-panel zones, inter-row corridors, and edge transitions create distinct microhabitats with different radiation, wind exposure, temperature, and moisture dynamics over very short distances.</p>
       </div>
     </div>
 
     <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Why it matters</h3>
-        <p>Microclimate drives physiology, behavior, habitat use, and survival. If meter-scale variation is not resolved, key mechanisms behind ecological responses to climate change, restoration outcomes, and habitat quality can be missed. A practical, affordable way to deploy many sensors across complex sites is essential for better ecological inference and management.</p>
+        <p>Microclimate influences physiology, behavior, habitat use, and survival, and it can shift rapidly across both space and time. Short-lived thermal spikes, transient wind shifts, and near-surface gradients can all be ecologically meaningful, yet they are often invisible in sparse, coarse monitoring networks.</p>
+        <p>If these fine-scale patterns are not resolved, key drivers of climate responses, microrefugia, and restoration outcomes can be overlooked. Dense, affordable monitoring is therefore critical for improving ecological inference and informing management in heterogeneous environments.</p>
       </div>
     </div>
 
     <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">My approach</h3>
-        <p>I built a practical monitoring system that is straightforward to deploy in field ecology projects.</p>
+        <p>I designed an open, reproducible microclimate platform built for dense deployment in structurally complex sites such as solar farms.</p>
         <p><strong>Distributed network architecture:</strong> Multiple low-power sensor nodes send data wirelessly to a central mothership using ESP-NOW.</p>
         <p><strong>Centralized, field-friendly operation:</strong> The mothership provides time synchronization, deployment control, and continuous CSV logging to SD card through a local web dashboard.</p>
         <p><strong>Modular sensing:</strong> Core measurements include air temperature and humidity, PAR, and ultrasonic wind speed and direction, with expansion paths for soil and other sensors via standard interfaces.</p>
-        <p><strong>Reproducible design:</strong> Custom PCB, firmware, and a custom 3D-printable enclosure are documented as an integrated system to support transparent replication and adaptation.</p>
-        <p><strong>Deployment-focused engineering:</strong> I separated airflow-sensitive wind measurement geometry from electronics and power hardware in the enclosure design to reduce bias and improve field robustness.</p>
+        <p><strong>Reproducible design:</strong> Custom PCB, firmware, and a 3D-printable enclosure are documented as one integrated workflow to support transparent replication and adaptation.</p>
+        <p><strong>Deployment-focused engineering:</strong> The enclosure and sensor geometry are designed to reduce measurement bias, protect hardware in long-term field use, and keep the system compact enough for high-density placement.</p>
       </div>
     </div>
 
