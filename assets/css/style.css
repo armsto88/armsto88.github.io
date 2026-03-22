@@ -293,6 +293,32 @@ section + section {
   margin-bottom: 0.75rem;
 }
 
+.brand-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #2d6a4f;
+  background: #eef7f1;
+  border: 1px solid #d8ebde;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.brand-chip img {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.card__brand {
+  margin-bottom: 0.75rem;
+}
+
 .card__tag--blue {
   color: #1e5799;
   background: #e8eef8;

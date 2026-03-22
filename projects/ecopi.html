@@ -58,6 +58,150 @@
       font-weight: 500;
       color: #1a1a18;
     }
+    .project-gallery {
+      margin-top: 1.25rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .project-gallery--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .project-gallery--two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .project-gallery figure {
+      margin: 0;
+      border: 1px solid #e8e8e4;
+      border-radius: 8px;
+      background: #f8f8f6;
+      overflow: hidden;
+    }
+    .project-gallery a {
+      display: block;
+      padding: 0.7rem;
+      background: #f8f8f6;
+      cursor: zoom-in;
+    }
+    .project-gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+      background: #ffffff;
+    }
+    .project-gallery figcaption {
+      padding: 0.55rem 0.7rem;
+      font-size: 0.78rem;
+      color: #6a6a68;
+    }
+    .project-gallery-label {
+      margin: 1.25rem 0 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7a7a78;
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background: rgba(15, 18, 15, 0.9);
+      z-index: 1200;
+    }
+    .lightbox.is-open {
+      display: flex;
+    }
+    .lightbox__content {
+      position: relative;
+      width: min(1100px, 95vw);
+      max-height: 92vh;
+    }
+    .lightbox__image {
+      width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      background: #0f120f;
+    }
+    .lightbox__close {
+      position: absolute;
+      top: -0.7rem;
+      right: -0.7rem;
+      width: 2rem;
+      height: 2rem;
+      border: 0;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #111110;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #111110;
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+    .lightbox__nav--prev {
+      left: -1.2rem;
+    }
+    .lightbox__nav--next {
+      right: -1.2rem;
+    }
+    .lightbox__counter {
+      position: absolute;
+      left: 50%;
+      bottom: -1.9rem;
+      transform: translateX(-50%);
+      color: #f2f2f0;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 900px) {
+      .project-gallery--three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .project-gallery--three,
+      .project-gallery--two {
+        grid-template-columns: 1fr;
+      }
+      .project-gallery img {
+        height: 220px;
+      }
+      .lightbox__nav {
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+      .lightbox__nav--prev {
+        left: 0.4rem;
+      }
+      .lightbox__nav--next {
+        right: 0.4rem;
+      }
+      .lightbox__counter {
+        bottom: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -83,6 +227,7 @@
     <div class="project-body">
       <a href="../projects.html" class="back-link">All projects</a>
       <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Eco-acoustics / Conservation Technology</p>
+      <p class="brand-chip" style="margin-bottom:0.75rem;"><img src="../assets/favicon.png" alt="Oekofor" /><span>Oekofor Project</span></p>
       <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">ecoPi &#8211; Autonomous Acoustic Monitoring</h1>
       <p style="font-size:1.1rem;color:#4a4a48;max-width:60ch;margin-bottom:0;">
         A solar-powered acoustic monitoring system designed for long-term biodiversity monitoring in remote environments, combining low-power hardware, edge AI, and a web-based dashboard to move from raw field recordings to usable ecological insight.
@@ -164,11 +309,62 @@
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">My role</h3>
         <p>
-          I contribute to several core components of the ecoPi system, spanning both hardware and software. My work includes contributing to the design of the user interface dashboard, developing the power management system for long-term autonomous deployments, and designing the audio recording hardware used for passive acoustic monitoring.
+          I contribute to several core components of the ecoPi system, spanning both hardware and software. My work includes contributing to the design of the user interface dashboard, and designing and building ecoPi Lullaby, a custom Raspberry Pi HAT that integrates low-power management with an audio interface for passive acoustic monitoring in long-term autonomous deployments.
         </p>
         <p>
-          I also develop and integrate an abiotic sensor interface, enabling the system to capture environmental variables alongside acoustic data.
+          I also designed and built the ecoPi Sense module, which extends ecoPi with abiotic environmental data collection so temperature, humidity, and other site conditions can be interpreted alongside acoustic detections.
         </p>
+        <p class="project-gallery-label">Dashboard snapshots</p>
+        <div class="project-gallery project-gallery--three">
+          <figure>
+            <a href="../assets/project_pics/ecopi/dashboard_1.png" data-lightbox="ecopi-gallery" data-alt="ecoPi dashboard view showing detection summaries and monitoring overview">
+              <img src="../assets/project_pics/ecopi/dashboard_1.png" alt="ecoPi dashboard view showing detection summaries and monitoring overview" loading="lazy" />
+            </a>
+            <figcaption>Dashboard view 1</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/project_pics/ecopi/dashboard_2.png" data-lightbox="ecopi-gallery" data-alt="ecoPi dashboard view for species detections and timeline exploration">
+              <img src="../assets/project_pics/ecopi/dashboard_2.png" alt="ecoPi dashboard view for species detections and timeline exploration" loading="lazy" />
+            </a>
+            <figcaption>Dashboard view 2</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/project_pics/ecopi/dashboard_3.png" data-lightbox="ecopi-gallery" data-alt="ecoPi dashboard view with project-level monitoring outputs">
+              <img src="../assets/project_pics/ecopi/dashboard_3.png" alt="ecoPi dashboard view with project-level monitoring outputs" loading="lazy" />
+            </a>
+            <figcaption>Dashboard view 3</figcaption>
+          </figure>
+        </div>
+        <p class="project-gallery-label">ecoPi Lullaby PCB renders</p>
+        <div class="project-gallery project-gallery--two">
+          <figure>
+            <a href="../assets/project_pics/ecopi/3D_OekoFor%20_HAT_Rebuild_2026-03-22.png" data-lightbox="ecopi-gallery" data-alt="ecoPi PCB render showing board layout and component placement">
+              <img src="../assets/project_pics/ecopi/3D_OekoFor%20_HAT_Rebuild_2026-03-22.png" alt="ecoPi PCB render showing board layout and component placement" loading="lazy" />
+            </a>
+            <figcaption>PCB render 1</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/project_pics/ecopi/3D_OekoFor%20_HAT_Rebuild_2026-03-22(1).png" data-lightbox="ecopi-gallery" data-alt="ecoPi PCB render showing alternate board view">
+              <img src="../assets/project_pics/ecopi/3D_OekoFor%20_HAT_Rebuild_2026-03-22(1).png" alt="ecoPi PCB render showing alternate board view" loading="lazy" />
+            </a>
+            <figcaption>PCB render 2</figcaption>
+          </figure>
+        </div>
+        <p class="project-gallery-label">ecoPi Sense module renders</p>
+        <div class="project-gallery project-gallery--two">
+          <figure>
+            <a href="../assets/project_pics/ecopi/3D_PCB1_2026-03-22.png" data-lightbox="ecopi-gallery" data-alt="ecoPi Sense module PCB render showing component layout">
+              <img src="../assets/project_pics/ecopi/3D_PCB1_2026-03-22.png" alt="ecoPi Sense module PCB render showing component layout" loading="lazy" />
+            </a>
+            <figcaption>ecoPi Sense module render 1</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/project_pics/ecopi/3D_PCB1_2026-03-22(1).png" data-lightbox="ecopi-gallery" data-alt="ecoPi Sense module PCB render showing alternate board view">
+              <img src="../assets/project_pics/ecopi/3D_PCB1_2026-03-22(1).png" alt="ecoPi Sense module PCB render showing alternate board view" loading="lazy" />
+            </a>
+            <figcaption>ecoPi Sense module render 2</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
 
@@ -208,12 +404,21 @@
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Links</h3>
         <div class="project-links">
           <a href="https://www.oekofor.de/en/" target="_blank" rel="noopener" class="btn btn--secondary">Oekofor Website</a>
-          <a href="https://github.com/armsto88" target="_blank" rel="noopener" class="btn btn--secondary">GitHub</a>
         </div>
       </div>
     </div>
 
   </article>
+
+  <div class="lightbox" id="project-lightbox" aria-hidden="true" role="dialog" aria-label="Expanded project image">
+    <div class="lightbox__content">
+      <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+      <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">&#8250;</button>
+      <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close image">&times;</button>
+      <img class="lightbox__image" id="lightbox-image" src="" alt="" />
+      <p class="lightbox__counter" id="lightbox-counter"></p>
+    </div>
+  </div>
 
   <!-- Next project suggestion -->
   <div style="background:#f4f4f2; border-top:1px solid #e8e8e4; padding:3rem 0;">
@@ -241,6 +446,95 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      const lightbox = document.getElementById("project-lightbox");
+      const lightboxImage = document.getElementById("lightbox-image");
+      const lightboxClose = document.getElementById("lightbox-close");
+      const lightboxPrev = document.getElementById("lightbox-prev");
+      const lightboxNext = document.getElementById("lightbox-next");
+      const lightboxCounter = document.getElementById("lightbox-counter");
+      const triggers = Array.from(document.querySelectorAll("a[data-lightbox='ecopi-gallery']"));
+      let currentIndex = -1;
+
+      function renderImage(index) {
+        const target = triggers[index];
+        if (!target) {
+          return;
+        }
+
+        lightboxImage.src = target.getAttribute("href");
+        lightboxImage.alt = target.dataset.alt || "Expanded project image";
+        lightboxCounter.textContent = `${index + 1} / ${triggers.length}`;
+        currentIndex = index;
+      }
+
+      function openLightbox(index) {
+        renderImage(index);
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function showNext() {
+        if (!triggers.length) {
+          return;
+        }
+        const nextIndex = (currentIndex + 1) % triggers.length;
+        renderImage(nextIndex);
+      }
+
+      function showPrev() {
+        if (!triggers.length) {
+          return;
+        }
+        const prevIndex = (currentIndex - 1 + triggers.length) % triggers.length;
+        renderImage(prevIndex);
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+        lightboxCounter.textContent = "";
+        currentIndex = -1;
+        document.body.style.overflow = "";
+      }
+
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openLightbox(index);
+        });
+      });
+
+      lightboxPrev.addEventListener("click", showPrev);
+      lightboxNext.addEventListener("click", showNext);
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowRight") {
+          showNext();
+        }
+
+        if (event.key === "ArrowLeft") {
+          showPrev();
+        }
+      });
+    })();
+  </script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
