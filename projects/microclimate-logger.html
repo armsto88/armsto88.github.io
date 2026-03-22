@@ -328,31 +328,19 @@
     <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Design files</h3>
-        <div class="design-files">
-          <div class="design-file">
-            <span class="design-file__name">Version_2.stl</span>
-            <div class="design-file__actions">
-              <a href="javascript:void(0);" class="btn btn--secondary" data-stl="../assets/project_pics/microclimate_logger/Version_2.stl">View 3D</a>
-            </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;">
+          <div style="border:1px solid #e8e8e4;border-radius:8px;overflow:hidden;background:#fff;">
+            <p style="background:#f9f9f7;margin:0;padding:0.75rem;font-size:0.85rem;font-weight:600;color:#1a1a18;">Version 2</p>
+            <stl-viewer model="../assets/project_pics/microclimate_logger/Version_2.stl" style="display:block;height:280px;"></stl-viewer>
           </div>
-          <div class="design-file">
-            <span class="design-file__name">Version_2_.stl</span>
-            <div class="design-file__actions">
-              <a href="javascript:void(0);" class="btn btn--secondary" data-stl="../assets/project_pics/microclimate_logger/Version_2_.stl">View 3D</a>
-            </div>
+          <div style="border:1px solid #e8e8e4;border-radius:8px;overflow:hidden;background:#fff;">
+            <p style="background:#f9f9f7;margin:0;padding:0.75rem;font-size:0.85rem;font-weight:600;color:#1a1a18;">Version 2 (alternate)</p>
+            <stl-viewer model="../assets/project_pics/microclimate_logger/Version_2_.stl" style="display:block;height:280px;"></stl-viewer>
           </div>
         </div>
       </div>
     </div>
   </article>
-
-  <div class="stl-lightbox" id="stl-lightbox" aria-hidden="true" role="dialog" aria-label="3D model viewer">
-    <div class="stl-lightbox__panel">
-      <button type="button" class="stl-lightbox__close" id="stl-lightbox-close" aria-label="Close 3D viewer">&times;</button>
-      <div class="stl-lightbox__viewer" id="stl-viewer"></div>
-      <p class="stl-lightbox__hint">Drag to rotate • Scroll to zoom</p>
-    </div>
-  </div>
 
   <div class="image-lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-label="Expanded project image">
     <div class="image-lightbox__content">
@@ -386,147 +374,6 @@
       <p class="footer__copy">© 2026 Tom Armstrong</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/three@r128/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/loaders/STLLoader.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (!window.THREE) {
-        console.error("THREE not loaded");
-        return;
-      }
-
-      const modal = document.getElementById("stl-lightbox");
-      const closeBtn = document.getElementById("stl-lightbox-close");
-      const viewer = document.getElementById("stl-viewer");
-      const hint = document.querySelector(".stl-lightbox__hint");
-
-      if (!modal || !viewer) {
-        console.error("Modal or viewer not found");
-        return;
-      }
-
-      let renderer, scene, camera, controls, mesh, animationId;
-
-      function ensureViewer() {
-        if (renderer) return;
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x101310);
-        camera = new THREE.PerspectiveCamera(45, viewer.clientWidth / viewer.clientHeight, 0.1, 2000);
-        camera.position.set(0, 0, 140);
-        renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(viewer.clientWidth, viewer.clientHeight);
-        viewer.appendChild(renderer.domElement);
-        const hemi = new THREE.HemisphereLight(0xffffff, 0x3f4a40, 1.15);
-        const dir = new THREE.DirectionalLight(0xffffff, 0.9);
-        dir.position.set(30, 40, 50);
-        scene.add(hemi, dir);
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.06;
-        controls.minDistance = 20;
-        controls.maxDistance = 600;
-      }
-
-      function fitCameraToMesh(target) {
-        const box = new THREE.Box3().setFromObject(target);
-        const size = box.getSize(new THREE.Vector3());
-        const center = box.getCenter(new THREE.Vector3());
-        target.position.sub(center);
-        const maxDim = Math.max(size.x, size.y, size.z) || 1;
-        const fov = camera.fov * (Math.PI / 180);
-        const distance = (maxDim / 2) / Math.tan(fov / 2) * 1.5;
-        camera.position.set(0, 0, distance);
-        camera.near = maxDim / 100;
-        camera.far = maxDim * 100;
-        camera.updateProjectionMatrix();
-        controls.target.set(0, 0, 0);
-        controls.update();
-      }
-
-      function renderLoop() {
-        controls.update();
-        renderer.render(scene, camera);
-        animationId = requestAnimationFrame(renderLoop);
-      }
-
-      function openModel(stlPath) {
-        console.log("Opening STL:", stlPath);
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-        if (hint) hint.textContent = "Loading model...";
-        
-        setTimeout(() => {
-          try {
-            ensureViewer();
-            if (mesh) {
-              scene.remove(mesh);
-              if (mesh.geometry) mesh.geometry.dispose();
-              if (mesh.material) mesh.material.dispose();
-            }
-            const loader = new THREE.STLLoader();
-            console.log("STLLoader created");
-            loader.load(
-              stlPath,
-              (geometry) => {
-                console.log("STL loaded successfully");
-                geometry.computeVertexNormals();
-                const material = new THREE.MeshStandardMaterial({ color: 0x9ec5a8, metalness: 0.08, roughness: 0.65 });
-                mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
-                fitCameraToMesh(mesh);
-                if (hint) hint.textContent = "Drag to rotate • Scroll to zoom";
-              },
-              undefined,
-              (err) => {
-                console.error("STL load failed:", err);
-                if (hint) hint.textContent = "Failed to load model";
-              }
-            );
-            if (!animationId) renderLoop();
-          } catch (err) {
-            console.error("Viewer error:", err);
-            if (hint) hint.textContent = "Error: " + err.message;
-          }
-        }, 50);
-      }
-
-      function closeModel() {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
-
-      // Attach listeners to all STL buttons
-      const stlButtons = document.querySelectorAll("a[data-stl]");
-      console.log("Found " + stlButtons.length + " STL buttons");
-      stlButtons.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          console.log("Button clicked");
-          openModel(btn.getAttribute("data-stl"));
-        });
-      });
-
-      closeBtn.addEventListener("click", closeModel);
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeModel();
-      });
-      window.addEventListener("resize", () => {
-        if (renderer && camera) {
-          camera.aspect = viewer.clientWidth / viewer.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(viewer.clientWidth, viewer.clientHeight);
-        }
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModel();
-      });
-    });
-  </script>
-
   <script>
     (function () {
       const modal = document.getElementById("image-lightbox");
@@ -540,9 +387,7 @@
 
       function render(i) {
         const target = links[i];
-        if (!target) {
-          return;
-        }
+        if (!target) return;
         image.src = target.getAttribute("href");
         image.alt = target.dataset.alt || "Expanded project image";
         counter.textContent = `${i + 1} / ${links.length}`;
@@ -566,22 +411,18 @@
       }
 
       function next() {
-        if (!links.length) {
-          return;
-        }
+        if (!links.length) return;
         render((index + 1) % links.length);
       }
 
       function prev() {
-        if (!links.length) {
-          return;
-        }
+        if (!links.length) return;
         render((index - 1 + links.length) % links.length);
       }
 
       links.forEach((link, i) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault();
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
           open(i);
         });
       });
@@ -589,29 +430,23 @@
       closeBtn.addEventListener("click", close);
       prevBtn.addEventListener("click", prev);
       nextBtn.addEventListener("click", next);
-      modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-          close();
-        }
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) close();
       });
 
-      document.addEventListener("keydown", (event) => {
-        if (!modal.classList.contains("is-open")) {
-          return;
-        }
-        if (event.key === "Escape") {
-          close();
-        }
-        if (event.key === "ArrowRight") {
-          next();
-        }
-        if (event.key === "ArrowLeft") {
-          prev();
-        }
+      document.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("is-open")) return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowRight") next();
+        if (e.key === "ArrowLeft") prev();
       });
     })();
   </script>
   <script src="../assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@r128/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/loaders/STLLoader.js"></script>
+  <script src="../assets/js/stl-viewer.js"></script>
 </body>
 </html>
 
