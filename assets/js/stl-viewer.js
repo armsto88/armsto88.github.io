@@ -97,6 +97,7 @@ class STLViewer extends HTMLElement {
             })
           );
           mesh.rotation.x = -Math.PI / 2;
+          mesh.rotation.z = 0.32;
           scene.add(mesh);
 
           // Start with a side-on profile view instead of top-down.
