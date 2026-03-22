@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ecoPi â€” Conservation Tech Platform | Tom Armstrong</title>
-  <meta name="description" content="A modular, field-deployable monitoring system for wildlife and biodiversity monitoring, built around the Raspberry Pi ecosystem." />
+  <title>ecoPi - Autonomous Acoustic Monitoring | Tom Armstrong</title>
+  <meta name="description" content="A solar-powered acoustic monitoring system designed for long-term biodiversity monitoring in remote environments, combining low-power hardware, edge AI, and a web-based dashboard." />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +27,7 @@
       margin-bottom: 2rem;
     }
     .back-link::before {
-      content: "â†";
+      content: "\2190";
     }
     .back-link:hover {
       color: #2d6a4f;
@@ -81,11 +81,10 @@
   <div class="project-hero" style="padding-top:4rem; padding-bottom:3rem; border-bottom:1px solid #e8e8e4;">
     <div class="project-body">
       <a href="../projects.html" class="back-link">All projects</a>
-      <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Hardware / IoT</p>
-      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">ecoPi â€” Conservation Tech Platform</h1>
+      <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Eco-acoustics / Conservation Technology</p>
+      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">ecoPi &#8211; Autonomous Acoustic Monitoring</h1>
       <p style="font-size:1.1rem;color:#4a4a48;max-width:60ch;margin-bottom:0;">
-        A modular, field-deployable monitoring system for wildlife and biodiversity monitoring,
-        built around the Raspberry Pi ecosystem and designed for low-power remote deployment.
+        A solar-powered acoustic monitoring system designed for long-term biodiversity monitoring in remote environments, combining low-power hardware, edge AI, and a web-based dashboard to move from raw field recordings to usable ecological insight.
       </p>
     </div>
   </div>
@@ -100,15 +99,19 @@
         </div>
         <div class="project-meta-strip__item">
           <label>Timeframe</label>
-          <span>2024â€“present</span>
+          <span>2024&#8211;present</span>
+        </div>
+        <div class="project-meta-strip__item">
+          <label>Organisation</label>
+          <span>Oekofor</span>
         </div>
         <div class="project-meta-strip__item">
           <label>Category</label>
-          <span>Hardware / IoT</span>
+          <span>Eco-acoustics / Conservation Technology</span>
         </div>
         <div class="project-meta-strip__item">
           <label>Tools</label>
-          <span>Raspberry Pi, Python, Linux</span>
+          <span>PCB Design, Embedded Systems, R Shiny, Python</span>
         </div>
       </div>
     </div>
@@ -121,15 +124,10 @@
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">The problem</h3>
         <p>
-          Biodiversity monitoring often relies on expensive proprietary hardware that is difficult to
-          repair, impossible to modify, and priced out of reach for many conservation projects.
-          Alternatively, it relies on generic consumer devices that weren't designed for the field
-          and fail quickly under real deployment conditions.
+          Biodiversity monitoring often relies on short field surveys or manual observations, which capture only a small snapshot of ecological activity. Passive acoustic monitoring can provide continuous insight into ecosystems, but many existing systems are either too expensive, too complex to deploy at scale, or unreliable in harsh field conditions.
         </p>
         <p>
-          There is a gap between what's technically possible with low-cost open hardware and
-          what's available as a reliable, field-ready monitoring solution for ecologists.
-          ecoPi is an attempt to close that gap.
+          As a result, ecological teams often struggle to collect long-term, high-resolution data on species presence and behaviour.
         </p>
       </div>
     </div>
@@ -138,14 +136,10 @@
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Why it matters</h3>
         <p>
-          Field monitoring generates the data that underpins conservation decision-making. If the
-          tools to collect that data are unreliable, expensive, or difficult to deploy, monitoring
-          doesn't happen â€” or it produces inadequate data that can't support strong conclusions.
+          Sound carries a huge amount of ecological information. Birds, bats, frogs, and insects all produce acoustic signals that can reveal patterns in biodiversity, habitat health, and ecosystem change.
         </p>
         <p>
-          A modular, open-hardware monitoring platform would make it possible for small conservation
-          organisations, researchers, and field ecologists to deploy robust monitoring at a fraction
-          of the cost of commercial alternatives.
+          Reliable acoustic monitoring allows researchers to detect rare species, track population trends, and understand how ecosystems respond to environmental pressures. Making this technology more accessible enables conservation teams to monitor larger areas for longer periods and make better-informed management decisions.
         </p>
       </div>
     </div>
@@ -154,20 +148,13 @@
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Approach</h3>
         <p>
-          The core concept is a modular system where different monitoring capabilities â€” acoustic
-          recording, camera triggering, microclimate logging, GPS position â€” can be combined into
-          a single deployable unit based on what a site requires. The Raspberry Pi provides the
-          computational core, with Python managing sensor orchestration, data logging, and
-          scheduled operations.
+          ecoPi is designed as a complete monitoring system that connects field hardware, edge AI, and data interpretation tools.
         </p>
         <p>
-          Key design principles are: low power draw for multi-week autonomous deployment; local
-          data storage with optional remote transmission; field-repairable components; and a
-          configuration system simple enough to be managed by ecologists with limited coding experience.
+          Solar-powered recording units capture environmental soundscapes and process them locally using machine-learning models running on embedded hardware. Detection data is then made accessible through a browser-based interface where users can review detections, request audio clips, and validate results.
         </p>
         <p>
-          The platform is being developed iteratively â€” each field deployment informs the next
-          revision of the hardware and software configuration.
+          The system prioritises low-power operation, modular design, and simple workflows so that monitoring networks can operate autonomously in remote environments.
         </p>
       </div>
     </div>
@@ -176,8 +163,10 @@
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">My role</h3>
         <p>
-          This is a personal project. I'm doing everything: hardware selection and prototyping,
-          enclosure design, Python software, power management, field testing, and iteration.
+          I contribute to several core components of the ecoPi system, spanning both hardware and software. My work includes contributing to the design of the user interface dashboard, developing the power management system for long-term autonomous deployments, and designing the audio recording hardware used for passive acoustic monitoring.
+        </p>
+        <p>
+          I also develop and integrate an abiotic sensor interface, enabling the system to capture environmental variables alongside acoustic data.
         </p>
       </div>
     </div>
@@ -186,22 +175,21 @@
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Tools &amp; technologies</h3>
         <div class="tech-list">
-          <span class="tag-pill">Raspberry Pi Zero 2W</span>
+          <span class="tag-pill">PCB Design (EDA)</span>
+          <span class="tag-pill">Embedded Systems</span>
+          <span class="tag-pill">Low-power Power Management</span>
+          <span class="tag-pill">Passive Acoustic Monitoring</span>
+          <span class="tag-pill">Microcontrollers</span>
+          <span class="tag-pill">R Shiny</span>
           <span class="tag-pill">Python</span>
-          <span class="tag-pill">Linux (Raspberry Pi OS)</span>
-          <span class="tag-pill">USB audio</span>
-          <span class="tag-pill">I2C sensors</span>
-          <span class="tag-pill">SSD1306 OLED</span>
-          <span class="tag-pill">LiPo power management</span>
-          <span class="tag-pill">systemd services</span>
-          <span class="tag-pill">SQLite</span>
+          <span class="tag-pill">Edge AI / ML</span>
         </div>
       </div>
     </div>
 
     <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
       <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Challenges &amp; tradeoffs</h3>
+        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Current status</h3>
         <p>
           Power management is the central constraint. The Raspberry Pi is not inherently a
           low-power device â€” achieving multi-week deployment autonomy requires careful management
@@ -214,23 +202,13 @@
           that affect electronics longevity.
         </p>
         <p>
-          Simplifying configuration for non-technical users while keeping flexibility for different
-          deployment types is still an open design problem.
+          The project is actively in development. The system is deployed in real field environments, with ongoing work across hardware revisions, software improvements, and dashboard features.
         </p>
       </div>
     </div>
 
     <div class="project-section" style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
       <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Current outcome</h3>
-        <p>
-          A working prototype has been deployed in the field for acoustic and microclimate monitoring.
-          The current focus is on improving power management reliability and simplifying the
-          configuration and deployment workflow. The project is ongoing.
-        </p>
-      </div>
-    </div>
-
     <div class="project-section" style="padding:2.5rem 0;">
       <div class="project-body">
         <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Links</h3>
@@ -264,11 +242,13 @@
         <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
-      <p class="footer__copy">Â© 2026 Tom Armstrong</p>
+      <p class="footer__copy">&copy; 2026 Tom Armstrong</p>
     </div>
   </footer>
 
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
+
+
 
