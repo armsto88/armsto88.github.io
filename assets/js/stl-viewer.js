@@ -1,7 +1,3 @@
-import * as THREE from "https://unpkg.com/three@0.128.0/build/three.module.js";
-import { OrbitControls } from "https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js";
-import { STLLoader } from "https://unpkg.com/three@0.128.0/examples/jsm/loaders/STLLoader.js";
-
 class STLViewer extends HTMLElement {
   constructor() {
     super();
@@ -17,7 +13,15 @@ class STLViewer extends HTMLElement {
       return;
     }
 
-    this.initViewer();
+    const waitForDeps = () => {
+      if (!window.THREE || !window.THREE.OrbitControls || !window.THREE.STLLoader) {
+        setTimeout(waitForDeps, 60);
+        return;
+      }
+      this.initViewer();
+    };
+
+    waitForDeps();
   }
 
   initViewer() {
@@ -25,18 +29,21 @@ class STLViewer extends HTMLElement {
       const root = this.shadowRoot || this.attachShadow({ mode: 'open' });
       root.innerHTML = '';
 
-      const container = document.createElement('div');
-      container.style.cssText = 'width:100%;height:100%;background:#f4f4f4;';
-      root.appendChild(container);
-
       const modelPath = this.getAttribute('model');
       const modelUrl = new URL(modelPath, document.baseURI).href;
+      const colorAttr = this.getAttribute('color') || '#2d6a4f';
+      const bgAttr = this.getAttribute('background') || '#1f2428';
+      const rotateSpeedAttr = parseFloat(this.getAttribute('rotate-speed') || '0.25');
+
+      const container = document.createElement('div');
+      container.style.cssText = `width:100%;height:100%;background:${bgAttr};`;
+      root.appendChild(container);
 
       const width = Math.max(container.clientWidth || this.clientWidth || 300, 200);
       const height = Math.max(container.clientHeight || this.clientHeight || 280, 200);
 
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xffffff);
+      scene.background = new THREE.Color(bgAttr);
 
       const camera = new THREE.PerspectiveCamera(65, width / height, 0.1, 5000);
       camera.position.set(0, 0, 120);
@@ -51,12 +58,12 @@ class STLViewer extends HTMLElement {
       dir.position.set(1, 1, 2);
       scene.add(dir);
 
-      const controls = new OrbitControls(camera, renderer.domElement);
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.autoRotate = true;
-      controls.autoRotateSpeed = 1.2;
+      controls.autoRotateSpeed = Number.isFinite(rotateSpeedAttr) ? rotateSpeedAttr : 0.25;
 
-      const loader = new STLLoader();
+      const loader = new THREE.STLLoader();
       loader.load(
         modelUrl,
         (geometry) => {
@@ -70,9 +77,16 @@ class STLViewer extends HTMLElement {
           const scale = 80 / maxDim;
           geometry.scale(scale, scale, scale);
 
+          let meshColor = 0x2d6a4f;
+          try {
+            meshColor = new THREE.Color(colorAttr).getHex();
+          } catch (e) {
+            meshColor = 0x2d6a4f;
+          }
+
           const mesh = new THREE.Mesh(
             geometry,
-            new THREE.MeshPhongMaterial({ color: 0x2d6a4f, shininess: 80 })
+            new THREE.MeshPhongMaterial({ color: meshColor, shininess: 80 })
           );
           scene.add(mesh);
 
