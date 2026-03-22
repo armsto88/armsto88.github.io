@@ -395,6 +395,7 @@
   <script>
     (function () {
       const stlIframes = document.querySelectorAll("iframe[data-stl-url]");
+      const VIEWSTL_ORIGIN = "https://www.viewstl.com";
 
       const loadModelInIframe = (iframe) => {
         const url = iframe.dataset.stlUrl;
@@ -405,18 +406,29 @@
             msg_type: "load",
             url,
           },
-          "*"
+          VIEWSTL_ORIGIN
         );
+      };
+
+      const startAutoLoadRetries = (iframe) => {
+        let tries = 0;
+        const maxTries = 20;
+        const timer = setInterval(() => {
+          tries += 1;
+          loadModelInIframe(iframe);
+          if (tries >= maxTries) {
+            clearInterval(timer);
+          }
+        }, 500);
       };
 
       stlIframes.forEach((iframe) => {
         iframe.addEventListener("load", () => {
-          // Send the load message a few times to handle viewer init timing.
-          loadModelInIframe(iframe);
-          setTimeout(() => loadModelInIframe(iframe), 300);
-          setTimeout(() => loadModelInIframe(iframe), 900);
-          setTimeout(() => loadModelInIframe(iframe), 1800);
+          startAutoLoadRetries(iframe);
         });
+
+        // Also start retries immediately in case the iframe loads before listener binding.
+        startAutoLoadRetries(iframe);
       });
 
       const modal = document.getElementById("image-lightbox");
