@@ -386,10 +386,16 @@
       <p class="footer__copy">© 2026 Tom Armstrong</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/STLLoader.js"></script>
   <script>
+    window.STL_DEBUG = function() {
+      console.log("THREE:", !!window.THREE);
+      console.log("THREE.STLLoader:", !!window.THREE?.STLLoader);
+      console.log("window.STLLoader:", !!window.STLLoader);
+    };
+
     (function () {
       const modal = document.getElementById("stl-lightbox");
       const closeBtn = document.getElementById("stl-lightbox-close");
@@ -403,19 +409,6 @@
       let controls;
       let mesh;
       let animationId;
-      let controlsCtor;
-      let loaderCtor;
-
-      function resolveThreeIntegrations() {
-        const threeRef = window.THREE;
-        if (!threeRef) {
-          return false;
-        }
-
-        controlsCtor = threeRef.OrbitControls || window.OrbitControls || null;
-        loaderCtor = threeRef.STLLoader || window.STLLoader || null;
-        return Boolean(controlsCtor && loaderCtor);
-      }
 
       function ensureViewer() {
         if (renderer) {
@@ -438,7 +431,7 @@
         dir.position.set(30, 40, 50);
         scene.add(hemi, dir);
 
-        controls = new controlsCtor(camera, renderer.domElement);
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.06;
         controls.minDistance = 20;
@@ -471,52 +464,71 @@
       }
 
       function openModel(stlPath) {
-        if (!resolveThreeIntegrations()) {
+        try {
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+
+          if (!window.THREE || !window.THREE.STLLoader) {
+            console.error("THREE.STLLoader not available");
+            console.log("window.THREE:", !!window.THREE);
+            console.log("window.THREE.STLLoader:", !!window.THREE?.STLLoader);
+            console.log("window.STLLoader:", !!window.STLLoader);
+            if (hint) {
+              hint.textContent = "STL loader not found. Check console.";
+            }
+            return;
+          }
+
+          ensureViewer();
+
+          if (mesh) {
+            scene.remove(mesh);
+            if (mesh.geometry) mesh.geometry.dispose();
+            if (mesh.material) mesh.material.dispose();
+            mesh = null;
+          }
+
           if (hint) {
-            hint.textContent = "3D viewer failed to load. Please refresh and try again.";
+            hint.textContent = "Loading model...";
           }
-          return;
-        }
 
-        ensureViewer();
+          const loader = new THREE.STLLoader();
+          console.log("STLLoader created, loading:", stlPath);
 
-        if (mesh) {
-          scene.remove(mesh);
-          mesh.geometry.dispose();
-          mesh.material.dispose();
-          mesh = null;
-        }
-
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-        if (hint) {
-          hint.textContent = "Loading model...";
-        }
-
-        const loader = new loaderCtor();
-        loader.load(
-          stlPath,
-          function (geometry) {
-            geometry.computeVertexNormals();
-            const material = new THREE.MeshStandardMaterial({ color: 0x9ec5a8, metalness: 0.08, roughness: 0.65 });
-            mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
-            fitCameraToMesh(mesh);
-            if (hint) {
-              hint.textContent = "Drag to rotate • Scroll to zoom";
+          loader.load(
+            stlPath,
+            function (geometry) {
+              console.log("Geometry loaded successfully");
+              geometry.computeVertexNormals();
+              const material = new THREE.MeshStandardMaterial({ color: 0x9ec5a8, metalness: 0.08, roughness: 0.65 });
+              mesh = new THREE.Mesh(geometry, material);
+              scene.add(mesh);
+              fitCameraToMesh(mesh);
+              if (hint) {
+                hint.textContent = "Drag to rotate • Scroll to zoom";
+              }
+            },
+            function (progress) {
+              console.log("Loading progress:", Math.round(progress.loaded / progress.total * 100) + "%");
+            },
+            function (error) {
+              console.error("STL file load error:", error, "Path:", stlPath);
+              if (hint) {
+                hint.textContent = "Could not load STL file: " + stlPath;
+              }
             }
-          },
-          undefined,
-          function () {
-            if (hint) {
-              hint.textContent = "Could not load this STL file.";
-            }
+          );
+
+          if (!animationId) {
+            renderLoop();
           }
-        );
-
-        if (!animationId) {
-          renderLoop();
+        } catch (err) {
+          console.error("3D viewer error:", err);
+          console.error("Stack:", err.stack);
+          if (hint) {
+            hint.textContent = "Error: " + err.message;
+          }
         }
       }
 
