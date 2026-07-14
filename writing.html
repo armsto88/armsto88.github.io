@@ -1,190 +1,86 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Writing | Tom Armstrong</title>
-  <meta name="description" content="Notes and reflections on ecology, conservation technology, eco-acoustics, AI, and building practical environmental tools." />
+  <meta name="description" content="Working notes by Tom Armstrong on conservation technology, ecological monitoring, field hardware and passive acoustics." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#152019" />
+  <link rel="canonical" href="https://armsto88.github.io/writing.html" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Writing | Tom Armstrong" />
+  <meta property="og:description" content="Notes on the practical work of building ecological monitoring technology." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://armsto88.github.io/writing.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Tom Armstrong — ecologist and conservation technologist" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav class="nav" aria-label="Primary navigation"><div class="nav__inner">
+    <a href="index.html" class="nav__logo"><span class="nav__mark" aria-hidden="true">TA</span><span>Tom Armstrong</span></a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span class="nav__toggle-lines" aria-hidden="true"><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span></span></button>
+    <ul class="nav__links" id="primary-menu"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="cv.html">Experience</a></li><li><a href="contact.html">Contact</a></li></ul>
+  </div></nav>
 
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Tom Armstrong</a>
-      <button class="nav__toggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="container">
-      <p class="hero__eyebrow">Writing</p>
-      <h1 class="hero__title">Notes and reflections</h1>
-      <p class="hero__subtitle">
-        Build notes, technical essays, field observations, and practical thinking about
-        ecology, conservation technology, eco-acoustics, AI, and remote sensing.
-        Not a blog – a working archive.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="build-notes">Build Notes</button>
-        <button class="filter-btn" data-filter="ecology">Ecology &amp; Monitoring</button>
-        <button class="filter-btn" data-filter="ai">AI &amp; Tools</button>
-        <button class="filter-btn" data-filter="ecoacoustics">Eco-acoustics</button>
-        <button class="filter-btn" data-filter="remote-sensing">Remote Sensing</button>
+  <main id="main-content">
+    <header class="hero">
+      <div class="container">
+        <p class="hero__eyebrow">Writing</p>
+        <h1 class="hero__title hero__title--page">Notes from building ecological technology.</h1>
+        <p class="hero__subtitle">Longer reflections on field deployment, monitoring workflows and the gap between a working prototype and a useful ecological system.</p>
       </div>
+    </header>
 
-      <div class="article-list" id="article-list">
-
-        <article class="article-item" data-category="build-notes">
-          <div class="article-item__meta">
-            <span class="article-item__category">Build Notes</span>
-            <span>March 2026</span>
-            <span>7 min read</span>
+    <section class="section" aria-labelledby="published-title">
+      <div class="container">
+        <div class="section-header"><p class="section-header__label">Published</p><h2 id="published-title">Latest note</h2></div>
+        <article class="writing-feature">
+          <div class="writing-feature__meta"><span>Build notes</span><time datetime="2026-03">March 2026</time><span>7 min read</span></div>
+          <div>
+            <h3 class="writing-feature__title"><a href="writing/prototype-to-deployment.html">Why ecology tools fail between prototype and deployment</a></h3>
+            <p class="writing-feature__desc">A practical look at field conditions, power, maintainability, handover and data management — the parts of a monitoring system that determine whether a prototype survives real use.</p>
+            <a class="text-link" href="writing/prototype-to-deployment.html">Read the note</a>
           </div>
-          <h2 class="article-item__title"><a href="writing/prototype-to-deployment.html">Why ecology tools fail between prototype and deployment</a></h2>
-          <p class="article-item__desc">Most conservation tech prototypes look promising in the lab. Most never make it to sustained field use. Here's what I've noticed about why –” and what makes the difference.</p>
         </article>
-
-        <article class="article-item" data-category="ecoacoustics">
-          <div class="article-item__meta">
-            <span class="article-item__category">Eco-acoustics</span>
-            <span>February 2026</span>
-            <span>6 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/limits-of-acoustic-automation.html">The practical limits of acoustic species automation</a></h2>
-          <p class="article-item__desc">BirdNET and similar tools are genuinely useful. But ecological teams need to understand what they're actually good at, where they fail, and what that means for real monitoring workflows.</p>
-        </article>
-
-        <article class="article-item" data-category="ai">
-          <div class="article-item__meta">
-            <span class="article-item__category">AI &amp; Tools</span>
-            <span>January 2026</span>
-            <span>5 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/ai-for-ecology-teams.html">Where AI helps ecology teams right now</a></h2>
-          <p class="article-item__desc">A grounded look at where machine learning is genuinely useful for ecological monitoring workflows –” and where it's still more hype than practical tool.</p>
-        </article>
-
-        <article class="article-item" data-category="ecology">
-          <div class="article-item__meta">
-            <span class="article-item__category">Ecology &amp; Monitoring</span>
-            <span>December 2025</span>
-            <span>8 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/interfaces-matter.html">Why interfaces matter in ecology tools</a></h2>
-          <p class="article-item__desc">The most technically sophisticated monitoring system in the world is useless if the ecologist in the field can't interpret the output. Interface design is part of good ecological technology.</p>
-        </article>
-
-        <article class="article-item" data-category="build-notes">
-          <div class="article-item__meta">
-            <span class="article-item__category">Build Notes</span>
-            <span>November 2025</span>
-            <span>6 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/environmental-sensor-lessons.html">Lessons from building environmental sensor systems</a></h2>
-          <p class="article-item__desc">Notes from designing and deploying microclimate loggers in the field –” what breaks, what holds, and what I'd do differently from the start.</p>
-        </article>
-
-        <article class="article-item" data-category="ecology">
-          <div class="article-item__meta">
-            <span class="article-item__category">Ecology &amp; Monitoring</span>
-            <span>October 2025</span>
-            <span>5 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/conservation-tech-field-ready.html">What makes conservation technology useful in the field</a></h2>
-          <p class="article-item__desc">Reflecting on the difference between tools that work technically and tools that actually get adopted and used by ecological teams in real monitoring contexts.</p>
-        </article>
-
-        <article class="article-item" data-category="ecoacoustics">
-          <div class="article-item__meta">
-            <span class="article-item__category">Eco-acoustics</span>
-            <span>September 2025</span>
-            <span>7 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/acoustic-monitoring-interfaces.html">Building better interfaces for acoustic monitoring data</a></h2>
-          <p class="article-item__desc">Acoustic recorders generate enormous amounts of data. The challenge isn't collection –” it's building the tools that help ecologists interpret it quickly and reliably.</p>
-        </article>
-
-        <article class="article-item" data-category="ai">
-          <div class="article-item__meta">
-            <span class="article-item__category">AI &amp; Tools</span>
-            <span>August 2025</span>
-            <span>6 min read</span>
-          </div>
-          <h2 class="article-item__title"><a href="writing/between-ecology-and-engineering.html">Working between ecology and engineering</a></h2>
-          <p class="article-item__desc">Thoughts on the experience of sitting between two disciplines –” what you gain, what you lose, and why the gap is still a valuable place to work from.</p>
-        </article>
-
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      <h2>Have something to add?</h2>
-      <p>
-        If any of this connects with something you're working on, I'd enjoy the conversation.
-      </p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn btn--primary">Get in touch</a>
+    <section class="section section--soft" aria-labelledby="planned-title">
+      <div class="container">
+        <div class="section-header section-header--split">
+          <div><p class="section-header__label">In development</p><h2 id="planned-title">Planned notes</h2></div>
+          <p class="section-header__desc">These are subjects I intend to develop, not published articles. They are listed without publication dates or reading-time claims.</p>
+        </div>
+        <div class="planned-notes">
+          <article class="planned-note"><p class="planned-note__category">Eco-acoustics</p><h3>The practical limits of acoustic species automation</h3><p>Where tools such as BirdNET help, where review remains essential and what that means for monitoring design.</p></article>
+          <article class="planned-note"><p class="planned-note__category">AI and tools</p><h3>Where AI helps ecology teams right now</h3><p>A grounded look at useful machine-learning tasks and the places where automation adds more uncertainty than value.</p></article>
+          <article class="planned-note"><p class="planned-note__category">Ecological software</p><h3>Why interfaces matter in ecology tools</h3><p>How interface design affects interpretation, confidence and the practical use of monitoring data.</p></article>
+          <article class="planned-note"><p class="planned-note__category">Build notes</p><h3>Lessons from environmental sensor systems</h3><p>Power, calibration, enclosures, communications and the failure modes that appear after deployment.</p></article>
+          <article class="planned-note"><p class="planned-note__category">Field monitoring</p><h3>What makes conservation technology useful in the field</h3><p>The difference between technical function and a tool that ecological teams can deploy and maintain.</p></article>
+          <article class="planned-note"><p class="planned-note__category">Eco-acoustics</p><h3>Building better interfaces for acoustic monitoring data</h3><p>Review workflows for moving from large volumes of recordings and detections to interpretable evidence.</p></article>
+          <article class="planned-note"><p class="planned-note__category">Practice</p><h3>Working between ecology and engineering</h3><p>The translation work required when ecological priorities and technical constraints meet.</p></article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <span class="footer__brand">Tom Armstrong</span>
-      <ul class="footer__links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <ul class="footer__links">
-        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-      <p class="footer__copy">© 2026 Tom Armstrong</p>
-    </div>
-  </footer>
+    <section class="cta-section" aria-labelledby="writing-cta-title"><div class="container cta-section__inner">
+      <div><p class="section-header__label">Continue</p><h2 id="writing-cta-title">See the systems behind the notes.</h2><p>The project pages show how these ideas apply to current acoustic and environmental monitoring work.</p></div>
+      <div class="btn-group"><a href="projects.html" class="btn btn--primary">Explore projects</a><a href="contact.html" class="btn btn--ghost">Get in touch</a></div>
+    </div></section>
+  </main>
 
+  <footer class="footer"><div class="footer__inner">
+    <div><p class="footer__brand">Tom Armstrong</p><p class="footer__tagline">Ecologist and conservation technologist working across field monitoring, hardware, software and ecological data.</p></div>
+    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="cv.html">Experience</a></li><li><a href="contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
+    <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
+  </div></footer>
   <script src="assets/js/main.js"></script>
-  <script>
-    // Writing page filter (uses data-category on article-item)
-    const articleFilterBtns = document.querySelectorAll('.filter-btn');
-    const articles = document.querySelectorAll('.article-item[data-category]');
-
-    articleFilterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        articleFilterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        articles.forEach(a => {
-          a.style.display = (filter === 'all' || a.dataset.category === filter) ? '' : 'none';
-        });
-      });
-    });
-  </script>
 </body>
 </html>
-

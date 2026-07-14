@@ -1,252 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FieldMesh — Low-Cost Environmental Sensor Network | Tom Armstrong</title>
-  <meta name="description" content="FieldMesh is a battery-powered, low-cost environmental sensor network built on ESP32, designed for long-term ecological monitoring at remote sites without mains power or reliable internet." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FieldMesh — Environmental Sensor Network | Tom Armstrong</title>
+  <meta name="description" content="FieldMesh is Tom Armstrong's active environmental sensor-network R&amp;D project using low-power ESP32 nodes, custom PCBs, LTE data transfer and an ecological dashboard." />
+  <meta name="theme-color" content="#152019" />
+  <link rel="canonical" href="https://armsto88.github.io/projects/fieldmesh.html" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="FieldMesh — Environmental Sensor Network" />
+  <meta property="og:description" content="Active R&amp;D for fine-scale environmental monitoring at remote ecological field sites." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://armsto88.github.io/projects/fieldmesh.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).webp" />
+  <meta property="og:image:width" content="2160" />
+  <meta property="og:image:height" content="1895" />
+  <meta property="og:image:alt" content="FieldMesh environmental sensor node PCB render" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="../assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    .project-body { max-width:760px; margin:0 auto; padding:0 1.5rem; }
-    .project-body p { margin-bottom:1.1rem; }
-    .back-link { font-size:0.875rem; color:#6a6a68; display:inline-flex; align-items:center; gap:0.4rem; margin-bottom:2rem; }
-    .back-link::before { content:"←"; }
-    .back-link:hover { color:#2d6a4f; text-decoration:none; }
-    .project-meta-strip { display:flex; flex-wrap:wrap; gap:1.5rem; background:#f4f4f2; border:1px solid #e8e8e4; border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:3rem; }
-    .project-meta-strip__item label { display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8a8a88; margin-bottom:0.2rem; }
-    .project-meta-strip__item span { font-size:0.9rem; font-weight:500; color:#1a1a18; }
-    .partner-block { border:1px solid #e8e8e4; border-radius:8px; padding:0.9rem 1rem; background:#ffffff; }
-    .partner-block__label { display:block; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8a8a88; margin-bottom:0.45rem; }
-    .partner-logos { display:flex; align-items:center; justify-content:space-evenly; gap:1rem; width:100%; }
-    .partner-logo { display:flex; align-items:center; justify-content:center; border:1px solid #ecece8; border-radius:6px; background:#fff; width:250px; height:96px; padding:0.82rem; }
-    .partner-logo--une { width:274px; height:104px; }
-    .partner-logo img,
-    .partner-logo object { display:block; width:100%; height:100%; }
-    .partner-logo img { object-fit:contain; }
-    .partner-logo a { display:block; width:100%; height:100%; }
-    .partner-logo a object { display:block; width:100%; height:100%; }
-    .arch-diagram {
-      background:#f8f8f6;
-      border:1px solid #e8e8e4;
-      border-radius:8px;
-      padding:1.25rem 1.5rem;
-      margin:1.5rem 0;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-      font-size:0.78rem;
-      line-height:1.7;
-      color:#3a3a38;
-      overflow-x:auto;
-      white-space:pre;
-    }
-    .sensor-table {
-      width:100%;
-      border-collapse:collapse;
-      margin:1.25rem 0;
-      font-size:0.88rem;
-    }
-    .sensor-table th,
-    .sensor-table td {
-      border:1px solid #e8e8e4;
-      padding:0.55rem 0.75rem;
-      text-align:left;
-    }
-    .sensor-table th {
-      background:#f4f4f2;
-      font-weight:600;
-      font-size:0.8rem;
-      text-transform:uppercase;
-      letter-spacing:0.05em;
-      color:#5a5a58;
-    }
-    .sensor-table td:first-child { font-weight:500; color:#1a1a18; }
-    .principle-list { list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:0.6rem; }
-    .principle-list li { padding-left:1.4rem; position:relative; }
-    .principle-list li::before { content:""; position:absolute; left:0; top:0.55rem; width:0.5rem; height:0.5rem; border-radius:999px; background:#2d6a4f; }
-    .principle-list strong { color:#1a1a18; }
-  </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="../index.html" class="nav__logo">Tom Armstrong</a>
-      <button class="nav__toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-      <ul class="nav__links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../cv.html">CV</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div style="padding:4rem 0 3rem; border-bottom:1px solid #e8e8e4;">
-    <div class="project-body">
-      <a href="../projects.html" class="back-link">All projects</a>
-      <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:0.75rem;">Hardware / IoT</p>
-      <h1 style="letter-spacing:-0.02em;margin-bottom:1rem;">FieldMesh — Environmental Sensor Network</h1>
-      <p style="font-size:1.1rem;color:#4a4a48;max-width:60ch;margin-bottom:0;">A battery-powered, low-cost environmental sensor network built on ESP32, designed for long-term ecological monitoring at remote sites without mains power or reliable internet.</p>
-    </div>
-  </div>
-  <div style="padding:2rem 0; border-bottom:1px solid #e8e8e4;">
-    <div class="project-body">
-      <div class="project-meta-strip">
-        <div class="project-meta-strip__item"><label>Status</label><span><span class="card__status card__status--prototype">Active Development</span></span></div>
-        <div class="project-meta-strip__item"><label>Category</label><span>Hardware / IoT</span></div>
-        <div class="project-meta-strip__item"><label>Development focus</label><span>Firmware, custom PCB, cloud backend, web dashboard</span></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav class="nav" aria-label="Primary navigation"><div class="nav__inner">
+    <a href="../index.html" class="nav__logo"><span class="nav__mark" aria-hidden="true">TA</span><span>Tom Armstrong</span></a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span class="nav__toggle-lines" aria-hidden="true"><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span></span></button>
+    <ul class="nav__links" id="primary-menu"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul>
+  </div></nav>
+
+  <main id="main-content">
+    <header class="project-hero">
+      <div class="project-body">
+        <a href="../projects.html" class="back-link">All projects</a>
+        <p class="project-kicker">Environmental sensing · Embedded systems</p>
+        <h1>FieldMesh — environmental sensor network</h1>
+        <p class="project-hero__intro">A battery-powered ESP32 network for fine-scale ecological monitoring at remote sites without dependable mains power or internet.</p>
       </div>
-      <div class="partner-block">
-        <span class="partner-block__label">Project partners</span>
-        <div class="partner-logos">
-          <div class="partner-logo partner-logo--une">
-            <img src="../assets/UNE-PRIMARY-LOGO-RGB.webp" alt="University of New England logo" loading="lazy" />
-          </div>
-          <div class="partner-logo partner-logo--svg">
-            <a href="https://rewi.org/about-us/our-work/solar/" target="_blank" rel="noopener" aria-label="Visit REWI solar work page">
-              <object data="../assets/rewi-logo.svg" type="image/svg+xml" aria-label="REWI logo"></object>
-            </a>
-          </div>
+    </header>
+
+    <div class="project-meta-wrap"><div class="project-body">
+      <dl class="project-meta-strip">
+        <div class="project-meta-strip__item"><dt>Status</dt><dd><span class="status-chip status-chip--prototype">Active R&amp;D</span></dd></div>
+        <div class="project-meta-strip__item"><dt>Context</dt><dd>UNE / REED Lab consultancy</dd></div>
+        <div class="project-meta-strip__item"><dt>My role</dt><dd>System, firmware, PCB and dashboard development</dd></div>
+        <div class="project-meta-strip__item"><dt>Started</dt><dd>2025</dd></div>
+      </dl>
+      <div class="partner-block"><span class="partner-block__label">Project partners</span><div class="partner-logos">
+        <span class="partner-logo"><img src="../assets/UNE-PRIMARY-LOGO-RGB.webp" alt="University of New England" loading="lazy" /></span>
+        <span class="partner-logo"><a href="https://rewi.org/about-us/our-work/solar/" target="_blank" rel="noopener noreferrer" aria-label="Visit REWI's solar work page"><img src="../assets/rewi-logo.svg" alt="REWI" loading="lazy" /></a></span>
+      </div></div>
+    </div></div>
+
+    <article>
+      <section class="project-section" aria-labelledby="fieldmesh-problem-title"><div class="project-body">
+        <h2 id="fieldmesh-problem-title">The ecological problem</h2>
+        <p>Organisms experience climate at centimetre-to-metre scales, while standard weather stations are designed for consistent regional measurements. Vegetation structure, soil moisture, topography, shade and airflow can therefore create biologically important conditions that a distant station does not represent.</p>
+        <p>This scale mismatch is especially relevant in solar photovoltaic landscapes. Under-panel zones, inter-row corridors and edges can create different radiation, wind, temperature and moisture conditions across short distances. The research need is for many distributed measurement points that can operate with limited power and connectivity.</p>
+      </div></section>
+
+      <section class="project-section" aria-labelledby="fieldmesh-system-title"><div class="project-body">
+        <h2 id="fieldmesh-system-title">What FieldMesh is</h2>
+        <p>FieldMesh uses two hardware tiers. <strong>Sensor nodes</strong> are small battery-powered devices that wake on a real-time-clock alarm, sample attached sensors, store the reading locally and transmit queued snapshots over ESP-NOW during a scheduled sync window.</p>
+        <p>A central <strong>FieldHub</strong> coordinates the radio window, stores snapshots locally and manages periodic cloud transfer over LTE. It also provides a local Wi-Fi interface for pairing nodes, setting measurement intervals and starting or pausing deployments.</p>
+        <div class="arch-diagram" role="img" aria-label="FieldMesh data path from sensor to web dashboard">Sensor → Node ADC / I²C → Local snapshot queue → ESP-NOW → FieldHub
+    → Local CSV log → Retryable upload queue → HTTPS over LTE
+    → Cloud backend → Web dashboard</div>
+        <p>Local storage is the primary record. A node keeps a snapshot until the FieldHub confirms that it was persisted, and cloud transfer uses a retryable cursor so a temporary upload failure does not require the field network to repeat the measurement.</p>
+        <p class="project-gallery-label">Custom node hardware</p>
+        <div class="project-gallery project-gallery--two">
+          <figure><a class="project-gallery__link" href="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).webp" data-lightbox="fieldmesh" data-alt="Top view of the FieldMesh environmental sensor node PCB"><img src="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).webp" width="2160" height="1895" alt="Top view of the FieldMesh environmental sensor node PCB" loading="lazy" decoding="async" /></a><figcaption>Node PCB component layout</figcaption></figure>
+          <figure><a class="project-gallery__link" href="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(2).webp" data-lightbox="fieldmesh" data-alt="Alternate render of the FieldMesh sensor node PCB"><img src="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(2).webp" width="2160" height="2024" alt="Alternate render of the FieldMesh sensor node PCB" loading="lazy" decoding="async" /></a><figcaption>Alternate node board view</figcaption></figure>
         </div>
-      </div>
-    </div>
-  </div>
+      </div></section>
 
-  <article>
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">The problem</h3>
-        <p>Organisms experience climate at centimeter-to-meter scales, not at the coarse scales represented by most standard weather stations. Conventional stations are intentionally standardized and well ventilated, which is essential for regional monitoring, but this setup often smooths out the local variation created by vegetation structure, soil moisture, topography, shading, and airflow. As a result, the conditions that actually drive biological responses can be under-sampled.</p>
-        <p>This scale mismatch is especially important in solar PV landscapes. Under-panel zones, inter-row corridors, and edge transitions create distinct microhabitats with different radiation, wind exposure, temperature, and moisture dynamics over very short distances.</p>
-        <p>Compounding the problem, most commercial environmental monitoring equipment is expensive, mains-powered, and assumes reliable internet — none of which hold at remote ecological field sites.</p>
-      </div>
-    </div>
-
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">What FieldMesh is</h3>
-        <p>FieldMesh is a battery-powered, low-cost environmental sensor network built on ESP32 microcontrollers. It is designed for long-term ecological and environmental monitoring at remote sites without mains power or reliable internet.</p>
-        <p>There are two hardware tiers:</p>
-        <p><strong>Sensor nodes</strong> — small, self-contained, battery-powered field devices. Each node sleeps almost all the time, wakes on a DS3231 real-time-clock alarm, samples its attached sensors, queues the reading locally, and — during a scheduled sync window — transmits a compact binary snapshot to the mothership over ESP-NOW (a low-power Wi-Fi protocol on channel 11). The node then powers off completely until the next alarm.</p>
-        <p><strong>Mothership (FieldHub)</strong> — a central on-site hub. It wakes on its own RTC alarm, opens a coordinated sync window, collects snapshots from all deployed nodes, logs them to local flash storage (LittleFS) as a CSV file, and periodically uploads accumulated data to the cloud over LTE (via a SIMCom A7670G Cat-1 cellular modem with SSL/TLS). It also hosts a captive Wi-Fi portal for field configuration — pairing nodes, setting recording intervals, and starting deployments.</p>
-        <p>The cloud backend is currently <strong>Google Sheets via Google Apps Script</strong>, with a documented migration path to <strong>Supabase</strong> (PostgreSQL + Edge Functions + row-level security). A web dashboard (React + Vite) visualises readings, system health, and node status.</p>
-      </div>
-    </div>
-
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Data flow end-to-end</h3>
-        <div class="arch-diagram">Sensor → Node ADC/I2C → V2 snapshot (local queue) → ESP-NOW → Mothership
-    → LittleFS CSV (datalog.csv) → Upload queue (cursor-tracked)
-    → JSON payload builder → HTTPS POST over LTE → Cloud backend
-    → Web dashboard</div>
-        <p>Node local queues are stored in NVS-backed storage. A snapshot is only popped after a durable <code>SNAPSHOT_ACK</code> (persisted flag) from the mothership, so lost ACKs retain the record for the next sync window. The mothership logs every snapshot to flash CSV, then uploads via a cursor-tracked queue with retry and backoff. Local logging is always primary — upload failure never causes data loss.</p>
-      </div>
-    </div>
-
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">What it measures</h3>
-        <p>Per the V2 snapshot protocol, each node can report the following channels. Passive sensors (soil, wind, AUX) are gated by an operator-configured sensor mask; self-identifying I2C sensors (SHT41, AS7343) are always auto-detected.</p>
-        <table class="sensor-table">
-          <thead>
-            <tr><th>Channel</th><th>Sensor</th><th>Unit</th></tr>
-          </thead>
+      <section class="project-section" aria-labelledby="fieldmesh-measures-title"><div class="project-body">
+        <h2 id="fieldmesh-measures-title">Measurements</h2>
+        <p>The V2 snapshot format supports the following channels. Passive sensors are enabled through a deployment configuration; I²C devices such as the SHT41 and AS7341 are detected by the node.</p>
+        <section class="table-wrap" aria-label="FieldMesh measurement channels" tabindex="0"><table class="sensor-table">
+          <thead><tr><th scope="col">Channel</th><th scope="col">Sensor</th><th scope="col">Unit or output</th></tr></thead>
           <tbody>
-            <tr><td>Air temperature</td><td>SHT41</td><td>°C</td></tr>
-            <tr><td>Air relative humidity</td><td>SHT41</td><td>%</td></tr>
-            <tr><td>Spectral light (8 channels)</td><td>AS7343</td><td>raw counts at 415/445/480/515/555/590/630/680 nm</td></tr>
-            <tr><td>Wind speed</td><td>Ultrasonic anemometer or reed-cup</td><td>m/s</td></tr>
-            <tr><td>Wind direction</td><td>Ultrasonic anemometer</td><td>degrees</td></tr>
-            <tr><td>Soil volumetric water content (×2)</td><td>ADS1115 + VH-5 probes</td><td>m³/m³</td></tr>
-            <tr><td>Soil temperature (×2)</td><td>ADS1115 + thermistor</td><td>°C</td></tr>
-            <tr><td>Battery voltage</td><td>Node ADC</td><td>V</td></tr>
-            <tr><td>Auxiliary I2C (×2)</td><td>Expansion ports</td><td>reserved</td></tr>
+            <tr><td>Air temperature</td><td>SHT41</td><td>°C</td></tr><tr><td>Relative humidity</td><td>SHT41</td><td>%</td></tr>
+            <tr><td>Spectral light, 8 channels</td><td>AS7341</td><td>Raw counts at 415–680 nm</td></tr><tr><td>Clear / NIR / gain / integration / saturation</td><td>AS7341</td><td>Counts, multiplier, ms and status flag</td></tr>
+            <tr><td>Wind speed</td><td>Ultrasonic anemometer or reed-cup fallback</td><td>m/s</td></tr><tr><td>Wind direction</td><td>Ultrasonic anemometer, planned path</td><td>Degrees</td></tr>
+            <tr><td>Soil volumetric water content ×2</td><td>ADS1115 + VH-5 probes</td><td>m³/m³</td></tr><tr><td>Soil temperature ×2</td><td>ADS1115 + thermistor</td><td>°C</td></tr>
+            <tr><td>Battery voltage</td><td>Node ADC</td><td>V</td></tr><tr><td>Auxiliary I²C ×2</td><td>Expansion ports</td><td>Reserved</td></tr>
           </tbody>
-        </table>
-      </div>
-    </div>
+        </table></section>
+        <p><strong>Development note:</strong> the ultrasonic wind path is not yet producing discriminative wind-speed measurements. The reed-cup input is the current fallback for wind speed only.</p>
+      </div></section>
 
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">How the network operates</h3>
-        <p><strong>Node states.</strong> A node is always in one of three states: <em>UNPAIRED</em> (no mothership MAC known, radio listens for pairing), <em>PAIRED</em> (mothership MAC known but not yet deployed), or <em>DEPLOYED</em> (bound to a mothership, RTC synced, alarms armed). A fourth implicit mode — <em>standby</em> — is a DEPLOYED node with recording paused: it keeps its sync check-ins but takes no samples.</p>
-        <p><strong>Data wake (Alarm 1).</strong> When the DS3231 Alarm 1 fires, the node reads all registered sensors into a V2 snapshot and enqueues it locally. The radio stays off during a data wake — sampling is silent and low-power. Alarms are re-armed before the hang-prone sensor work is done, so a stall can never leave the DS3231 without a future alarm. The node then releases <code>PWR_HOLD</code> and powers off completely.</p>
-        <p><strong>Sync wake (Alarm 2).</strong> At the scheduled sync slot, the node brings up ESP-NOW and listens for a <code>SYNC_SESSION_OPEN</code> broadcast from the mothership. On hearing it, the node waits a deterministic per-node jitter delay to spread HELLO responses, then sends a <code>NODE_HELLO</code>. The mothership responds with per-node config and a <code>DUMP_GRANT</code>, the node flushes its queue (each snapshot requiring a durable <code>SNAPSHOT_ACK</code> before being popped), and the mothership releases the node with <code>SYNC_RELEASE</code> carrying current Unix time and the active schedule. The node applies this, persists config, re-arms its alarms, and powers off.</p>
-        <p><strong>Coordinated sync window.</strong> The mothership runs a structured, grant-based rendezvous — not a free-for-all. It broadcasts session-open frames, collects HELLOs, authorises only registered deployed nodes, and grants each node a time-limited transmit window with a record quota. Empty nodes are clock-synchronised and released immediately; nodes with backlog are served in round-robin until drained or the grant budget is exhausted. Every responder is released individually, even if backlog remains, so the next sync window picks up where this one left off.</p>
-        <p><strong>Pairing and deployment.</strong> Operators discover, pair, and deploy nodes from the Field UI captive portal. Deployment sets the node's RTC, marks it DEPLOYED, and arms both alarms. Config updates (recording interval, target state, sensor mask) are delivered declaratively and applied only if strictly newer, so re-broadcasting is idempotent. A rescue mode (three rapid boots) wipes config and listens for re-pairing, recovering a node that has lost its mothership.</p>
-      </div>
-    </div>
+      <section class="project-section" aria-labelledby="fieldmesh-operation-title"><div class="project-body">
+        <h2 id="fieldmesh-operation-title">How the network operates</h2>
+        <p><strong>Node lifecycle.</strong> A node moves through unpaired, paired and deployed states. A deployed node can also be placed in standby, retaining scheduled check-ins without taking new samples.</p>
+        <p><strong>Measurement wake.</strong> The DS3231 real-time clock starts the node, sensors are read into a snapshot and the record is stored locally. The radio stays off during this wake. The next alarm is armed before slower sensor work, reducing the risk that a stalled operation leaves the node without a future wake time.</p>
+        <p><strong>Coordinated sync.</strong> At the scheduled radio window, the FieldHub announces a session and nodes respond after a deterministic delay. Registered nodes receive bounded transfer grants rather than transmitting at once. Each queued snapshot remains on the node until a durable acknowledgement confirms that the FieldHub stored it.</p>
+        <p><strong>Field configuration.</strong> Operators use a captive Wi-Fi interface to discover, pair and deploy nodes, configure sensors and update the schedule. Configuration updates are versioned and repeatable. A rapid-boot rescue sequence can clear a node’s pairing state if field recovery is required.</p>
+      </div></section>
 
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Cloud and dashboard</h3>
-        <p>The cloud tier has two layers: a backend that ingests, stores, and serves data, and a frontend dashboard that users interact with.</p>
-        <p><strong>Backend.</strong> Two backends coexist behind a data-provider boundary — an abstraction layer that lets the frontend read from either without rewriting pages, enabling a staged, rollback-safe migration. The legacy backend is Google Apps Script / Google Sheets. The current backend is <strong>Supabase</strong> (PostgreSQL + Edge Functions): a multi-tenant schema with a <code>projects → motherships → nodes → readings</code> hierarchy, row-level security on all browser-accessible tables, hashed device API keys (secrets never exposed to the browser), and Deno Edge Functions for authenticated, idempotent telemetry ingestion. Realtime delivery pushes new readings to connected dashboards without polling.</p>
-        <p><strong>Frontend dashboard.</strong> A single-page React app built with Vite, Tailwind CSS, and TanStack Query. It uses React Router with authenticated, project-scoped routes and lazy-loaded pages (Charts, Nodes, Config, Motherships, Settings, About) with an ErrorBoundary so a failure in one page does not take down the whole app. Recharts powers time-series visualisation, React-Leaflet shows deployed nodes on a map, and Framer Motion drives transitions. QR code generation supports on-device provisioning flows.</p>
-        <p>The dashboard shows sensor readings (charts and map), node status, battery voltages, sync schedule, flash usage, upload queue depth, modem diagnostics, boot diagnostics, per-node status, and mothership device pages — with full handling of loading, empty, stale, error, offline, and permission states.</p>
-      </div>
-    </div>
+      <section class="project-section" aria-labelledby="fieldmesh-cloud-title"><div class="project-body">
+        <h2 id="fieldmesh-cloud-title">Cloud and dashboard</h2>
+        <p>The cloud layer separates telemetry storage from the interface used to explore the measurements. The original Google Apps Script / Google Sheets backend and a newer Supabase backend currently sit behind the same frontend data-provider boundary, allowing the migration to be staged and reversed if needed.</p>
+        <p>The Supabase implementation uses PostgreSQL, Auth, Row Level Security, Edge Functions and Realtime. Device credentials are handled separately from browser access, and ingestion is designed to be authenticated and idempotent.</p>
+        <p>The React and Vite dashboard presents readings, charts, a deployment map, node and FieldHub status, battery voltage, schedules, local storage, upload queues and diagnostics. It also handles loading, empty, stale, error, offline and permission states explicitly.</p>
+      </div></section>
 
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Power and wake architecture</h3>
-        <p>Both boards use the same fundamental pattern. A <code>PWR_HOLD</code> GPIO drives a FET gate to latch the switched rail on — asserted at the very first instruction of boot and released at the end of a wake cycle to power the board off completely. The DS3231 RTC is the sole wake source: Alarm 1 (recording, second-resolution) and Alarm 2 (sync, minute-resolution) are independently armed and verified. The RTC is backed by a coin cell so time survives main power loss.</p>
-        <p>The firmware explicitly does not use ESP32 deep sleep, because the wake path is the RTC-driven FET, not a GPIO interrupt. Power-off is the default — both boards spend almost all their time fully powered off, active only for the brief wake cycle (seconds for nodes, minutes for the mothership).</p>
-        <p>The fleet operates on a <strong>phase-aligned interval schedule</strong>: the mothership owns a sync anchor (an interval in minutes and a phase marking a slot boundary), and all sync wakes land on <code>phase + N × interval</code>. Schedule transitions are handled gracefully — when the operator changes the wake interval, the mothership keeps waking on the old schedule for up to three grace cycles while handing nodes the new schedule, so no node is stranded on an orphaned cadence.</p>
-      </div>
-    </div>
+      <section class="project-section" aria-labelledby="fieldmesh-power-title"><div class="project-body">
+        <h2 id="fieldmesh-power-title">Power and recovery design</h2>
+        <p>Both hardware tiers use a switched-power architecture. A <code>PWR_HOLD</code> signal latches the active rail when the device wakes; releasing it powers the board off completely. The DS3231 real-time clock retains time and controls future measurement and sync alarms.</p>
+        <p>The design does not depend on ESP32 deep sleep. Full power-off is the normal state, with active time limited to sampling, synchronisation or upload work. Schedule changes include grace cycles so nodes on the previous timing are not stranded during a transition.</p>
+        <ul class="principle-list"><li><strong>Local-first data:</strong> persist measurements before attempting cloud transfer.</li><li><strong>Power-off by default:</strong> remove the switched rail between scheduled wakes.</li><li><strong>Durable acknowledgement:</strong> delete a node record only after confirmed FieldHub storage.</li><li><strong>Bounded recovery:</strong> give critical operations explicit retry limits and fallbacks.</li><li><strong>Coordinated radio access:</strong> grant transfer windows rather than relying on contention.</li><li><strong>Version-aware updates:</strong> keep configuration changes repeatable and migration tolerant.</li></ul>
+      </div></section>
 
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Design principles</h3>
-        <ul class="principle-list">
-          <li><strong>Local-first</strong> — all data is logged locally before any upload. Upload failure never causes data loss; the upload queue is cursor-tracked and retryable.</li>
-          <li><strong>Power-off is the default</strong> — both boards spend almost all their time fully powered off. The only active time is the brief wake cycle.</li>
-          <li><strong>NVS is the source of truth</strong> — all persistent state survives hard power cuts. RTC RAM is not trusted.</li>
-          <li><strong>Durable ACKs</strong> — a snapshot is only popped from the node's queue after the mothership confirms it was persisted to flash, not just received over the air.</li>
-          <li><strong>Bounded recovery</strong> — every critical operation (alarm arm, RTC init) has a bounded retry with a defined fallback, so a transient I2C failure never strands a device.</li>
-          <li><strong>Coordinated, not contention-based</strong> — the sync window is a structured grant-based protocol, not a free-for-all. The mothership schedules each node's transmit window to avoid collisions.</li>
-          <li><strong>Backward compatibility</strong> — V1 snapshots, legacy sync markers, and rolling-upgrade fallbacks are all handled, so a mixed-version fleet still operates.</li>
-        </ul>
-      </div>
-    </div>
+      <section class="project-section" aria-labelledby="fieldmesh-status-title"><div class="project-body">
+        <h2 id="fieldmesh-status-title">Current status</h2>
+        <p><strong>Firmware:</strong> FieldHub V2 and Node V2 flows have been exercised at bring-up level on custom PCBs. RTC wake, ESP-NOW sync, sensor detection, local queueing, flash logging and modem communication have been tested. Live end-to-end LTE upload and the ultrasonic wind-measurement path remain in progress.</p>
+        <p><strong>Cloud:</strong> the Supabase migration is underway alongside the original Apps Script backend. Both are supported during the staged cutover.</p>
+        <p><strong>Dashboard:</strong> the React application includes charts, mapping, node management, FieldHub device pages and system-state handling.</p>
+        <p><strong>Hardware:</strong> custom node PCB Gerbers are prepared for the next order while reverse-polarity protection, leakage and indicator strategy remain under review. Node housings have been modelled for FDM printing; the FieldHub uses an off-the-shelf industrial enclosure format.</p>
+      </div></section>
+    </article>
 
-    <div style="padding:2.5rem 0; border-bottom:1px solid #e8e8e4;">
-      <div class="project-body">
-        <h3 style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2d6a4f;margin-bottom:1rem;">Current status</h3>
-        <p>The project is in active development.</p>
-        <p><strong>Firmware:</strong> Mothership V2 and Node V2 firmware flows are implemented and tested with off-the-shelf modules.</p>
-        <p><strong>Cloud backend:</strong> Supabase migration is underway alongside the legacy Google Apps Script backend, behind a data-provider boundary for rollback-safe cutover.</p>
-        <p><strong>Dashboard:</strong> React + Vite single-page app with charts, map, node management, and mothership device pages.</p>
-        <p><strong>Hardware:</strong> Custom PCB is in development; 3D-printable enclosure is complete.</p>
-      </div>
-    </div>
-  </article>
+    <div class="lightbox" id="project-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded project image" inert><div class="lightbox__content"><button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous image">‹</button><button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next image">›</button><button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close image">×</button><img class="lightbox__image" id="lightbox-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" /><p class="lightbox__counter" id="lightbox-counter" aria-live="polite"></p></div></div>
+    <aside class="next-item" aria-labelledby="next-project-title"><div class="project-body"><p class="next-item__label">Next project</p><h2 id="next-project-title"><a href="ecopi.html">ecoPi — autonomous acoustic monitoring →</a></h2><p>An active OekoFor platform connecting acoustic field hardware with ecological review tools.</p></div></aside>
+  </main>
 
-  <div style="background:#f4f4f2; border-top:1px solid #e8e8e4; padding:3rem 0;">
-    <div class="project-body">
-      <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8a8a88;margin-bottom:1rem;">Next project</p>
-      <h3 style="margin-bottom:0.5rem;"><a href="acoustic-indices.html" style="color:#111110;">Acoustic Index Workflow →</a></h3>
-    </div>
-  </div>
-  <footer class="footer">
-    <div class="footer__inner">
-      <span class="footer__brand">Tom Armstrong</span>
-      <ul class="footer__links">
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../cv.html">CV</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-      <ul class="footer__links">
-        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-      <p class="footer__copy">© 2026 Tom Armstrong</p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="footer__inner">
+    <div><p class="footer__brand">Tom Armstrong</p><p class="footer__tagline">Ecologist and conservation technologist working across field monitoring, hardware, software and ecological data.</p></div>
+    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
+    <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
+  </div></footer>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

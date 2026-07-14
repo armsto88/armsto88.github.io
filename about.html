@@ -1,282 +1,151 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About | Tom Armstrong</title>
-  <meta name="description" content="Ecologist and conservation technologist working at the intersection of ecology, AI, eco-acoustics, IoT, and data tools." />
+  <meta name="description" content="About Tom Armstrong, an ecologist and conservation technologist with backgrounds in zoology, field conservation and audio engineering." />
+  <meta name="theme-color" content="#152019" />
+  <link rel="canonical" href="https://armsto88.github.io/about.html" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="About | Tom Armstrong" />
+  <meta property="og:description" content="Ecology, engineering and audio brought together in practical conservation technology." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://armsto88.github.io/about.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Tom Armstrong — ecologist and conservation technologist" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <nav class="nav">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav class="nav" aria-label="Primary navigation">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Tom Armstrong</a>
-      <button class="nav__toggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <a href="index.html" class="nav__logo"><span class="nav__mark" aria-hidden="true">TA</span><span>Tom Armstrong</span></a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span class="nav__toggle-lines" aria-hidden="true"><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span></span></button>
+      <ul class="nav__links" id="primary-menu">
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li>
+        <li><a href="cv.html">Experience</a></li><li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Page hero -->
-  <section class="hero">
-    <div class="container">
-      <p class="hero__eyebrow">About</p>
-      <h1 class="hero__title">Ecologist. Builder.<br />Conservation technologist.</h1>
-      <p class="hero__subtitle">
-        I build practical conservation technology shaped by field ecology: robust hardware,
-        interpretable data workflows, and tools that hold up outside controlled environments.
-      </p>
-    </div>
-  </section>
+  <main id="main-content">
+    <header class="hero">
+      <div class="container">
+        <p class="hero__eyebrow">About</p>
+        <h1 class="hero__title hero__title--page">An ecologist who builds the monitoring system, not just one part of it.</h1>
+        <p class="hero__subtitle">My work combines field ecology, software, electronics and audio to make environmental monitoring more practical and easier to interpret.</p>
+      </div>
+    </header>
 
-  <!-- Professional story -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Background</p>
-        <h2 class="section-header__title">How I got here</h2>
-      </div>
-      <p style="margin-bottom:1.25rem;">
-        I came to conservation technology through ecology.
-      </p>
-      <p style="margin-bottom:1.25rem;">
-        My background is in zoology and field ecology, where I spent a lot of time working in real-world
-        conditions and getting a feel for how systems actually behave outside of controlled settings.
-        That experience shaped how I think about data collection - it needs to be practical, reliable,
-        and suited to the environment it's used in.
-      </p>
-      <p style="margin-bottom:1.25rem;">
-        It also made me cautious of tools that look good in theory but don't hold up in the field.
-        In most cases, simple and robust solutions are far more useful than complex ones that are hard
-        to maintain or interpret.
-      </p>
-      <p style="margin-bottom:1.25rem;">
-        Over time, I became more interested in the technical side of ecology. I started working with
-        acoustic monitoring, remote sensing, and environmental sensing hardware, along with the data
-        workflows needed to process and interpret that information.
-      </p>
-      <p style="margin-bottom:1.25rem;">
-        I'm now based in Germany, working on conservation technology projects with an international scope.
-      </p>
-      <p>
-        The common thread across all of this is building tools that support better understanding of
-        ecological systems, while keeping them practical enough to use in the field.
-      </p>
-    </div>
-  </section>
-
-  <!-- What I work on -->
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <p class="section-header__label">Work</p>
-        <h2 class="section-header__title">How I work on projects</h2>
-      </div>
-      <div class="cards-grid">
-        <div class="card">
-          <h3 class="card__title">1. Define the ecological question</h3>
-          <p class="card__desc">Start by clarifying what decision the monitoring needs to support, and what signal is actually required to answer it well.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">2. Design for field constraints</h3>
-          <p class="card__desc">Plan around power, weather, servicing cadence, and deployment logistics so systems survive real environments, not just test benches.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">3. Build and iterate quickly</h3>
-          <p class="card__desc">Prototype, deploy, observe failure points, and improve in short cycles rather than over-optimising before first deployment.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">4. Make data usable</h3>
-          <p class="card__desc">Build workflows and interfaces that convert raw observations into outputs ecologists can interpret and use with confidence.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">5. Keep systems maintainable</h3>
-          <p class="card__desc">Prefer clear, robust setups over fragile complexity so teams can run and maintain tools without specialist support.</p>
-        </div>
-        <div class="card">
-          <h3 class="card__title">6. Bridge ecology and engineering</h3>
-          <p class="card__desc">Translate between field priorities and technical tradeoffs so both ecological usefulness and technical quality stay aligned.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How I think -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Philosophy</p>
-        <h2 class="section-header__title">How I think</h2>
-      </div>
-      <div class="two-col">
+    <section class="section" aria-labelledby="background-title">
+      <div class="container story-grid">
         <div>
+          <div class="section-header">
+            <p class="section-header__label">Background</p>
+            <h2 id="background-title">From sound systems to ecological systems</h2>
+          </div>
+          <div class="prose-stack">
+            <p class="lede">My route into conservation technology began with audio engineering, then moved through field conservation and zoology into the design of ecological monitoring tools.</p>
+            <p>I trained in Audio Engineering and worked in live sound, location recording and post-production. That background gave me a practical understanding of microphones, recording systems and signal chains — knowledge that now carries directly into passive acoustic monitoring and bioacoustics.</p>
+            <p>From January 2023 to August 2024, I worked in bush regeneration and conservation fieldwork on the Sunshine Coast in Australia. The role included habitat restoration, species identification, bird surveys, Glossy-black Cockatoo monitoring and acoustic recorder deployment.</p>
+            <p>Alongside completing a Bachelor of Science in Zoology, I moved further into ecological software and hardware development. I now contribute to ecoPi at OekoFor and design a distributed environmental sensing system with the University of New England / REED Lab.</p>
+            <p>The common thread is practical integration: understanding the ecological question, the field constraints, the hardware, the data path and the interface used to interpret the result.</p>
+          </div>
+        </div>
+        <aside class="fact-panel" aria-label="Professional facts">
+          <h3 class="fact-panel__title">At a glance</h3>
+          <dl>
+            <div><dt>Based</dt><dd>Germany</dd></div>
+            <div><dt>Current work</dt><dd>Conservation technology hardware and software</dd></div>
+            <div><dt>Degrees</dt><dd>Zoology · Audio Engineering</dd></div>
+            <div><dt>Field foundation</dt><dd>Bush regeneration, bird surveys and acoustic monitoring</dd></div>
+            <div><dt>Technical focus</dt><dd>Ecological software, embedded systems, sensors and bioacoustics</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="approach-title">
+      <div class="container">
+        <div class="section-header section-header--split">
+          <div>
+            <p class="section-header__label">Approach</p>
+            <h2 id="approach-title">How I approach a monitoring problem</h2>
+          </div>
+          <p class="section-header__desc">The ecological decision comes first. Hardware, software and automation are selected around that need and the realities of deployment.</p>
+        </div>
+        <ol class="process-list">
+          <li><h3>Define the ecological question</h3><p>Clarify what needs to be observed, what decision the evidence should support and what resolution is genuinely useful.</p></li>
+          <li><h3>Design for field constraints</h3><p>Work around power, weather, communications, servicing intervals and the people who will deploy and maintain the system.</p></li>
+          <li><h3>Close the data loop</h3><p>Plan storage, validation, review and interpretation alongside the hardware so observations become usable ecological information.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="principles-title">
+      <div class="container--narrow">
+        <div class="section-header">
+          <p class="section-header__label">Working principles</p>
+          <h2 id="principles-title">Practical, legible and maintainable</h2>
+        </div>
+        <div class="two-col">
           <ul class="philosophy-list">
-            <li>Practical over flashy. If it can't be deployed in the field, it's not a solution.</li>
-            <li>Field-ready over theoretically elegant. Real constraints produce better design.</li>
-            <li>Systems thinking. Most problems in conservation technology are integration problems, not component problems.</li>
-            <li>Ecological usefulness is the benchmark. Not technical sophistication, not novelty.</li>
+            <li>Ecological usefulness is the benchmark, not technical novelty.</li>
+            <li>Field testing should begin early enough to shape the design.</li>
+            <li>Local data capture and clear failure states matter in remote deployments.</li>
           </ul>
-        </div>
-        <div>
           <ul class="philosophy-list">
-            <li>Interdisciplinary by necessity. Complex problems don't respect disciplinary boundaries.</li>
-            <li>Communication is part of good technical work. A tool nobody can interpret is a tool nobody uses.</li>
-            <li>Curiosity and iteration matter more than having the right answer first.</li>
-            <li>Simplicity is usually harder to build than complexity - and usually more valuable.</li>
+            <li>Interfaces are part of the monitoring method, not an afterthought.</li>
+            <li>Automation should remain reviewable and honest about uncertainty.</li>
+            <li>Clear systems are easier for teams to operate, diagnose and improve.</li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Personal layer -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Outside the work</p>
-        <h2 class="section-header__title">The human part</h2>
-      </div>
-      <p style="margin-bottom:1.25rem;">
-        I'm an enthusiastic birder and wildlife photographer, with a particular interest in
-        natural soundscapes and acoustic environments. A lot of my interest in eco-acoustics comes
-        directly from the experience of listening carefully to wild places - trying to understand
-        what sound can tell you about an ecosystem that visual observation can't.
-      </p>
-      <p>
-        I'm motivated by building tools that help people hear, see, and understand living systems
-        more clearly. That's what pulls everything together for me.
-      </p>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <p class="section-header__label">Capabilities</p>
-        <h2 class="section-header__title">Skills &amp; tools</h2>
-      </div>
-      <div class="two-col">
-        <div>
-          <div class="skill-group">
-            <p class="skill-group__title">Ecology &amp; Monitoring</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Biodiversity monitoring</span>
-              <span class="skill-pill">Field survey methods</span>
-              <span class="skill-pill">Ecological interpretation</span>
-              <span class="skill-pill">Wildlife monitoring</span>
-              <span class="skill-pill">Species identification</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group__title">Hardware &amp; IoT</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Raspberry Pi</span>
-              <span class="skill-pill">ESP32</span>
-              <span class="skill-pill">Embedded systems</span>
-              <span class="skill-pill">Environmental sensors</span>
-              <span class="skill-pill">PCB design</span>
-              <span class="skill-pill">Circuit prototyping</span>
-              <span class="skill-pill">CAD software</span>
-              <span class="skill-pill">Low-power data logging</span>
-              <span class="skill-pill">Field deployment</span>
-              <span class="skill-pill">MQTT</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group__title">Data &amp; Analysis</p>
-            <div class="skill-pills">
-              <span class="skill-pill">R</span>
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">R Shiny</span>
-              <span class="skill-pill">UI front-end design</span>
-              <span class="skill-pill">ggplot2</span>
-              <span class="skill-pill">tidyverse</span>
-              <span class="skill-pill">Data wrangling</span>
-              <span class="skill-pill">Statistical analysis</span>
-            </div>
-          </div>
+    <section class="section section--soft" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-header section-header--split">
+          <div><p class="section-header__label">Capabilities</p><h2 id="skills-title">Skills and tools</h2></div>
+          <p class="section-header__desc">A cross-disciplinary toolkit covering ecological monitoring, embedded hardware, software, acoustics and spatial analysis.</p>
         </div>
-        <div>
-          <div class="skill-group">
-            <p class="skill-group__title">Eco-acoustics &amp; Audio</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Acoustic monitoring</span>
-              <span class="skill-pill">BirdNET</span>
-              <span class="skill-pill">soundecology (R)</span>
-              <span class="skill-pill">Acoustic indices</span>
-              <span class="skill-pill">Audio QA workflows</span>
-            </div>
+        <div class="two-col">
+          <div>
+            <div class="skill-group"><p class="skill-group__title">Ecology and monitoring</p><div class="skill-pills"><span class="skill-pill">Passive acoustic monitoring</span><span class="skill-pill">Avian monitoring</span><span class="skill-pill">Bush regeneration</span><span class="skill-pill">Habitat restoration</span><span class="skill-pill">Environmental sensor deployment</span><span class="skill-pill">Field surveys</span></div></div>
+            <div class="skill-group"><p class="skill-group__title">Software and data</p><div class="skill-pills"><span class="skill-pill">R and R Shiny</span><span class="skill-pill">Python</span><span class="skill-pill">JavaScript and TypeScript</span><span class="skill-pill">React</span><span class="skill-pill">APIs and data pipelines</span><span class="skill-pill">Docker and Git</span><span class="skill-pill">Data visualisation</span></div></div>
+            <div class="skill-group"><p class="skill-group__title">GIS and remote sensing</p><div class="skill-pills"><span class="skill-pill">ArcGIS</span><span class="skill-pill">Spatial ecology</span><span class="skill-pill">Multispectral imagery</span><span class="skill-pill">Vegetation and habitat assessment</span></div></div>
           </div>
-          <div class="skill-group">
-            <p class="skill-group__title">Remote Sensing &amp; GIS</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Sentinel-2</span>
-              <span class="skill-pill">QGIS</span>
-              <span class="skill-pill">Vegetation indices</span>
-              <span class="skill-pill">Habitat classification</span>
-              <span class="skill-pill">Geospatial analysis</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group__title">AI &amp; Automation</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Practical ML workflows</span>
-              <span class="skill-pill">AI productivity systems</span>
-              <span class="skill-pill">Species detection</span>
-              <span class="skill-pill">Automation pipelines</span>
-              <span class="skill-pill">Edge ML (exploring)</span>
-            </div>
+          <div>
+            <div class="skill-group"><p class="skill-group__title">Embedded systems</p><div class="skill-pills"><span class="skill-pill">ESP32</span><span class="skill-pill">Embedded C/C++</span><span class="skill-pill">PCB design</span><span class="skill-pill">Low-power systems</span><span class="skill-pill">Environmental sensors</span><span class="skill-pill">ESP-NOW, Wi-Fi and cellular</span><span class="skill-pill">RTC scheduling</span></div></div>
+            <div class="skill-group"><p class="skill-group__title">Bioacoustics and AI</p><div class="skill-pills"><span class="skill-pill">BirdNET Analyzer</span><span class="skill-pill">Raven Pro</span><span class="skill-pill">Automated acoustic detection</span><span class="skill-pill">Long-duration ecological audio</span><span class="skill-pill">Microphone systems</span><span class="skill-pill">Edge AI prototypes</span></div></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2>Get in touch</h2>
-      <p>
-        If you're working on something at the intersection of ecology and technology,
-        I'd like to hear about it.
-      </p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn btn--primary">Contact</a>
-        <a href="projects.html" class="btn btn--secondary">See my projects</a>
+    <section class="cta-section" aria-labelledby="about-cta-title">
+      <div class="container cta-section__inner">
+        <div><p class="section-header__label">Next</p><h2 id="about-cta-title">See how this translates into project work.</h2><p>The project pages separate ecological purpose, technical contribution and current development status.</p></div>
+        <div class="btn-group"><a href="projects.html" class="btn btn--primary">Explore projects</a><a href="contact.html" class="btn btn--ghost">Contact me</a></div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="footer__inner">
-      <span class="footer__brand">Tom Armstrong</span>
-      <ul class="footer__links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <ul class="footer__links">
-        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-      <p class="footer__copy">© 2026 Tom Armstrong</p>
+      <div><p class="footer__brand">Tom Armstrong</p><p class="footer__tagline">Ecologist and conservation technologist working across field monitoring, hardware, software and ecological data.</p></div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__links"><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="cv.html">Experience</a></li><li><a href="contact.html">Contact</a></li></ul>
+        <ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul>
+      </nav>
+      <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
     </div>
   </footer>
-
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-

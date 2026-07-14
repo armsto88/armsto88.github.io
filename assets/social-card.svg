@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f7f3"/>
+  <rect x="54" y="54" width="1092" height="522" fill="none" stroke="#bcc7be" stroke-width="2"/>
+  <circle cx="108" cy="112" r="27" fill="none" stroke="#1f5c45" stroke-width="2"/>
+  <text x="108" y="119" text-anchor="middle" fill="#1f5c45" font-family="Consolas, monospace" font-size="16" font-weight="700">TA</text>
+  <text x="158" y="121" fill="#152019" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Tom Armstrong</text>
+  <text x="108" y="234" fill="#1f5c45" font-family="Consolas, monospace" font-size="18" font-weight="700" letter-spacing="2">FIELD ECOLOGY · HARDWARE · SOFTWARE</text>
+  <text x="108" y="321" fill="#152019" font-family="Segoe UI, Arial, sans-serif" font-size="61" font-weight="700">Ecologist and</text>
+  <text x="108" y="393" fill="#152019" font-family="Segoe UI, Arial, sans-serif" font-size="61" font-weight="700">conservation technologist.</text>
+  <line x1="108" y1="487" x2="1092" y2="487" stroke="#d9dfd8" stroke-width="2"/>
+  <circle cx="119" cy="532" r="7" fill="#a95735"/>
+  <text x="143" y="539" fill="#35423a" font-family="Consolas, monospace" font-size="18">OBSERVE</text>
+  <line x1="263" y1="532" x2="350" y2="532" stroke="#bcc7be" stroke-width="2"/>
+  <circle cx="361" cy="532" r="7" fill="#a95735"/>
+  <text x="385" y="539" fill="#35423a" font-family="Consolas, monospace" font-size="18">CAPTURE</text>
+  <line x1="493" y1="532" x2="580" y2="532" stroke="#bcc7be" stroke-width="2"/>
+  <circle cx="591" cy="532" r="7" fill="#a95735"/>
+  <text x="615" y="539" fill="#35423a" font-family="Consolas, monospace" font-size="18">INTERPRET</text>
+  <text x="1092" y="539" text-anchor="end" fill="#59665e" font-family="Segoe UI, Arial, sans-serif" font-size="18">armsto88.github.io</text>
+</svg>

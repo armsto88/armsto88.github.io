@@ -1,292 +1,136 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV | Tom Armstrong</title>
-  <meta name="description" content="Professional experience and academic background of Tom Armstrong, ecologist and conservation technologist." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience &amp; CV | Tom Armstrong</title>
+  <meta name="description" content="Professional experience, education and technical capabilities of Tom Armstrong, ecologist and conservation technologist." />
+  <meta name="theme-color" content="#152019" />
+  <link rel="canonical" href="https://armsto88.github.io/cv.html" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Experience &amp; CV | Tom Armstrong" />
+  <meta property="og:description" content="Experience across conservation technology, ecological software, passive acoustics, environmental sensing and field ecology." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://armsto88.github.io/cv.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Tom Armstrong — ecologist and conservation technologist" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav class="nav" aria-label="Primary navigation"><div class="nav__inner">
+    <a href="index.html" class="nav__logo"><span class="nav__mark" aria-hidden="true">TA</span><span>Tom Armstrong</span></a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span class="nav__toggle-lines" aria-hidden="true"><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span></span></button>
+    <ul class="nav__links" id="primary-menu"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="cv.html">Experience</a></li><li><a href="contact.html">Contact</a></li></ul>
+  </div></nav>
 
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Tom Armstrong</a>
-      <button class="nav__toggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="container">
-      <p class="hero__eyebrow">CV / Experience</p>
-      <h1 class="hero__title">Professional overview</h1>
-      <p class="hero__subtitle">
-        Ecologist and conservation technologist with a background in zoology and field ecology,
-        now focused on building practical monitoring systems at the intersection of hardware,
-        data tools, eco-acoustics, and applied AI.
-      </p>
-      <div class="btn-group">
-        <a href="#" class="btn btn--primary">Download CV (PDF)</a>
-        <a href="contact.html" class="btn btn--ghost">Get in touch</a>
+  <main id="main-content">
+    <header class="hero">
+      <div class="container">
+        <p class="hero__eyebrow">Experience and CV</p>
+        <h1 class="hero__title hero__title--page">Ecology, software and field hardware.</h1>
+        <p class="hero__subtitle">I’m an ecologist and conservation technologist with bachelor’s degrees in Zoology and Audio Engineering. My work connects field monitoring, ecological software, passive acoustics, environmental sensors and embedded systems.</p>
+        <div class="btn-group"><a href="contact.html" class="btn btn--primary">Get in touch</a><button class="btn btn--ghost" type="button" data-print-page>Print this page</button></div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Summary -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Summary</p>
-        <h2 class="section-header__title">Professional profile</h2>
+    <section class="cred-strip" aria-label="Professional summary"><div class="container cred-strip__grid">
+      <div class="cred-item"><p class="cred-item__label">Current</p><p class="cred-item__value">OekoFor</p></div>
+      <div class="cred-item"><p class="cred-item__label">Consulting</p><p class="cred-item__value">UNE / REED Lab</p></div>
+      <div class="cred-item"><p class="cred-item__label">Degrees</p><p class="cred-item__value">Zoology + Audio Engineering</p></div>
+      <div class="cred-item"><p class="cred-item__label">Based</p><p class="cred-item__value">Germany</p></div>
+    </div></section>
+
+    <section class="section" aria-labelledby="experience-title">
+      <div class="container--narrow">
+        <div class="section-header"><p class="section-header__label">Experience</p><h2 id="experience-title">Work history</h2></div>
+
+        <article class="cv-entry">
+          <div class="cv-entry__header"><div><h3 class="cv-entry__title">Conservation Technologist — Hardware and Software Development</h3><p class="cv-entry__org">OekoFor</p><p class="cv-entry__location">Freiburg, Germany</p></div><p class="cv-entry__dates"><time datetime="2025-01">January 2025</time>—present</p></div>
+          <p class="cv-entry__desc">Contribute to the hardware and software development of ecoPi, an autonomous biodiversity-monitoring platform.</p>
+          <ul class="cv-entry__bullets">
+            <li>Develop and maintain R Shiny applications for acoustic and ecological monitoring data.</li>
+            <li>Build dashboards, interactive maps, detection-review tools and environmental sensor interfaces.</li>
+            <li>Improve ecological data pipelines, APIs, application performance and device-status monitoring.</li>
+            <li>Contribute to the testing and development of ecoPi field hardware.</li>
+            <li>Translate ecological monitoring requirements into practical software and hardware features.</li>
+          </ul>
+          <p class="cv-entry__tech"><strong>Technologies:</strong> R, Shiny, JavaScript, HTML, CSS, Bootstrap, APIs, Docker and Git.</p>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry__header"><div><h3 class="cv-entry__title">Casual Technical Consultant</h3><p class="cv-entry__org">University of New England / REED Lab</p><p class="cv-entry__location">Australia</p></div><p class="cv-entry__dates"><time datetime="2025">2025</time>—present</p></div>
+          <p class="cv-entry__desc">Design and develop a low-cost environmental monitoring system for ecological research in solar biodiversity landscapes.</p>
+          <ul class="cv-entry__bullets">
+            <li>Develop ESP32-based environmental sensor nodes and a central communications hub.</li>
+            <li>Design firmware, custom PCBs and low-power data-logging systems.</li>
+            <li>Integrate microclimate, soil, spectral and ultrasonic sensors.</li>
+            <li>Develop wireless communication, remote data transfer and device-management tools.</li>
+            <li>Plan sensor calibration, validation and field testing.</li>
+          </ul>
+          <p class="cv-entry__tech"><strong>Technologies:</strong> ESP32, embedded C/C++, ESP-NOW, Wi-Fi, LTE, PCB design, React and TypeScript.</p>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry__header"><div><h3 class="cv-entry__title">Bush Regeneration and Conservation Field Technician</h3><p class="cv-entry__org">Bushland Conservation Management</p><p class="cv-entry__location">Sunshine Coast, Australia</p></div><p class="cv-entry__dates"><time datetime="2023-01">January 2023</time>—<time datetime="2024-08">August 2024</time></p></div>
+          <p class="cv-entry__desc">Worked within an eight-person conservation team delivering habitat restoration and ecological monitoring.</p>
+          <ul class="cv-entry__bullets">
+            <li>Identified native and invasive flora and fauna.</li>
+            <li>Conducted invasive-species control and bush-regeneration work.</li>
+            <li>Supported bird surveys and ecological management planning.</li>
+            <li>Monitored Glossy-black Cockatoo nesting sites.</li>
+            <li>Deployed acoustic recorders and analysed recordings using BirdNET Analyzer, Raven Pro and R.</li>
+            <li>Developed an automated AI acoustic-detection prototype for target-species monitoring.</li>
+          </ul>
+        </article>
+
+        <article class="cv-entry">
+          <div class="cv-entry__header"><div><h3 class="cv-entry__title">Freelance Audio Engineer</h3><p class="cv-entry__org">Independent</p><p class="cv-entry__location">Australia</p></div><p class="cv-entry__dates">From <time datetime="2010">2010</time></p></div>
+          <p class="cv-entry__desc">Work in live sound, location recording and audio post-production, providing a technical foundation for passive acoustic monitoring, bioacoustics, microphone systems and ecological recording-device development.</p>
+        </article>
       </div>
-      <p style="margin-bottom:1rem;">
-        I'm an ecologist with a strong technical background who works at the intersection of
-        biodiversity monitoring, conservation technology, eco-acoustics, and environmental data tools.
-        My work spans field ecology through to hardware prototyping, data pipeline design, and
-        interactive ecological dashboards.
-      </p>
-      <p>
-        I'm based in Germany and work internationally, with experience across European conservation
-        and monitoring contexts. I'm particularly interested in building systems that close the
-        loop between field observation and ecological insight – practical, reliable, and usable
-        by the ecological teams who need them.
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Experience -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Experience</p>
-        <h2 class="section-header__title">Work history</h2>
+    <section class="section section--soft" aria-labelledby="education-title">
+      <div class="container--narrow">
+        <div class="section-header"><p class="section-header__label">Education</p><h2 id="education-title">Academic background</h2></div>
+        <article class="cv-entry"><div class="cv-entry__header"><div><h3 class="cv-entry__title">Bachelor of Science in Zoology</h3><p class="cv-entry__org">University of New England, Australia</p></div><p class="cv-entry__dates">Completed <time datetime="2026">2026</time></p></div><p class="cv-entry__desc">Major in Animal Ecology · Minor in Spatial Science · GPA 6.7/7.0</p></article>
+        <article class="cv-entry"><div class="cv-entry__header"><div><h3 class="cv-entry__title">Bachelor of Science in Audio Engineering</h3><p class="cv-entry__org">SAE Institute</p></div><p class="cv-entry__dates">Completed <time datetime="2010">2010</time></p></div></article>
       </div>
+    </section>
 
-      <div class="cv-entry">
-        <div class="cv-entry__header">
+    <section class="section" aria-labelledby="capabilities-title">
+      <div class="container">
+        <div class="section-header section-header--split"><div><p class="section-header__label">Capabilities</p><h2 id="capabilities-title">Selected strengths</h2></div><p class="section-header__desc">Technical tools are listed in context rather than as a proficiency score. Project pages show how they are applied.</p></div>
+        <div class="two-col">
           <div>
-            <p class="cv-entry__title">Conservation Technologist</p>
-            <p class="cv-entry__org">Freelance / Independent</p>
-            <p class="cv-entry__location">Germany (remote and field-based)</p>
+            <div class="skill-group"><p class="skill-group__title">Ecology and monitoring</p><div class="skill-pills"><span class="skill-pill">Passive acoustic monitoring</span><span class="skill-pill">Avian and biodiversity monitoring</span><span class="skill-pill">Bush regeneration</span><span class="skill-pill">Habitat restoration</span><span class="skill-pill">Environmental sensor deployment</span><span class="skill-pill">Field surveys</span></div></div>
+            <div class="skill-group"><p class="skill-group__title">Software and data</p><div class="skill-pills"><span class="skill-pill">R and R Shiny</span><span class="skill-pill">Python</span><span class="skill-pill">JavaScript and TypeScript</span><span class="skill-pill">React</span><span class="skill-pill">HTML, CSS and Bootstrap</span><span class="skill-pill">Data pipelines and APIs</span><span class="skill-pill">Docker and Git</span><span class="skill-pill">Ecological data visualisation</span></div></div>
+            <div class="skill-group"><p class="skill-group__title">GIS and remote sensing</p><div class="skill-pills"><span class="skill-pill">ArcGIS</span><span class="skill-pill">Spatial ecology</span><span class="skill-pill">Multispectral and hyperspectral imagery</span><span class="skill-pill">Vegetation and habitat assessment</span></div></div>
           </div>
-          <p class="cv-entry__dates">2023–present</p>
-        </div>
-        <p class="cv-entry__desc">
-          Developing conservation technology tools and workflows across eco-acoustics, environmental
-          IoT, ecological data analysis, and remote sensing. Building field-deployable monitoring
-          systems and the data tools to interpret their outputs.
-        </p>
-        <ul class="cv-entry__bullets">
-          <li>Designed and prototyped the ecoPi modular monitoring platform</li>
-          <li>Built acoustic recording and automated species detection workflows</li>
-          <li>Developed R Shiny dashboards for ecological monitoring data</li>
-          <li>Conducted remote sensing analysis for biodiversity and habitat assessment</li>
-          <li>Designed low-power environmental sensor and data logging systems</li>
-        </ul>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry__header">
           <div>
-            <p class="cv-entry__title">Ecologist / Wildlife Surveyor</p>
-            <p class="cv-entry__org">Ecological Consultancy</p>
-            <p class="cv-entry__location">United Kingdom</p>
-          </div>
-          <p class="cv-entry__dates">2019–2023</p>
-        </div>
-        <p class="cv-entry__desc">
-          Field ecology, biodiversity survey, and monitoring across a range of habitats and
-          taxonomic groups. Responsible for survey design, field data collection, data
-          management, and technical reporting.
-        </p>
-        <ul class="cv-entry__bullets">
-          <li>Led bird, invertebrate, and habitat surveys for planning and conservation projects</li>
-          <li>Designed and managed multi-year monitoring programmes</li>
-          <li>Built internal data management workflows and reporting tools (R)</li>
-          <li>Introduced acoustic monitoring methods into survey workflows</li>
-        </ul>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry__header">
-          <div>
-            <p class="cv-entry__title">Research Assistant – Acoustic Ecology</p>
-            <p class="cv-entry__org">University Research Group</p>
-            <p class="cv-entry__location">United Kingdom</p>
-          </div>
-          <p class="cv-entry__dates">2018–2019</p>
-        </div>
-        <p class="cv-entry__desc">
-          Supported research into soundscape ecology and acoustic indices as proxies for
-          biodiversity. Involved in field recording, data processing, and analysis.
-        </p>
-        <ul class="cv-entry__bullets">
-          <li>Long-duration acoustic recording deployment and management</li>
-          <li>Acoustic index calculation and analysis workflows</li>
-          <li>Species identification from audio data</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Education</p>
-        <h2 class="section-header__title">Academic background</h2>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry__header">
-          <div>
-            <p class="cv-entry__title">MSc Ecology</p>
-            <p class="cv-entry__org">University, United Kingdom</p>
-          </div>
-          <p class="cv-entry__dates">2017–2018</p>
-        </div>
-        <p class="cv-entry__desc">
-          Dissertation on acoustic monitoring methods for biodiversity assessment. Modules included
-          advanced statistics, ecological survey design, and conservation biology.
-        </p>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry__header">
-          <div>
-            <p class="cv-entry__title">BSc Zoology</p>
-            <p class="cv-entry__org">University, United Kingdom</p>
-          </div>
-          <p class="cv-entry__dates">2014–2017</p>
-        </div>
-        <p class="cv-entry__desc">
-          Core modules in animal behaviour, ecology, evolution, and physiology.
-          Final year project investigating bird community responses to habitat edge effects.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Selected capabilities -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Capabilities</p>
-        <h2 class="section-header__title">Selected strengths</h2>
-      </div>
-      <div class="two-col">
-        <div>
-          <div class="skill-group">
-            <p class="skill-group__title">Ecology &amp; Monitoring</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Biodiversity survey</span>
-              <span class="skill-pill">Habitat assessment</span>
-              <span class="skill-pill">Ecological analysis</span>
-              <span class="skill-pill">Field methods</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group__title">Data &amp; Analysis</p>
-            <div class="skill-pills">
-              <span class="skill-pill">R</span>
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">R Shiny</span>
-              <span class="skill-pill">Data pipelines</span>
-              <span class="skill-pill">Statistical modelling</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="skill-group">
-            <p class="skill-group__title">Technology</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Raspberry Pi / ESP32</span>
-              <span class="skill-pill">Embedded systems</span>
-              <span class="skill-pill">Acoustic monitoring</span>
-              <span class="skill-pill">Remote sensing (GIS)</span>
-              <span class="skill-pill">Environmental IoT</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group__title">Communication</p>
-            <div class="skill-pills">
-              <span class="skill-pill">Technical writing</span>
-              <span class="skill-pill">Dashboard design</span>
-              <span class="skill-pill">UI front-end design</span>
-              <span class="skill-pill">Ecological reporting</span>
-            </div>
+            <div class="skill-group"><p class="skill-group__title">Embedded systems</p><div class="skill-pills"><span class="skill-pill">ESP32</span><span class="skill-pill">Embedded C/C++</span><span class="skill-pill">PCB design and prototyping</span><span class="skill-pill">Environmental sensor integration</span><span class="skill-pill">Low-power and solar-powered systems</span><span class="skill-pill">ESP-NOW, Wi-Fi, BLE and cellular</span><span class="skill-pill">SD-card logging and RTC scheduling</span></div></div>
+            <div class="skill-group"><p class="skill-group__title">Bioacoustics and AI</p><div class="skill-pills"><span class="skill-pill">BirdNET Analyzer</span><span class="skill-pill">Raven Pro</span><span class="skill-pill">Automated acoustic detection</span><span class="skill-pill">Edge AI prototypes</span><span class="skill-pill">Long-duration ecological audio</span><span class="skill-pill">Microphone and recording-system design</span></div></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Selected highlights -->
-  <section>
-    <div class="container--narrow">
-      <div class="section-header">
-        <p class="section-header__label">Highlights</p>
-        <h2 class="section-header__title">Selected work highlights</h2>
-      </div>
-      <ul class="philosophy-list">
-        <li>Designed and built the ecoPi modular field monitoring platform (ongoing)</li>
-        <li>Developed automated acoustic species detection pipeline for remote habitat deployments</li>
-        <li>Built interactive ecological monitoring dashboards used in active conservation projects</li>
-        <li>Led multi-year biodiversity monitoring programmes across UK habitats</li>
-        <li>Conducted satellite-based habitat analysis for renewable energy site assessment</li>
-        <li>Introduced acoustic monitoring workflows into ecological consultancy practice</li>
-        <li>Built low-power microclimate logging systems for remote environmental sensing</li>
-      </ul>
-    </div>
-  </section>
+    <section class="cta-section" aria-labelledby="cv-cta-title"><div class="container cta-section__inner">
+      <div><p class="section-header__label">Contact</p><h2 id="cv-cta-title">Interested in working together?</h2><p>I’m open to conversations about conservation technology, ecological monitoring and practical environmental data tools.</p></div>
+      <div class="btn-group"><a href="contact.html" class="btn btn--primary">Get in touch</a><a href="projects.html" class="btn btn--ghost">View projects</a></div>
+    </div></section>
+  </main>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2>Interested in working together?</h2>
-      <p>
-        I'm open to conversations about conservation technology projects, ecological monitoring,
-        and practical data tools.
-      </p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn btn--primary">Get in touch</a>
-        <a href="#" class="btn btn--ghost">Download CV (PDF)</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="footer__inner">
-      <span class="footer__brand">Tom Armstrong</span>
-      <ul class="footer__links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <ul class="footer__links">
-        <li><a href="https://github.com/armsto88" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-      <p class="footer__copy">© 2026 Tom Armstrong</p>
-    </div>
-  </footer>
-
+  <footer class="footer"><div class="footer__inner">
+    <div><p class="footer__brand">Tom Armstrong</p><p class="footer__tagline">Ecologist and conservation technologist working across field monitoring, hardware, software and ecological data.</p></div>
+    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="cv.html">Experience</a></li><li><a href="contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
+    <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
+  </div></footer>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
