@@ -528,11 +528,11 @@ code {
 }
 
 .hero__title {
-  max-width: 13ch;
+  max-width: none;
 }
 
 .hero__title--page {
-  max-width: 17ch;
+  max-width: none;
   font-size: clamp(2.35rem, 6vw, 4.5rem);
 }
 
@@ -822,6 +822,14 @@ code {
   object-fit: contain;
   padding: 1.25rem;
   background: #0c1210;
+}
+
+.project-feature--text {
+  grid-template-columns: 1fr;
+}
+
+.project-feature--text .project-feature__content {
+  padding: clamp(2rem, 5vw, 3.5rem);
 }
 
 .project-feature:hover .project-feature__media img {
@@ -1241,7 +1249,7 @@ code {
 
 .project-hero h1,
 .article-header h1 {
-  max-width: 18ch;
+  max-width: none;
   font-size: clamp(2.2rem, 6vw, 4.35rem);
 }
 
@@ -1342,25 +1350,38 @@ code {
 }
 
 .partner-logo {
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: min(220px, 100%);
-  height: 82px;
-  place-items: center;
+  height: 100px;
   border: 1px solid var(--line);
   background: #ffffff;
   padding: 0.8rem;
 }
 
 .partner-logo img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
   object-fit: contain;
 }
 
 .partner-logo a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
+}
+
+.partner-logo a img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
 }
 
 .project-section {
