@@ -282,17 +282,10 @@ code {
 }
 
 .nav__mark {
-  display: grid;
+  display: block;
   width: 30px;
   height: 30px;
-  place-items: center;
-  border: 1px solid var(--forest);
-  border-radius: 50%;
-  color: var(--forest);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: -0.08em;
+  flex: none;
 }
 
 .nav__links {

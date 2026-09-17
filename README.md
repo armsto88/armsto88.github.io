@@ -1,6 +1,6 @@
 # Tom Armstrong — personal website
 
-A dependency-free static site for Tom Armstrong, ecologist and conservation technologist.
+A dependency-free static site for Tom Armstrong, ecologist and environmental technologist.
 
 ## Structure
 
