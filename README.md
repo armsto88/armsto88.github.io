@@ -7,6 +7,8 @@ A dependency-free static site for Tom Armstrong, ecologist and environmental tec
 - `index.html`, `about.html`, `projects.html`, `cv.html`, `writing.html`, `contact.html` — main pages
 - `projects/` — project case studies
 - `writing/` — published notes
+- `content/notes/` — source Markdown for the homepage notes feed; `notes/` is generated from it (see `content/README.md`)
+- `tools/build_notes.py` — builds the notes pages, feeds and homepage block (`python tools/build_notes.py`)
 - `assets/css/style.css` — shared design system and responsive styles
 - `assets/js/main.js` — navigation, accessibility helpers and project lightboxes
 - `assets/project_pics/` — source images and optimised WebP derivatives
@@ -28,4 +30,4 @@ node --check assets/js/main.js
 git diff --check
 ```
 
-The repository has no compile, type-check or production-bundle step. GitHub Pages serves the checked-in HTML, CSS, JavaScript and assets directly.
+The notes feed is the one generated part: run `python tools/build_notes.py` after changing anything in `content/notes/`, then validate `notes/*.html` as above. The repository has no other compile, type-check or production-bundle step. GitHub Pages serves the checked-in HTML, CSS, JavaScript and assets directly.

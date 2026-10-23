@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FieldHub V2 — Sensor Bring-Up | Tom Armstrong</title>
+  <meta name="description" content="The latest FieldHub V2 prototype is now well into bench bring-up." />
+  <meta name="theme-color" content="#556241" />
+  <link rel="canonical" href="https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Tom Armstrong — workbench notes" href="feed.xml" />
+  <meta property="og:title" content="FieldHub V2 — Sensor Bring-Up | Tom Armstrong" />
+  <meta property="og:description" content="The latest FieldHub V2 prototype is now well into bench bring-up." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/project_pics/fieldmesh/fieldhub-v2-top-800.webp" />
+  <meta property="og:image:alt" content="Render of the FieldHub V2 circuit board" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta property="article:published_time" content="2026-10" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "FieldHub V2 — Sensor Bring-Up",
+    "description": "The latest FieldHub V2 prototype is now well into bench bring-up.",
+    "author": {
+      "@type": "Person",
+      "name": "Tom Armstrong",
+      "url": "https://armsto88.github.io/"
+    },
+    "mainEntityOfPage": "https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html",
+    "keywords": [
+      "fieldhub",
+      "bring-up",
+      "i2c",
+      "adc"
+    ],
+    "datePublished": "2026-10",
+    "image": "https://armsto88.github.io/assets/project_pics/fieldmesh/fieldhub-v2-top-800.webp"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img class="nav__mark" src="../assets/brand/ta-mark-olive.svg" width="58" height="32" alt="" />
+        <span>Tom Armstrong</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu">
+        <span class="nav__toggle-lines" aria-hidden="true">
+          <span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span>
+        </span>
+      </button>
+      <ul class="nav__links" id="primary-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li>
+        <li><a href="../cv.html">Experience</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <header class="article-header">
+      <div class="article-body">
+        <a href="index.html" class="back-link">All workbench notes</a>
+        <p class="article-kicker"><span class="note-type" data-note-type="project-update">Project update</span></p>
+        <h1>FieldHub V2 — Sensor Bring-Up</h1>
+        <p class="article-header__intro">The latest FieldHub V2 prototype is now well into bench bring-up.</p>
+        <div class="article-meta"><time datetime="2026-10">Oct 2026</time><span>FieldMesh</span><span>fieldhub, bring-up, i2c, adc</span></div>
+      </div>
+    </header>
+    <figure class="article-figure">
+      <div class="article-body"><img src="../assets/project_pics/fieldmesh/fieldhub-v2-top-800.webp" alt="Render of the FieldHub V2 circuit board" loading="eager" decoding="async" /></div>
+    </figure>
+
+    <article class="article-content">
+      <div class="article-body">
+<p>The four external I²C sensor ports have been verified with an SHT40, including operation at 400 kHz. The ADS1015 analogue inputs are also working across all four channels, with measurements within about 1% of my reference meter and no observed crosstalk.</p>
+<p>The reed-switch input works functionally, but testing confirmed that the current GPIO choice is susceptible to interference from Wi-Fi and ADC activity. That will be corrected in the next revision.</p>
+<p>A few tests remain, including ESP-NOW communication, RTC backup retention and longer wake-cycle testing.</p>
+      </div>
+    </article>
+
+    <aside class="next-item" aria-labelledby="related-title">
+      <div class="article-body">
+        <p class="next-item__label">Previous note</p>
+        <h2 id="related-title"><a href="fieldhub-v2-scaling-the-network.html">FieldHub V2 — Scaling the Network →</a></h2>
+        <p>With the core hardware coming through bring-up, I’ve started looking more closely at how FieldMesh behaves as the network grows.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__brand"><img class="footer__mark" src="../assets/brand/ta-mark-white.svg" width="47" height="26" alt="" /><span>Tom Armstrong</span></p>
+        <p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__links">
+          <li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <ul class="footer__links">
+          <li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

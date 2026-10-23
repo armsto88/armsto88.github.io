@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ecoPi — Autonomous Acoustic Monitoring | Tom Armstrong</title>
   <meta name="description" content="Tom Armstrong's work on ecoPi, an acoustic biodiversity-monitoring platform combining field hardware, automated detections, environmental data and R Shiny interfaces." />
-  <meta name="theme-color" content="#152019" />
+  <meta name="theme-color" content="#556241" />
   <link rel="canonical" href="https://armsto88.github.io/projects/ecopi.html" />
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
   <meta property="og:title" content="ecoPi — Autonomous Acoustic Monitoring" />
   <meta property="og:description" content="Field hardware, monitoring software and acoustic review tools developed through Tom's work at OekoFor." />
   <meta property="og:type" content="article" />
@@ -20,15 +21,15 @@
   <meta property="og:image:height" content="941" />
   <meta property="og:image:alt" content="ecoPi acoustic monitoring dashboard" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../assets/css/style.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav class="nav" aria-label="Primary navigation"><div class="nav__inner">
-    <a href="../index.html" class="nav__logo"><img class="nav__mark" src="../assets/mark.svg" width="30" height="30" alt="" /><span>Tom Armstrong</span></a>
+    <a href="../index.html" class="nav__logo"><img class="nav__mark" src="../assets/brand/ta-mark-olive.svg" width="58" height="32" alt="" /><span>Tom Armstrong</span></a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span class="nav__toggle-lines" aria-hidden="true"><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span></span></button>
-    <ul class="nav__links" id="primary-menu"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul>
+    <ul class="nav__links" id="primary-menu"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul>
   </div></nav>
 
   <main id="main-content">
@@ -79,28 +80,32 @@
 
           <p class="project-gallery-label">Monitoring software</p>
           <div class="project-gallery project-gallery--four project-gallery--screenshots">
-            <figure><a class="project-gallery__link" href="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123702.png" data-lightbox="ecopi" data-alt="ecoPi dashboard overview"><img src="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123702.png" alt="ecoPi dashboard overview" loading="lazy" decoding="async" /></a></figure>
-            <figure><a class="project-gallery__link" href="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123752.png" data-lightbox="ecopi" data-alt="ecoPi interface for exploring and reviewing species detections"><img src="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123752.png" alt="ecoPi interface for exploring and reviewing species detections" loading="lazy" decoding="async" /></a></figure>
-            <figure><a class="project-gallery__link" href="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123813.png" data-lightbox="ecopi" data-alt="ecoPi project-level ecological monitoring output"><img src="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123813.png" alt="ecoPi project-level ecological monitoring output" loading="lazy" decoding="async" /></a></figure>
-            <figure><a class="project-gallery__link" href="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123857.png" data-lightbox="ecopi" data-alt="ecoPi dashboard detail view"><img src="../assets/ecoPi_images/DASHBOARD/Screenshot 2026-07-15 123857.png" alt="ecoPi dashboard detail view" loading="lazy" decoding="async" /></a></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-1.webp" data-lightbox="ecopi" data-alt="ecoPi dashboard overview"><img src="../assets/project_pics/ecopi/ecopi-dashboard-1-800.webp" width="800" height="354" alt="ecoPi dashboard overview" loading="lazy" decoding="async" /></a></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-2.webp" data-lightbox="ecopi" data-alt="ecoPi interface for exploring and reviewing species detections"><img src="../assets/project_pics/ecopi/ecopi-dashboard-2-800.webp" width="800" height="336" alt="ecoPi interface for exploring and reviewing species detections" loading="lazy" decoding="async" /></a></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-3.webp" data-lightbox="ecopi" data-alt="ecoPi project-level ecological monitoring output"><img src="../assets/project_pics/ecopi/ecopi-dashboard-3-800.webp" width="800" height="336" alt="ecoPi project-level ecological monitoring output" loading="lazy" decoding="async" /></a></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-4.webp" data-lightbox="ecopi" data-alt="ecoPi dashboard detail view"><img src="../assets/project_pics/ecopi/ecopi-dashboard-4-800.webp" width="800" height="356" alt="ecoPi dashboard detail view" loading="lazy" decoding="async" /></a></figure>
           </div>
 
           <p class="project-gallery-label">ecoPi Lullaby hardware</p>
           <div class="project-gallery project-gallery--two">
-            <figure><a class="project-gallery__link" href="../assets/ecoPi_images/HARDWARE/Lullaby/lullaby.png" data-lightbox="ecopi" data-alt="ecoPi Lullaby Raspberry Pi HAT board"><img src="../assets/ecoPi_images/HARDWARE/Lullaby/lullaby.png" alt="ecoPi Lullaby Raspberry Pi HAT board" loading="lazy" decoding="async" /></a><figcaption>Power-management and audio HAT</figcaption></figure>
-            <figure><a class="project-gallery__link" href="../assets/ecoPi_images/HARDWARE/Lullaby/lullaby_back.png" data-lightbox="ecopi" data-alt="ecoPi Lullaby HAT back view"><img src="../assets/ecoPi_images/HARDWARE/Lullaby/lullaby_back.png" alt="ecoPi Lullaby HAT back view" loading="lazy" decoding="async" /></a><figcaption>Back view of the board</figcaption></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/lullaby-top.webp" data-lightbox="ecopi" data-alt="ecoPi Lullaby Raspberry Pi HAT board"><img src="../assets/project_pics/ecopi/lullaby-top-800.webp" srcset="../assets/project_pics/ecopi/lullaby-top-400.webp 400w, ../assets/project_pics/ecopi/lullaby-top-800.webp 800w" sizes="(max-width: 720px) 100vw, 360px" width="800" height="600" alt="ecoPi Lullaby Raspberry Pi HAT board" loading="lazy" decoding="async" /></a><figcaption>Power-management and audio HAT</figcaption></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/lullaby-back.webp" data-lightbox="ecopi" data-alt="ecoPi Lullaby HAT back view"><img src="../assets/project_pics/ecopi/lullaby-back-800.webp" srcset="../assets/project_pics/ecopi/lullaby-back-400.webp 400w, ../assets/project_pics/ecopi/lullaby-back-800.webp 800w" sizes="(max-width: 720px) 100vw, 360px" width="800" height="720" alt="ecoPi Lullaby HAT back view" loading="lazy" decoding="async" /></a><figcaption>Back view of the board</figcaption></figure>
           </div>
 
           <p class="project-gallery-label">3D model — ecoPi Lullaby</p>
           <div class="model-viewer-wrap">
-            <model-viewer src="../assets/ecoPi_images/HARDWARE/Lullaby/lullaby.glb" alt="Interactive 3D model of the ecoPi Lullaby Raspberry Pi HAT board" auto-rotate camera-controls rotation-per-second="20deg" shadow-intensity="0.3" exposure="2.0" environment-image="neutral" autoplay></model-viewer>
+            <div class="model-viewer-poster">
+              <img src="../assets/project_pics/ecopi/lullaby-top-800.webp" width="800" height="600" alt="" loading="lazy" decoding="async" />
+              <button type="button" class="btn btn--primary" data-model-load data-model-script="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js">Load the 3D model (28&nbsp;MB)</button>
+            </div>
+            <model-viewer data-src="../assets/ecoPi_images/HARDWARE/Lullaby/lullaby.glb" alt="Interactive 3D model of the ecoPi Lullaby Raspberry Pi HAT board" auto-rotate camera-controls rotation-per-second="20deg" shadow-intensity="0.3" exposure="2.0" environment-image="neutral" autoplay></model-viewer>
             <p class="model-viewer-hint">Drag to rotate · scroll to zoom</p>
           </div>
 
           <p class="project-gallery-label">ecoPi Sense hardware</p>
           <div class="project-gallery project-gallery--two">
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/3D_PCB1_2026-03-22.webp" data-lightbox="ecopi" data-alt="ecoPi Sense environmental sensor module PCB render"><img src="../assets/project_pics/ecopi/3D_PCB1_2026-03-22.webp" width="2160" height="1652" alt="ecoPi Sense environmental sensor module PCB render" loading="lazy" decoding="async" /></a><figcaption>Environmental sensor module render</figcaption></figure>
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/3D_PCB1_2026-03-22(1).webp" data-lightbox="ecopi" data-alt="Alternate view of the ecoPi Sense PCB"><img src="../assets/project_pics/ecopi/3D_PCB1_2026-03-22(1).webp" width="2160" height="1597" alt="Alternate view of the ecoPi Sense PCB" loading="lazy" decoding="async" /></a><figcaption>Alternate module view</figcaption></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/3D_PCB1_2026-03-22.webp" data-lightbox="ecopi" data-alt="ecoPi Sense environmental sensor module PCB render"><img src="../assets/project_pics/ecopi/3D_PCB1_2026-03-22.webp" width="1600" height="1224" alt="ecoPi Sense environmental sensor module PCB render" loading="lazy" decoding="async" /></a><figcaption>Environmental sensor module render</figcaption></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/3D_PCB1_2026-03-22(1).webp" data-lightbox="ecopi" data-alt="Alternate view of the ecoPi Sense PCB"><img src="../assets/project_pics/ecopi/3D_PCB1_2026-03-22(1).webp" width="1600" height="1183" alt="Alternate view of the ecoPi Sense PCB" loading="lazy" decoding="async" /></a><figcaption>Alternate module view</figcaption></figure>
           </div>
         </div>
       </section>
@@ -133,8 +138,8 @@
   </main>
 
   <footer class="footer"><div class="footer__inner">
-    <div><p class="footer__brand">Tom Armstrong</p><p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p></div>
-    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
+    <div><p class="footer__brand"><img class="footer__mark" src="../assets/brand/ta-mark-white.svg" width="47" height="26" alt="" /><span>Tom Armstrong</span></p><p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p></div>
+    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
     <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
   </div></footer>
   <script src="../assets/js/main.js"></script>

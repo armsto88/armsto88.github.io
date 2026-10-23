@@ -4,39 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FieldMesh — Environmental Sensor Network | Tom Armstrong</title>
-  <meta name="description" content="A low-power ESP32 network for fine-scale microclimate and environmental monitoring at remote field sites." />
-  <meta name="theme-color" content="#152019" />
+  <meta name="description" content="A low-power ESP32 sensor network for fine-scale microclimate monitoring at remote field sites, from custom node and FieldHub hardware to a multi-project cloud dashboard." />
+  <meta name="theme-color" content="#556241" />
   <link rel="canonical" href="https://armsto88.github.io/projects/fieldmesh.html" />
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" sizes="180x180" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
   <meta property="og:title" content="FieldMesh — Environmental Sensor Network" />
-  <meta property="og:description" content="A low-power ESP32 network for fine-scale microclimate and environmental monitoring at remote field sites." />
+  <meta property="og:description" content="A low-power ESP32 sensor network for fine-scale microclimate monitoring at remote field sites, from custom hardware to a cloud dashboard." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://armsto88.github.io/projects/fieldmesh.html" />
   <meta property="og:site_name" content="Tom Armstrong" />
-  <meta property="og:image" content="https://armsto88.github.io/assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).webp" />
-  <meta property="og:image:width" content="2160" />
-  <meta property="og:image:height" content="1895" />
-  <meta property="og:image:alt" content="FieldMesh environmental sensor node PCB render" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/project_pics/fieldmesh/fieldhub-v2-top.webp" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1296" />
+  <meta property="og:image:alt" content="Render of the FieldMesh FieldHub v2 circuit board" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav class="nav" aria-label="Primary navigation"><div class="nav__inner">
-    <a href="../index.html" class="nav__logo"><img class="nav__mark" src="../assets/mark.svg" width="30" height="30" alt="" /><span>Tom Armstrong</span></a>
+    <a href="../index.html" class="nav__logo"><img class="nav__mark" src="../assets/brand/ta-mark-olive.svg" width="58" height="32" alt="" /><span>Tom Armstrong</span></a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span class="nav__toggle-lines" aria-hidden="true"><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span></span></button>
-    <ul class="nav__links" id="primary-menu"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul>
+    <ul class="nav__links" id="primary-menu"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul>
   </div></nav>
 
   <main id="main-content">
     <header class="project-hero">
       <div class="project-body">
         <a href="../projects.html" class="back-link">All projects</a>
-        <p class="project-kicker">Environmental sensing · Embedded systems</p>
+        <p class="project-kicker">Environmental sensing · Embedded systems · Cloud</p>
         <h1>FieldMesh — environmental sensor network</h1>
-        <p class="project-hero__intro">A low-power ESP32 network for fine-scale microclimate and environmental monitoring at remote field sites.</p>
+        <p class="project-hero__intro">A low-power ESP32 sensor network for fine-scale microclimate monitoring at remote field sites, from custom node and FieldHub hardware through coordinated radio firmware to a multi-project cloud dashboard.</p>
       </div>
     </header>
 
@@ -44,7 +46,7 @@
       <dl class="project-meta-strip">
         <div class="project-meta-strip__item"><dt>Status</dt><dd><span class="status-chip status-chip--prototype">Active R&amp;D</span></dd></div>
         <div class="project-meta-strip__item"><dt>Context</dt><dd>UNE / REED Lab consultancy</dd></div>
-        <div class="project-meta-strip__item"><dt>Contribution</dt><dd>System, firmware, PCB and dashboard development</dd></div>
+        <div class="project-meta-strip__item"><dt>Contribution</dt><dd>Hardware, firmware, cloud backend and dashboard</dd></div>
         <div class="project-meta-strip__item"><dt>Started</dt><dd>2025</dd></div>
       </dl>
       <div class="partner-block"><span class="partner-block__label">Project partners</span><div class="partner-logos">
@@ -57,68 +59,100 @@
       <section class="project-section" aria-labelledby="fieldmesh-problem-title"><div class="project-body">
         <h2 id="fieldmesh-problem-title">The monitoring problem</h2>
         <p>Organisms experience climate at centimetre-to-metre scales, while standard weather stations are designed for consistent regional measurements. Vegetation structure, soil moisture, topography, shade and airflow can therefore create biologically important conditions that a distant station does not represent.</p>
-        <p>This scale mismatch is especially relevant in solar photovoltaic landscapes. Under-panel zones, inter-row corridors and edges can create different radiation, wind, temperature and moisture conditions across short distances. The research need is for many distributed measurement points that can operate with limited power and connectivity.</p>
+        <p>This scale mismatch is especially relevant in solar photovoltaic landscapes. Under-panel zones, inter-row corridors and edges can create different radiation, wind, temperature and moisture conditions across short distances, as set out in a recent review of <a href="https://onlinelibrary.wiley.com/doi/10.1002/brv.70171" target="_blank" rel="noopener noreferrer">microclimates and biodiversity in large-scale solar facilities</a>. The research need is for many distributed measurement points that can operate with limited power and connectivity.</p>
       </div></section>
 
       <section class="project-section" aria-labelledby="fieldmesh-system-title"><div class="project-body">
         <h2 id="fieldmesh-system-title">What FieldMesh is</h2>
-        <p>FieldMesh uses two hardware tiers. <strong>Sensor nodes</strong> are small battery-powered devices that wake on a real-time-clock alarm, sample attached sensors, store the reading locally and transmit queued snapshots over ESP-NOW during a scheduled sync window.</p>
-        <p>A central <strong>FieldHub</strong> coordinates the radio window, stores snapshots locally and manages periodic cloud transfer over LTE. It also provides a local Wi-Fi interface for pairing nodes, setting measurement intervals and starting or pausing deployments.</p>
-        <div class="arch-diagram" role="img" aria-label="FieldMesh data path from sensor to web dashboard">Sensor → Node ADC / I²C → Local snapshot queue → ESP-NOW → FieldHub
-    → Local CSV log → Retryable upload queue → HTTPS over LTE
-    → Cloud backend → Web dashboard</div>
-        <p>Local storage is the primary record. A node keeps a snapshot until the FieldHub confirms that it was persisted, and cloud transfer uses a retryable cursor so a temporary upload failure does not require the field network to repeat the measurement.</p>
-        <p class="project-gallery-label">Custom node hardware</p>
+        <p>FieldMesh has two hardware tiers and a cloud layer. <strong>Sensor nodes</strong> are small solar-charged devices that are fully powered off between measurements. A real-time-clock alarm wakes the node, which samples its sensors with the radio off, stores the reading locally and powers down again. At scheduled sync windows, nodes hand their queued readings to the FieldHub over ESP-NOW.</p>
+        <p>The <strong>FieldHub</strong> coordinates those sync windows, logs every reading to on-board flash and a microSD archive, and uploads over LTE. It can also run standalone, keeping data on the hub or sending it to a project’s own HTTPS endpoint instead of the FieldMesh cloud. A local setup portal on the hub handles pairing, deployment and configuration in the field.</p>
+        <div class="arch-diagram" role="img" aria-label="FieldMesh data path from sensor to web dashboard">Sensors → Node I²C / ADC → Local queue → ESP-NOW sync → FieldHub
+    → Flash log + SD archive → Upload queue → HTTPS over LTE
+    → Cloud ingest → Web dashboard</div>
+        <p>Local storage is the primary record. A node keeps each reading until the FieldHub confirms it has been written, the hub only clears readings the backend has confirmed storing, and the backend recognises repeated uploads. A failed link therefore means a later retry, never a lost or duplicated measurement.</p>
+      </div></section>
+
+      <section class="project-section" aria-labelledby="fieldmesh-hardware-title"><div class="project-body">
+        <h2 id="fieldmesh-hardware-title">Hardware</h2>
+        <p>Both boards have been through several revisions as bench and field testing exposed problems. Each revision gets a written engineering review before anything is ordered.</p>
+        <section class="table-wrap" aria-label="FieldMesh hardware revisions"><table class="sensor-table sensor-table--fluid">
+          <thead><tr><th scope="col">Board</th><th scope="col">Revision</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>Sensor node</td><td>V3</td><td>Used for the 2026 bench and field trials</td></tr>
+            <tr><td>Sensor node</td><td>V4</td><td>Layout complete; final review changes being made before prototype production</td></tr>
+            <tr><td>FieldHub</td><td>v2, revision 6</td><td>Five-board prototype batch in bench bring-up</td></tr>
+          </tbody>
+        </table></section>
+        <p><strong>Node V4</strong> is a redesign around connecting more kinds of sensor. It adds an MPPT solar charger that blocks charging at unsafe battery temperatures, selectable 3.3&nbsp;V, 5&nbsp;V or 12&nbsp;V sensor power, protected 0–12&nbsp;V analogue inputs, four-channel I²C expansion, RS-485/Modbus and SDI-12 for commercial environmental sensors, and two protected pulse inputs. A final independent review found several small changes to make before fabrication, including an incorrect SDI-12 resistor value and improvements to reverse-battery protection. Prototype validation and the matching firmware changes follow.</p>
+        <p><strong>FieldHub v2</strong> brings the gateway onto one custom board with an LTE Cat-1 modem, a real-time clock, microSD storage, MPPT charging from a 6&nbsp;V solar panel, and four switched sensor ports for planned on-hub measurements. Bench bring-up has verified the four I²C sensor ports, including operation at 400&nbsp;kHz, and all four ADS1015 analogue inputs, which read within about 1% of a reference meter with no observed crosstalk. The reed input works, but its current GPIO is susceptible to interference from Wi-Fi and ADC activity, which the next revision will correct.</p>
+        <p>Both tiers are housed in commercial IP-rated junction boxes. Custom printed parts are limited to sensor housings: a radiation shield for the air sensor and a diffuser housing for the spectral sensor.</p>
+        <p class="project-gallery-label">FieldHub v2 board</p>
         <div class="project-gallery project-gallery--two">
-          <figure><a class="project-gallery__link" href="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).webp" data-lightbox="fieldmesh" data-alt="Top view of the FieldMesh environmental sensor node PCB"><img src="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(3).webp" width="2160" height="1895" alt="Top view of the FieldMesh environmental sensor node PCB" loading="lazy" decoding="async" /></a><figcaption>Node PCB component layout</figcaption></figure>
-          <figure><a class="project-gallery__link" href="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(2).webp" data-lightbox="fieldmesh" data-alt="Alternate render of the FieldMesh sensor node PCB"><img src="../assets/project_pics/microclimate_logger/3D_PCB1_2026-03-22(2).webp" width="2160" height="2024" alt="Alternate render of the FieldMesh sensor node PCB" loading="lazy" decoding="async" /></a><figcaption>Alternate node board view</figcaption></figure>
+          <figure><a class="project-gallery__link" href="../assets/project_pics/fieldmesh/fieldhub-v2-top.webp" data-lightbox="fieldmesh" data-alt="FieldHub v2 circuit board render showing the LTE modem, ESP32 module, SIM and microSD slots, USB-C port, solar and battery inputs and four sensor ports"><img src="../assets/project_pics/fieldmesh/fieldhub-v2-top-800.webp" srcset="../assets/project_pics/fieldmesh/fieldhub-v2-top-400.webp 400w, ../assets/project_pics/fieldmesh/fieldhub-v2-top-800.webp 800w, ../assets/project_pics/fieldmesh/fieldhub-v2-top.webp 1600w" sizes="(max-width: 720px) 100vw, 360px" width="1600" height="1296" alt="FieldHub v2 circuit board render showing the LTE modem, ESP32 module, SIM and microSD slots, USB-C port, solar and battery inputs and four sensor ports" loading="lazy" decoding="async" /></a><figcaption>Component side: modem, ESP32, storage and sensor ports</figcaption></figure>
+          <figure><a class="project-gallery__link" href="../assets/project_pics/fieldmesh/fieldhub-v2-bottom.webp" data-lightbox="fieldmesh" data-alt="Underside of the FieldHub v2 circuit board with the FieldMesh logo"><img src="../assets/project_pics/fieldmesh/fieldhub-v2-bottom-800.webp" srcset="../assets/project_pics/fieldmesh/fieldhub-v2-bottom-400.webp 400w, ../assets/project_pics/fieldmesh/fieldhub-v2-bottom-800.webp 800w, ../assets/project_pics/fieldmesh/fieldhub-v2-bottom.webp 1600w" sizes="(max-width: 720px) 100vw, 360px" width="1600" height="1333" alt="Underside of the FieldHub v2 circuit board with the FieldMesh logo" loading="lazy" decoding="async" /></a><figcaption>Underside</figcaption></figure>
         </div>
       </div></section>
 
       <section class="project-section" aria-labelledby="fieldmesh-measures-title"><div class="project-body">
         <h2 id="fieldmesh-measures-title">Measurements</h2>
-        <p>The V2 snapshot format supports the following channels. Passive sensors are enabled through a deployment configuration; I²C devices such as the SHT41 and AS7341 are detected by the node.</p>
+        <p>Node V3 records the channels below. I²C sensors such as the SHT4x and AS7341 are detected by the node; the other inputs are enabled through the deployment configuration.</p>
         <section class="table-wrap" aria-label="FieldMesh measurement channels" tabindex="0"><table class="sensor-table">
           <thead><tr><th scope="col">Channel</th><th scope="col">Sensor</th><th scope="col">Unit or output</th></tr></thead>
           <tbody>
-            <tr><td>Air temperature</td><td>SHT41</td><td>°C</td></tr><tr><td>Relative humidity</td><td>SHT41</td><td>%</td></tr>
-            <tr><td>Spectral light, 8 channels</td><td>AS7341</td><td>Raw counts at 415–680 nm</td></tr><tr><td>Clear / NIR / gain / integration / saturation</td><td>AS7341</td><td>Counts, multiplier, ms and status flag</td></tr>
-            <tr><td>Wind speed</td><td>Ultrasonic anemometer or reed-cup fallback</td><td>m/s</td></tr><tr><td>Wind direction</td><td>Ultrasonic anemometer, planned path</td><td>Degrees</td></tr>
-            <tr><td>Soil volumetric water content ×2</td><td>ADS1115 + VH-5 probes</td><td>m³/m³</td></tr><tr><td>Soil temperature ×2</td><td>ADS1115 + thermistor</td><td>°C</td></tr>
-            <tr><td>Battery voltage</td><td>Node ADC</td><td>V</td></tr><tr><td>Auxiliary I²C ×2</td><td>Expansion ports</td><td>Reserved</td></tr>
+            <tr><td>Air temperature</td><td>SHT4x</td><td>°C</td></tr><tr><td>Relative humidity</td><td>SHT4x</td><td>%</td></tr>
+            <tr><td>Spectral light, 8 bands</td><td>AS7341</td><td>Raw counts at 415–680 nm</td></tr><tr><td>Clear / NIR / gain / integration / saturation</td><td>AS7341</td><td>Counts, multiplier, ms and status flag</td></tr>
+            <tr><td>Soil moisture ×2</td><td>CWT TH-A probes via ADS1015</td><td>Probe voltage</td></tr><tr><td>Soil temperature ×2</td><td>CWT TH-A probes via ADS1015</td><td>°C</td></tr>
+            <tr><td>Wind speed</td><td>Reed-cup anemometer</td><td>m/s</td></tr><tr><td>Battery voltage</td><td>Node ADC, calibrated</td><td>V</td></tr>
+            <tr><td>Auxiliary ×2</td><td>Expansion ports</td><td>Reserved</td></tr>
           </tbody>
         </table></section>
-        <p><strong>Development note:</strong> the ultrasonic wind path is not yet producing discriminative wind-speed measurements. The reed-cup input is the current fallback for wind speed only.</p>
+        <p><strong>Raw by design:</strong> soil moisture is stored as probe voltage so that probe-specific calibration curves can be applied during analysis, and spectral light is stored as raw counts rather than converted to PAR.</p>
+        <p><strong>Wind:</strong> the ultrasonic anemometer explored on early boards has been dropped. Wind speed now comes from a reed-cup anemometer, which has been validated on its own; testing through the full node-to-cloud path is next.</p>
       </div></section>
 
       <section class="project-section" aria-labelledby="fieldmesh-operation-title"><div class="project-body">
         <h2 id="fieldmesh-operation-title">How the network operates</h2>
-        <p><strong>Node lifecycle.</strong> A node moves through unpaired, paired and deployed states. A deployed node can also be placed in standby, retaining scheduled check-ins without taking new samples.</p>
+        <p><strong>Node lifecycle.</strong> A node moves through unpaired, paired and deployed states. A deployed node can be placed in standby, keeping its scheduled check-ins without recording. Each deployment is its own data series: moving a node to a new site starts a new deployment, and ended deployments are archived rather than mixed with new data.</p>
         <p><strong>Measurement wake.</strong> The DS3231 real-time clock starts the node, sensors are read into a snapshot and the record is stored locally. The radio stays off during this wake. The next alarm is armed before slower sensor work, reducing the risk that a stalled operation leaves the node without a future wake time.</p>
-        <p><strong>Coordinated sync.</strong> At the scheduled radio window, the FieldHub announces a session and nodes respond after a deterministic delay. Registered nodes receive bounded transfer grants rather than transmitting at once. Each queued snapshot remains on the node until a durable acknowledgement confirms that the FieldHub stored it.</p>
-        <p><strong>Field configuration.</strong> Operators use a captive Wi-Fi interface to discover, pair and deploy nodes, configure sensors and update the schedule. Configuration updates are versioned and repeatable. A rapid-boot rescue sequence can clear a node’s pairing state if field recovery is required.</p>
+        <p><strong>Coordinated sync.</strong> At the scheduled radio window, the FieldHub announces a session and nodes respond after a randomised delay. Registered nodes receive bounded transfer grants rather than transmitting at once, and each queued snapshot stays on the node until the FieldHub acknowledges that it has been written. Nodes wake shortly before their slot and reject time updates that would move their clock backwards.</p>
+        <p><strong>Field configuration.</strong> A button press opens a password-protected setup portal on the FieldHub for 30 minutes. From a phone, operators pair and deploy nodes, configure sensors and set the schedule. Node configuration is declarative and versioned, and a change only counts as applied once the node reports the matching version, so changes sent remotely from the dashboard are safe to repeat. A rapid-boot rescue gesture keeps a node awake and discoverable so the hub can recover it without losing its configuration.</p>
       </div></section>
 
       <section class="project-section" aria-labelledby="fieldmesh-cloud-title"><div class="project-body">
         <h2 id="fieldmesh-cloud-title">Cloud and dashboard</h2>
-        <p>The cloud layer separates telemetry storage from the interface used to explore the measurements. The original Google Apps Script / Google Sheets backend and a newer Supabase backend currently sit behind the same frontend data-provider boundary, allowing the migration to be staged and reversed if needed.</p>
-        <p>The Supabase implementation uses PostgreSQL, Auth, Row Level Security, Edge Functions and Realtime. Device credentials are handled separately from browser access, and ingestion is designed to be authenticated and idempotent.</p>
-        <p>The React and Vite dashboard presents readings, charts, a deployment map, node and FieldHub status, battery voltage, schedules, local storage, upload queues and diagnostics. It also handles loading, empty, stale, error, offline and permission states explicitly.</p>
+        <p>Since October 2026 the cloud layer runs entirely on Supabase: PostgreSQL, Auth, Row Level Security, Edge Functions, Realtime and Storage. The original Google Apps Script backend has been removed. Data is organised into projects, each with an owner, editors and read-only viewers, and access rules are enforced in the database so one project cannot read another’s data.</p>
+        <p><strong>Devices.</strong> Each FieldHub has its own revocable key, stored only as a hash. New hubs are set up from a QR code holding a short-lived, single-use provisioning code that the hub exchanges for its key over LTE, so a permanent credential is never printed or photographed. The backend side is complete; hub-side support is being validated on hardware.</p>
+        <p><strong>Ingestion.</strong> Uploads are authenticated before they are read, size-limited and idempotent, so a repeated upload is recognised and ignored. Readings from a device with an implausible clock are still stored, but cannot overwrite the current state recorded from a trusted clock.</p>
+        <p><strong>Dashboard.</strong> The React and Vite dashboard shows FieldHub and node health, live readings, a deployment map and spectral profiles. Users can compare nodes over time, including wind and light-quality ratios; manage deployments, pause and resume nodes and change the recording interval remotely; and export CSV with local times in each project’s own time zone. FieldHub pages cover provisioning, key revocation, health history and firmware.</p>
+        <p><strong>Testing.</strong> A CI pipeline runs the dashboard’s unit tests, database access-policy tests, Edge Function tests, concurrency checks and a smoke test against a seeded local backend.</p>
+      </div></section>
+
+      <section class="project-section" aria-labelledby="fieldmesh-updates-title"><div class="project-body">
+        <h2 id="fieldmesh-updates-title">Over-the-air updates</h2>
+        <p>FieldHub firmware updates are signed with Ed25519 and checked against a SHA-256 hash before the hub switches to the new image. Updates use A/B firmware slots, and the hub rolls back automatically if the new image fails to confirm itself after boot. A full cloud update was completed on a bench FieldHub in July 2026.</p>
+        <p>Release publishing is now limited to approved operators, and every release is signature-checked on the server before it is made available. The first release through this production pipeline is still to come. Node firmware is updated by cable.</p>
       </div></section>
 
       <section class="project-section" aria-labelledby="fieldmesh-power-title"><div class="project-body">
         <h2 id="fieldmesh-power-title">Power and recovery design</h2>
-        <p>Both hardware tiers use a switched-power architecture. A <code>PWR_HOLD</code> signal latches the active rail when the device wakes; releasing it powers the board off completely. The DS3231 real-time clock retains time and controls future measurement and sync alarms.</p>
+        <p>Both hardware tiers use a switched-power architecture. A <code>PWR_HOLD</code> signal latches the active rail when the device wakes; releasing it powers the board off completely. An always-on low-power regulator keeps only the DS3231 real-time clock and the configuration latch alive, and the clock controls future measurement and sync alarms.</p>
         <p>The design does not depend on ESP32 deep sleep. Full power-off is the normal state, with active time limited to sampling, synchronisation or upload work. Schedule changes include grace cycles so nodes on the previous timing are not stranded during a transition.</p>
-        <ul class="principle-list"><li><strong>Local-first data:</strong> persist measurements before attempting cloud transfer.</li><li><strong>Power-off by default:</strong> remove the switched rail between scheduled wakes.</li><li><strong>Durable acknowledgement:</strong> delete a node record only after confirmed FieldHub storage.</li><li><strong>Bounded recovery:</strong> give critical operations explicit retry limits and fallbacks.</li><li><strong>Coordinated radio access:</strong> grant transfer windows rather than relying on contention.</li><li><strong>Version-aware updates:</strong> keep configuration changes repeatable and migration tolerant.</li></ul>
+        <ul class="principle-list"><li><strong>Local-first data:</strong> persist measurements before attempting cloud transfer.</li><li><strong>Power-off by default:</strong> remove the switched rail between scheduled wakes.</li><li><strong>Durable acknowledgement:</strong> clear a record only after the next tier confirms storing it.</li><li><strong>Coordinated radio access:</strong> grant transfer windows rather than relying on contention.</li><li><strong>Idempotent uploads:</strong> make every retry safe to repeat.</li><li><strong>Version-aware configuration:</strong> keep changes repeatable and tolerant of older nodes.</li><li><strong>Signed, recoverable updates:</strong> verify every image and keep a known-good fallback.</li></ul>
+      </div></section>
+
+      <section class="project-section" aria-labelledby="fieldmesh-trials-title"><div class="project-body">
+        <h2 id="fieldmesh-trials-title">Testing and field trials</h2>
+        <p><strong>Bench:</strong> multi-node validation began in May 2026, alongside ESP-NOW link testing at distances of up to 100&nbsp;m. Deployment-lifecycle scenarios have been tested on-device and against the production backend.</p>
+        <p><strong>First end-to-end path:</strong> in July 2026 three nodes carried readings through the FieldHub and LTE into the cloud database, followed by a three-node trial in Germany.</p>
+        <p><strong>First field deployment:</strong> four nodes and a FieldHub were deployed at a UNE solar-farm study site in Australia in August 2026. Field setup drove several firmware changes, including a longer cold-start registration budget for the modem and fixes to chunked LTE uploads.</p>
       </div></section>
 
       <section class="project-section" aria-labelledby="fieldmesh-status-title"><div class="project-body">
         <h2 id="fieldmesh-status-title">Current status</h2>
-        <p><strong>Firmware:</strong> FieldHub V2 and Node V2 flows have been exercised at bring-up level on custom PCBs. RTC wake, ESP-NOW sync, sensor detection, local queueing, flash logging and modem communication have been tested. Live end-to-end LTE upload and the ultrasonic wind-measurement path remain in progress.</p>
-        <p><strong>Cloud:</strong> the Supabase migration is underway alongside the original Apps Script backend. Both are supported during the staged cutover.</p>
-        <p><strong>Dashboard:</strong> the React application includes charts, mapping, node management, FieldHub device pages and system-state handling.</p>
-        <p><strong>Hardware:</strong> custom node PCB Gerbers are prepared for the next order while reverse-polarity protection, leakage and indicator strategy remain under review. Node housings have been modelled for FDM printing; the FieldHub uses an off-the-shelf industrial enclosure format.</p>
+        <p><strong>Hardware:</strong> FieldHub v2 revision 6 is in bench bring-up. The sensor ports and analogue inputs are verified, while ESP-NOW communication, RTC backup retention and longer wake-cycle tests are still to run. The Node V4 layout is complete, and the final review changes are being made before prototype production.</p>
+        <p><strong>Firmware:</strong> coordinated sync, deployment lifecycle, standalone operation and signed FieldHub updates are implemented and bench-tested. One-time provisioning is being validated on hardware, and Node V4 support is next.</p>
+        <p><strong>Cloud:</strong> the backend has been Supabase-only since October 2026, following a hardening pass on provisioning, ingestion and release publishing.</p>
+        <p><strong>Next:</strong> measuring hub-to-node sync timing with controlled boot delays, so that network capacity rests on measured behaviour rather than estimates; multi-week deployments to measure upload reliability and battery life under sustained field duty; calibration of the soil-moisture probes; and the first release through the production update pipeline.</p>
       </div></section>
     </article>
 
@@ -127,8 +161,8 @@
   </main>
 
   <footer class="footer"><div class="footer__inner">
-    <div><p class="footer__brand">Tom Armstrong</p><p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p></div>
-    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
+    <div><p class="footer__brand"><img class="footer__mark" src="../assets/brand/ta-mark-white.svg" width="47" height="26" alt="" /><span>Tom Armstrong</span></p><p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p></div>
+    <nav class="footer__nav" aria-label="Footer navigation"><ul class="footer__links"><li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li><li><a href="../contact.html">Contact</a></li></ul><ul class="footer__links"><li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></nav>
     <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
   </div></footer>
   <script src="../assets/js/main.js"></script>

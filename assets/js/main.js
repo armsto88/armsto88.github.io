@@ -57,11 +57,33 @@
     : path.includes('/writing/')
       ? 'writing.html'
       : path.split('/').pop() || 'index.html';
+  const inNotes = path.includes('/notes/');
 
   document.querySelectorAll('.nav__links a').forEach((link) => {
     const linkFile = new URL(link.href, window.location.href).pathname.split('/').pop();
-    if (linkFile === currentSection) link.setAttribute('aria-current', 'page');
+    // notes/index.html and the home page share a file name, so the notes link is matched by section.
+    const isNotesLink = link.dataset.nav === 'notes';
+    const isCurrent = inNotes ? isNotesLink : !isNotesLink && linkFile === currentSection;
+    if (isCurrent) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
+  });
+
+  document.querySelectorAll('[data-model-load]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const wrap = button.closest('.model-viewer-wrap');
+      const viewer = wrap?.querySelector('model-viewer');
+      if (!viewer) return;
+      if (!customElements.get('model-viewer') && !document.querySelector('script[data-model-viewer]')) {
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = button.dataset.modelScript;
+        script.dataset.modelViewer = '';
+        document.head.append(script);
+      }
+      viewer.setAttribute('src', viewer.dataset.src);
+      wrap.classList.add('is-loaded');
+      viewer.focus();
+    });
   });
 
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {

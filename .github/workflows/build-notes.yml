@@ -1,0 +1,45 @@
+name: Build notes
+
+# Regenerates notes/, the homepage feed block and the sitemap entries whenever a
+# post (or the build script) changes. See content/README.md.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/notes/**"
+      - "tools/build_notes.py"
+      - "index.html"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-notes
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build notes
+        run: python tools/build_notes.py
+
+      - name: Commit regenerated files
+        run: |
+          git add notes index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rebuild notes feed"
+          git push

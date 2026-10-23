@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tom Armstrong — workbench notes</title>
+    <link>https://armsto88.github.io/notes/index.html</link>
+    <atom:link href="https://armsto88.github.io/notes/feed.xml" rel="self" type="application/rss+xml" />
+    <description>A few notes from projects I’m actively developing, testing and learning from.</description>
+    <language>en</language>
+    <item>
+      <title>FieldHub V2 — Sensor Bring-Up</title>
+      <link>https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html</guid>
+      <pubDate>Fri, 23 Oct 2026 15:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldhub</category><category>bring-up</category><category>i2c</category><category>adc</category>
+      <description>The latest FieldHub V2 prototype is now well into bench bring-up.</description>
+      <content:encoded><![CDATA[<p>The four external I²C sensor ports have been verified with an SHT40, including operation at 400 kHz. The ADS1015 analogue inputs are also working across all four channels, with measurements within about 1% of my reference meter and no observed crosstalk.</p>
+<p>The reed-switch input works functionally, but testing confirmed that the current GPIO choice is susceptible to interference from Wi-Fi and ADC activity. That will be corrected in the next revision.</p>
+<p>A few tests remain, including ESP-NOW communication, RTC backup retention and longer wake-cycle testing.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>FieldHub V2 — Scaling the Network</title>
+      <link>https://armsto88.github.io/notes/fieldhub-v2-scaling-the-network.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldhub-v2-scaling-the-network.html</guid>
+      <pubDate>Fri, 23 Oct 2026 14:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldhub</category><category>esp-now</category><category>sync</category><category>scaling</category>
+      <description>With the core hardware coming through bring-up, I’ve started looking more closely at how FieldMesh behaves as the network grows.</description>
+      <content:encoded><![CDATA[<p>The first test will examine the timing between the hub and multiple wireless nodes. Earlier field data suggests hub boot time can reduce the overlap available for synchronisation, so I’ll test this directly by injecting controlled boot delays while running two nodes against the new Hub V2 hardware.</p>
+<p>The goal is to replace theoretical node-capacity estimates with measured behaviour before scaling the system further.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>FieldNode V4 — PCB Layout Complete</title>
+      <link>https://armsto88.github.io/notes/fieldnode-v4-pcb-layout-complete.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldnode-v4-pcb-layout-complete.html</guid>
+      <pubDate>Fri, 23 Oct 2026 13:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldnode</category><category>pcb</category><category>sdi-12</category><category>rs-485</category>
+      <description>The FieldNode V4 PCB layout is complete and a prototype manufacturing package has been prepared.</description>
+      <content:encoded><![CDATA[<p>V4 is a substantial redesign focused on flexible environmental sensing, with selectable sensor power, protected analogue inputs, I²C expansion, reed inputs, RS-485/Modbus and SDI-12 support.</p>
+<p>A final independent review identified several small but important changes before fabrication, including an incorrect SDI-12 resistor value and improvements to reverse-battery protection.</p>
+<p>Those changes are being incorporated before prototype production.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Auris — From Concept to Hardware</title>
+      <link>https://armsto88.github.io/notes/auris-from-concept-to-hardware.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/auris-from-concept-to-hardware.html</guid>
+      <pubDate>Fri, 23 Oct 2026 12:00:00 +0000</pubDate>
+      <category>Project update</category><category>auris</category><category>acoustics</category><category>audio</category><category>lte</category>
+      <description>I’ve started developing Auris, an early-stage autonomous acoustic monitoring platform.</description>
+      <content:encoded><![CDATA[<p>The first design work has focused on the audio front end, solar power architecture and LTE connectivity.</p>
+<p>The current architecture uses a dedicated audio ADC with configurable input paths, a low-power solar system derived from FieldMesh, and a compact LTE modem selected for coverage across Europe, Australia and New Zealand.</p>
+<p>The audio, power and communications sections are now defined, with the MCU and processing architecture next.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>FieldMesh — Updating the Public Project</title>
+      <link>https://armsto88.github.io/notes/fieldmesh-updating-the-public-project.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldmesh-updating-the-public-project.html</guid>
+      <pubDate>Fri, 23 Oct 2026 11:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldmesh</category><category>website</category>
+      <description>I’ve also been updating the public FieldMesh project pages so they reflect the current hardware rather than earlier concepts.</description>
+      <content:encoded><![CDATA[<p>The older node renders have been replaced with new FieldHub V2 visuals across the project page and homepage cards, including responsive WebP versions and an updated link-preview image.</p>
+<p>I’m also tightening the written case study against the actual repositories so that public descriptions distinguish clearly between what has been built, what has been tested and what is still planned.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>FieldMesh Node V4</title>
+      <link>https://armsto88.github.io/notes/fieldmesh-node-v4.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldmesh-node-v4.html</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldmesh</category><category>pcb</category><category>power</category>
+      <description>The Node V4 schematic has completed a major review cycle and is moving toward PCB layout.</description>
+      <content:encoded><![CDATA[<p>Recent work includes a revised solar charging architecture, selectable 3.3 V / 5 V / 12 V sensor power, protected analogue inputs, I²C expansion, RS-485/Modbus and SDI-12 support.</p>
+<p>The review process has also become more rigorous, with important findings checked against primary-source documentation before they are accepted.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Sketch Surf</title>
+      <link>https://armsto88.github.io/notes/sketch-surf.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/sketch-surf.html</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+      <category>Project update</category><category>sketch-surf</category><category>app</category>
+      <description>Sketch Surf reached version 1.4.0 this week.</description>
+      <content:encoded><![CDATA[<p>The app combines observed wind, buoy and rainfall data with AI-assisted forecast calls and a structured surf log.</p>
+<p>Recent work focused on short-term wind observations, better handling of manual forecast requests and improving data integrity when older sessions are edited.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>FieldHub V2</title>
+      <link>https://armsto88.github.io/notes/fieldhub-v2.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldhub-v2.html</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldhub</category><category>pcb</category><category>prototype</category>
+      <description>FieldHub V2 has moved through final prototype-production checks.</description>
+      <content:encoded><![CDATA[<p>The latest revision includes a redesigned solar charging stage and several layout refinements around power conversion, feedback sensing and assembly.</p>
+<p>The current board has been cleared for a small five-board prototype run, with a structured bench bring-up plan ready for when the boards arrive.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>FieldMesh Platform</title>
+      <link>https://armsto88.github.io/notes/fieldmesh-platform.html</link>
+      <guid isPermaLink="true">https://armsto88.github.io/notes/fieldmesh-platform.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>Project update</category><category>fieldmesh</category><category>firmware</category><category>backend</category>
+      <description>FieldMesh completed a substantial backend and firmware hardening pass.</description>
+      <content:encoded><![CDATA[<p>The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.</p>
+<p>A read-only demo project is also available for demonstrations and conference use.</p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>
