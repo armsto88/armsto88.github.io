@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#556241"><title>TA Sensor - Brand preview</title>
+<link rel="icon" type="image/svg+xml" href="../03_Favicons/favicon.svg">
+<link rel="icon" href="../03_Favicons/favicon.ico" sizes="any">
+<link rel="stylesheet" href="ta-brand.css">
+<style>
+.site-header { display:flex; justify-content:space-between; align-items:center; padding:26px 0; border-bottom:1px solid var(--color-border) }
+.site-header img { width:86px; height:auto; }
+nav { display:flex; gap:30px; align-items:center; }
+nav a {color:var(--color-text);text-decoration:none;font-weight:500;font-size:14px}
+.hero {display:grid;grid-template-columns:1.16fr .84fr;gap:5rem;align-items:center;min-height:560px;padding:70px 0}
+.hero p {font-size:1.1rem;color:var(--color-text-secondary);max-width:550px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.visual {background:var(--ta-sage-pale); min-height:390px;border-radius:20px;display:flex;align-items:center;justify-content:center; padding:42px;position:relative}
+.visual img{width:100%;max-width:460px}
+.visual .tag{position:absolute;bottom:25px;left:30px;font-size:11px;letter-spacing:.17em;color:var(--ta-olive-dark);text-transform:uppercase}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:20px 0 70px}
+.projects p{color:var(--color-text-secondary);font-size:.95rem}
+.footer{padding:24px 0 40px;color:var(--color-text-secondary);font-size:.8rem;border-top:1px solid var(--color-border)}
+.theme-button{border:1px solid var(--color-border);border-radius:8px;padding:8px 12px;background:var(--color-surface);color:var(--color-text);cursor:pointer}
+@media(max-width:800px){.hero{grid-template-columns:1fr;min-height:0;gap:36px}.visual{min-height:250px}nav a{display:none}.projects{grid-template-columns:1fr}}
+</style></head><body>
+<div class="ta-container">
+<header class="site-header"><a href="#top" aria-label="Home"><img src="../01_Vector_Logos/ta-mark-olive.svg" alt="TA"></a><nav aria-label="Main"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a><button class="theme-button" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light':'dark'">Toggle theme</button></nav></header>
+<main id="top"><section class="hero"><div><div class="ta-eyebrow">Ecology &amp; technology</div><h1>Technology for a better understanding of nature.</h1><p>Environmental monitoring, embedded systems and scientific tools built to make ecological data more accessible.</p><div class="hero-actions"><a class="ta-button ta-button--primary" href="#work">Explore work &rarr;</a><a class="ta-button ta-button--outline" href="#contact">Get in touch</a></div></div>
+<div class="visual"><img src="../01_Vector_Logos/ta-mark-olive-sage.svg" alt="TA monogram"><span class="tag">01 / Sensor identity</span></div></section>
+<section id="work"><div class="ta-eyebrow">Selected disciplines</div><h2>Fieldwork meets engineering.</h2><div class="projects"><article class="ta-card"><div class="ta-eyebrow">01 / FIELD</div><h3>Ecological monitoring</h3><p>Systems for collecting reliable environmental observations in the field.</p></article><article class="ta-card"><div class="ta-eyebrow">02 / BUILD</div><h3>Embedded electronics</h3><p>Purpose-built sensing, firmware and connected hardware.</p></article><article class="ta-card"><div class="ta-eyebrow">03 / EXPLORE</div><h3>Data and research</h3><p>Turning sensor streams into accessible, interpretable results.</p></article></div></section></main>
+<footer class="footer" id="contact">TA / Tom Armstrong &nbsp; &middot; &nbsp; Brand-system demonstration. Replace example copy with your own.</footer></div></body></html>

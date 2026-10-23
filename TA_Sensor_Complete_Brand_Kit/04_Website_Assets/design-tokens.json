@@ -1,0 +1,35 @@
+{
+  "name": "TA Sensor",
+  "version": "1.0",
+  "colors": {
+    "olive": "#556241",
+    "sage": "#8A9A7B",
+    "charcoal": "#1F1F1F",
+    "light": "#F6F7F2",
+    "olive_dark": "#35402D",
+    "olive_hover": "#435032",
+    "sage_light": "#E9EDE4",
+    "muted": "#657063",
+    "border": "#D7DED2",
+    "white": "#FFFFFF",
+    "black": "#090B09"
+  },
+  "typography": {
+    "fontFamily": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "weights": {
+      "body": 400,
+      "medium": 500,
+      "semiBold": 600,
+      "bold": 700
+    }
+  },
+  "radii": {
+    "sm": "8px",
+    "md": "14px",
+    "lg": "20px"
+  },
+  "spacing": {
+    "pageMax": "1120px",
+    "section": "clamp(64px, 9vw, 128px)"
+  }
+}
