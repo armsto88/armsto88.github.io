@@ -35,4 +35,4 @@ horizontal rules and images. Raw HTML is not rendered.
 - Links and images that are not full URLs are relative to the site root, for example
   `projects/fieldmesh.html` or `assets/project_pics/ecopi/dashboard_1.webp`.
 
-![Alt text for the image](assets/social-card.png "Optional caption")
+![Alt text for the image](assets/brand/social-preview-1200x630.png "Optional caption")

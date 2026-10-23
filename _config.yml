@@ -1,5 +1,0 @@
-# GitHub Pages configuration
-# Plain HTML and CSS; .nojekyll prevents Jekyll processing.
-
-exclude:
-  - README.md
