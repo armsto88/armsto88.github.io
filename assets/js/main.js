@@ -1,4 +1,6 @@
 (() => {
+  document.documentElement.classList.add('js');
+
   const toggle = document.querySelector('.nav__toggle');
   const navLinks = document.querySelector('.nav__links');
 
@@ -68,21 +70,48 @@
     else link.removeAttribute('aria-current');
   });
 
-  document.querySelectorAll('[data-model-load]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const wrap = button.closest('.model-viewer-wrap');
-      const viewer = wrap?.querySelector('model-viewer');
-      if (!viewer) return;
-      if (!customElements.get('model-viewer') && !document.querySelector('script[data-model-viewer]')) {
-        const script = document.createElement('script');
-        script.type = 'module';
-        script.src = button.dataset.modelScript;
-        script.dataset.modelViewer = '';
-        document.head.append(script);
-      }
-      viewer.setAttribute('src', viewer.dataset.src);
-      wrap.classList.add('is-loaded');
-      viewer.focus();
+  document.querySelectorAll('[data-showcase]').forEach((showcase) => {
+    const tabs = Array.from(showcase.querySelectorAll('[role="tab"]'));
+    const panel = showcase.querySelector('[role="tabpanel"]');
+    const image = showcase.querySelector('[data-showcase-image]');
+    const link = showcase.querySelector('[data-showcase-link]');
+    const caption = showcase.querySelector('[data-showcase-caption]');
+    if (!tabs.length || !panel || !image || !link || !caption) return;
+
+    const select = (tab, { focus = false } = {}) => {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby', tab.id);
+      link.href = tab.dataset.src;
+      link.dataset.alt = tab.dataset.alt;
+      caption.textContent = tab.dataset.caption;
+      if (focus) tab.focus();
+      if (image.getAttribute('src') === tab.dataset.src) return;
+      image.classList.add('is-swapping');
+      window.setTimeout(() => {
+        image.src = tab.dataset.src;
+        image.alt = tab.dataset.alt;
+        image.classList.remove('is-swapping');
+      }, 180);
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (event) => {
+        const next = {
+          ArrowRight: (index + 1) % tabs.length,
+          ArrowLeft: (index - 1 + tabs.length) % tabs.length,
+          Home: 0,
+          End: tabs.length - 1,
+        }[event.key];
+        if (next === undefined) return;
+        event.preventDefault();
+        select(tabs[next], { focus: true });
+      });
+      new Image().src = tab.dataset.src;
     });
   });
 

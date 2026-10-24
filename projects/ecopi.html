@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ecoPi — Autonomous Acoustic Monitoring | Tom Armstrong</title>
-  <meta name="description" content="Tom Armstrong's work on ecoPi, an acoustic biodiversity-monitoring platform combining field hardware, automated detections, environmental data and R Shiny interfaces." />
+  <meta name="description" content="Tom Armstrong’s work at OekoFor on ecoPi, an intelligent audio recorder for automated environmental monitoring with on-device AI species recognition and a web dashboard for validation." />
   <meta name="theme-color" content="#556241" />
   <link rel="canonical" href="https://armsto88.github.io/projects/ecopi.html" />
   <link rel="icon" href="../favicon.ico" sizes="any" />
@@ -12,14 +12,14 @@
   <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
   <link rel="manifest" href="../site.webmanifest" />
   <meta property="og:title" content="ecoPi — Autonomous Acoustic Monitoring" />
-  <meta property="og:description" content="Field hardware, monitoring software and acoustic review tools developed through Tom's work at OekoFor." />
+  <meta property="og:description" content="Hardware and software work on ecoPi, OekoFor’s intelligent audio recorder for automated environmental monitoring." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://armsto88.github.io/projects/ecopi.html" />
   <meta property="og:site_name" content="Tom Armstrong" />
-  <meta property="og:image" content="https://armsto88.github.io/assets/project_pics/ecopi/ecopi-dashboard-1.webp" />
-  <meta property="og:image:width" content="1600" />
-  <meta property="og:image:height" content="708" />
-  <meta property="og:image:alt" content="ecoPi acoustic monitoring dashboard" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/project_pics/ecopi/ecopi-dashboard-laptop-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The ecoPi monitoring dashboard on a laptop" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../assets/css/style.css" />
@@ -36,10 +36,10 @@
     <header class="project-hero">
       <div class="project-body">
         <a href="../projects.html" class="back-link">All projects</a>
-        <p class="project-kicker">Passive acoustics · Biodiversity monitoring</p>
+        <p class="project-kicker">Passive acoustics · Environmental monitoring</p>
         <p class="brand-chip"><img src="../assets/partners/oekofor-mark.png" width="42" height="42" alt="" /><span>OekoFor project</span></p>
         <h1>ecoPi — autonomous acoustic monitoring</h1>
-        <p class="project-hero__intro">A modular acoustic monitoring system that links solar-powered field hardware, on-device BirdNET detection and real-time networking with browser-based tools for ecological review and interpretation.</p>
+        <p class="project-hero__intro">An intelligent audio recorder for automated environmental monitoring. Solar-powered ecoPi units record on a schedule, identify species on the device with AI models such as BirdNET, and send detections over the mobile network in near real time to a web dashboard for review and validation.</p>
       </div>
     </header>
 
@@ -66,9 +66,35 @@
       <section class="project-section" aria-labelledby="ecopi-system-title">
         <div class="project-body">
           <h2 id="ecopi-system-title">The system</h2>
-          <p>ecoPi combines solar-powered recording hardware, on-device BirdNET detection and a browser-based ecological interface. Field units capture environmental sound and run automated species recognition directly on embedded hardware, with detections and requested audio available through tools used to explore, review and validate the monitoring output.</p>
-          <p>An internet connection enables real-time data exchange during monitoring — audio can be requested and detections verified while devices are in the field. Recording times, duration and the AI model can be reconfigured during the field season to adapt to changing survey needs.</p>
-          <p>The platform is modular: acoustic monitoring can be paired with environmental sensing so temperature, humidity and other site conditions can be considered alongside species detections.</p>
+          <p>ecoPi is built on a Raspberry Pi platform with a custom board for power management and audio capture: a low-noise converter and a hardware high-pass filter that reduces wind and vibration noise before any analysis. Solar panels, lithium-ion batteries and scheduled duty cycles keep units recording for weeks or months in a rugged enclosure, without site visits.</p>
+          <p>AI models run on the recorder itself. BirdNET is the default and can be replaced remotely, including with custom-trained models for other species groups. Each detection is stored with species, time and confidence; only detections travel over the mobile network, audio is sent on request, and the full recording is kept as FLAC for later re-analysis.</p>
+          <p>Recording schedules, target species, detection thresholds and models can be changed from a web interface before or during deployment, and managed centrally across many recorders. The platform is modular, taking extra sensors such as a camera, a speaker or temperature and humidity probes, and an API passes detections and device status on to GIS, databases or custom displays.</p>
+          <p>ecoPi is developed by OekoFor in Freiburg, an official scientific cooperation partner of BirdNET, and is used for biodiversity monitoring, wildlife management and environmental education.</p>
+        </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="ecopi-dashboard-title">
+        <div class="project-body">
+          <h2 id="ecopi-dashboard-title">The dashboard</h2>
+          <p>The ecoPi dashboard brings device status, species detections and validation into one web interface, so a team can follow a project remotely: checking recorders, exploring detections across species, recorders and time, and reviewing each identification against its audio.</p>
+        </div>
+        <div class="showcase" data-showcase>
+          <div class="laptop" id="ecopi-dashboard-panel" role="tabpanel" aria-labelledby="ecopi-view-overview">
+            <div class="laptop__screen">
+              <a class="laptop__display" href="../assets/project_pics/ecopi/ecopi-dashboard-overview.webp" data-lightbox="ecopi" data-alt="ecoPi dashboard overview with today's detections, recorder status, a recorder map and the week's top species" data-showcase-link>
+                <img src="../assets/project_pics/ecopi/ecopi-dashboard-overview.webp" width="1082" height="854" alt="ecoPi dashboard overview with today's detections, recorder status, a recorder map and the week's top species" decoding="async" data-showcase-image />
+              </a>
+            </div>
+            <div class="laptop__base" aria-hidden="true"></div>
+          </div>
+          <div class="showcase__tabs" role="tablist" aria-label="Dashboard views">
+            <button type="button" role="tab" id="ecopi-view-overview" aria-selected="true" aria-controls="ecopi-dashboard-panel" tabindex="0" data-src="../assets/project_pics/ecopi/ecopi-dashboard-overview.webp" data-alt="ecoPi dashboard overview with today's detections, recorder status, a recorder map and the week's top species" data-caption="Today’s detections, most active species and species richness, recorder status and a map of every device, with the week’s most active species below.">Overview</button>
+            <button type="button" role="tab" id="ecopi-view-matrix" aria-selected="false" aria-controls="ecopi-dashboard-panel" tabindex="-1" data-src="../assets/project_pics/ecopi/ecopi-dashboard-matrix.webp" data-alt="ecoPi detection matrix shading each species by detection count per recorder" data-caption="A heatmap of every species against time, filterable by species, time range or recorder; each cell leads straight to its detections and audio.">Detection matrix</button>
+            <button type="button" role="tab" id="ecopi-view-activity" aria-selected="false" aria-controls="ecopi-dashboard-panel" tabindex="-1" data-src="../assets/project_pics/ecopi/ecopi-dashboard-activity.webp" data-alt="ecoPi activity view plotting detections of each species across the season" data-caption="Detection activity for a species over the season, per recorder or across the project, to spot migration windows, breeding periods and unexpected peaks.">Activity</button>
+            <button type="button" role="tab" id="ecopi-view-validation" aria-selected="false" aria-controls="ecopi-dashboard-panel" tabindex="-1" data-src="../assets/project_pics/ecopi/ecopi-dashboard-validation.webp" data-alt="ecoPi validation view with spectrogram, audio player and detection status" data-caption="Spectrogram and audio beside each detection: mark it confirmed, false or uncertain, and correct the species or add ones the AI model missed.">Validation</button>
+          </div>
+          <p class="showcase__caption" aria-live="polite" data-showcase-caption>Today’s detections, most active species and species richness, recorder status and a map of every device, with the week’s most active species below.</p>
+          <p class="showcase__credit">Dashboard screens as published on <a href="https://ecopi.de/" target="_blank" rel="noopener noreferrer">ecopi.de</a>.</p>
         </div>
       </section>
 
@@ -76,36 +102,13 @@
         <div class="project-body">
           <h2 id="ecopi-role-title">My contribution</h2>
           <p>I contribute across ecoPi hardware and software. My software work includes R Shiny ecological applications, dashboards, maps, detection-review tools, environmental sensor interfaces, APIs, data pipelines, performance improvements and device-status monitoring.</p>
-          <p>On the hardware side, I contribute to field testing and development. This includes ecoPi Lullaby, a custom Raspberry Pi HAT that combines low-power management with an audio interface, and ecoPi Sense, a module for collecting environmental data alongside acoustic monitoring.</p>
+          <p>On the hardware side, I contribute to field testing and development, including ecoPi Lullaby, the custom Raspberry Pi HAT for power management and audio capture, and ecoPi Sense, a module that adds environmental measurements such as temperature and humidity alongside the acoustic data.</p>
 
-          <p class="project-gallery-label">Monitoring software</p>
-          <div class="project-gallery project-gallery--four project-gallery--screenshots">
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-1.webp" data-lightbox="ecopi" data-alt="ecoPi dashboard overview"><img src="../assets/project_pics/ecopi/ecopi-dashboard-1-800.webp" width="800" height="354" alt="ecoPi dashboard overview" loading="lazy" decoding="async" /></a></figure>
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-2.webp" data-lightbox="ecopi" data-alt="ecoPi interface for exploring and reviewing species detections"><img src="../assets/project_pics/ecopi/ecopi-dashboard-2-800.webp" width="800" height="336" alt="ecoPi interface for exploring and reviewing species detections" loading="lazy" decoding="async" /></a></figure>
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-3.webp" data-lightbox="ecopi" data-alt="ecoPi project-level ecological monitoring output"><img src="../assets/project_pics/ecopi/ecopi-dashboard-3-800.webp" width="800" height="336" alt="ecoPi project-level ecological monitoring output" loading="lazy" decoding="async" /></a></figure>
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-dashboard-4.webp" data-lightbox="ecopi" data-alt="ecoPi dashboard detail view"><img src="../assets/project_pics/ecopi/ecopi-dashboard-4-800.webp" width="800" height="356" alt="ecoPi dashboard detail view" loading="lazy" decoding="async" /></a></figure>
-          </div>
-
-          <p class="project-gallery-label">ecoPi Lullaby hardware</p>
-          <div class="project-gallery project-gallery--two">
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/lullaby-top.webp" data-lightbox="ecopi" data-alt="ecoPi Lullaby Raspberry Pi HAT board"><img src="../assets/project_pics/ecopi/lullaby-top-800.webp" srcset="../assets/project_pics/ecopi/lullaby-top-400.webp 400w, ../assets/project_pics/ecopi/lullaby-top-800.webp 800w" sizes="(max-width: 720px) 100vw, 360px" width="800" height="600" alt="ecoPi Lullaby Raspberry Pi HAT board" loading="lazy" decoding="async" /></a><figcaption>Power-management and audio HAT</figcaption></figure>
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/lullaby-back.webp" data-lightbox="ecopi" data-alt="ecoPi Lullaby HAT back view"><img src="../assets/project_pics/ecopi/lullaby-back-800.webp" srcset="../assets/project_pics/ecopi/lullaby-back-400.webp 400w, ../assets/project_pics/ecopi/lullaby-back-800.webp 800w" sizes="(max-width: 720px) 100vw, 360px" width="800" height="720" alt="ecoPi Lullaby HAT back view" loading="lazy" decoding="async" /></a><figcaption>Back view of the board</figcaption></figure>
-          </div>
-
-          <p class="project-gallery-label">3D model — ecoPi Lullaby</p>
-          <div class="model-viewer-wrap">
-            <div class="model-viewer-poster">
-              <img src="../assets/project_pics/ecopi/lullaby-top-800.webp" width="800" height="600" alt="" loading="lazy" decoding="async" />
-              <button type="button" class="btn btn--primary" data-model-load data-model-script="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js">Load the 3D model (28&nbsp;MB)</button>
-            </div>
-            <model-viewer data-src="../assets/models/ecopi-lullaby.glb" alt="Interactive 3D model of the ecoPi Lullaby Raspberry Pi HAT board" auto-rotate camera-controls rotation-per-second="20deg" shadow-intensity="0.3" exposure="2.0" environment-image="neutral" autoplay></model-viewer>
-            <p class="model-viewer-hint">Drag to rotate · scroll to zoom</p>
-          </div>
-
-          <p class="project-gallery-label">ecoPi Sense hardware</p>
-          <div class="project-gallery project-gallery--two">
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-sense-1.webp" data-lightbox="ecopi" data-alt="ecoPi Sense environmental sensor module PCB render"><img src="../assets/project_pics/ecopi/ecopi-sense-1.webp" width="1600" height="1224" alt="ecoPi Sense environmental sensor module PCB render" loading="lazy" decoding="async" /></a><figcaption>Environmental sensor module render</figcaption></figure>
-            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-sense-2.webp" data-lightbox="ecopi" data-alt="Alternate view of the ecoPi Sense PCB"><img src="../assets/project_pics/ecopi/ecopi-sense-2.webp" width="1600" height="1183" alt="Alternate view of the ecoPi Sense PCB" loading="lazy" decoding="async" /></a><figcaption>Alternate module view</figcaption></figure>
+          <p class="project-gallery-label">ecoPi hardware</p>
+          <div class="project-gallery project-gallery--three">
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/lullaby-back.webp" data-lightbox="ecopi" data-alt="Underside of the ecoPi Lullaby Raspberry Pi HAT, version 4.1.0"><img src="../assets/project_pics/ecopi/lullaby-back-800.webp" srcset="../assets/project_pics/ecopi/lullaby-back-400.webp 400w, ../assets/project_pics/ecopi/lullaby-back-800.webp 800w" sizes="(max-width: 720px) 100vw, 250px" width="800" height="720" alt="Underside of the ecoPi Lullaby Raspberry Pi HAT, version 4.1.0" loading="lazy" decoding="async" /></a><figcaption>ecoPi Lullaby HAT, underside</figcaption></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-sense-1.webp" data-lightbox="ecopi" data-alt="ecoPi Sense environmental sensor module PCB render"><img src="../assets/project_pics/ecopi/ecopi-sense-1-800.webp" srcset="../assets/project_pics/ecopi/ecopi-sense-1-400.webp 400w, ../assets/project_pics/ecopi/ecopi-sense-1-800.webp 800w" sizes="(max-width: 720px) 100vw, 250px" width="800" height="612" alt="ecoPi Sense environmental sensor module PCB render" loading="lazy" decoding="async" /></a><figcaption>ecoPi Sense module</figcaption></figure>
+            <figure><a class="project-gallery__link" href="../assets/project_pics/ecopi/ecopi-sense-2.webp" data-lightbox="ecopi" data-alt="Alternate view of the ecoPi Sense PCB"><img src="../assets/project_pics/ecopi/ecopi-sense-2-800.webp" srcset="../assets/project_pics/ecopi/ecopi-sense-2-400.webp 400w, ../assets/project_pics/ecopi/ecopi-sense-2-800.webp 800w" sizes="(max-width: 720px) 100vw, 250px" width="800" height="592" alt="Alternate view of the ecoPi Sense PCB" loading="lazy" decoding="async" /></a><figcaption>ecoPi Sense, underside</figcaption></figure>
           </div>
         </div>
       </section>
@@ -113,20 +116,20 @@
       <section class="project-section" aria-labelledby="ecopi-tools-title">
         <div class="project-body">
           <h2 id="ecopi-tools-title">Tools and technologies</h2>
-          <div class="tech-list"><span class="tag-pill">R and R Shiny</span><span class="tag-pill">JavaScript</span><span class="tag-pill">APIs and data pipelines</span><span class="tag-pill">PCB design</span><span class="tag-pill">Raspberry Pi</span><span class="tag-pill">Low-power hardware</span><span class="tag-pill">Passive acoustic monitoring</span><span class="tag-pill">BirdNET detection</span><span class="tag-pill">Real-time field networking</span></div>
+          <div class="tech-list"><span class="tag-pill">R and R Shiny</span><span class="tag-pill">JavaScript</span><span class="tag-pill">APIs and data pipelines</span><span class="tag-pill">PCB design</span><span class="tag-pill">Raspberry Pi</span><span class="tag-pill">Low-power hardware</span><span class="tag-pill">Passive acoustic monitoring</span><span class="tag-pill">BirdNET and on-device AI</span><span class="tag-pill">Mobile data transfer</span></div>
         </div>
       </section>
 
       <section class="project-section" aria-labelledby="ecopi-status-title">
         <div class="project-body">
           <h2 id="ecopi-status-title">Current status</h2>
-          <p>ecoPi is an active OekoFor monitoring platform under continued hardware and software development. My current work focuses on ecological applications and interfaces, data handling, device visibility and improvements to field hardware.</p>
+          <p>ecoPi is OekoFor’s active monitoring platform, deployed in projects worldwide and under continued hardware and software development. My current work focuses on ecological applications and interfaces, data handling, device visibility and improvements to field hardware.</p>
           <p>This page describes my contribution to the wider system. It does not claim sole authorship of ecoPi or present ongoing modules as finished products.</p>
         </div>
       </section>
 
       <section class="project-section" aria-labelledby="ecopi-links-title">
-        <div class="project-body"><h2 id="ecopi-links-title">Project link</h2><div class="project-links"><a href="https://www.oekofor.de/en/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Visit OekoFor</a></div></div>
+        <div class="project-body"><h2 id="ecopi-links-title">Project links</h2><div class="project-links"><a href="https://ecopi.de/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Visit ecopi.de</a><a href="https://www.oekofor.de/en/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Visit OekoFor</a></div></div>
       </section>
     </article>
 

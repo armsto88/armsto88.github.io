@@ -10,12 +10,11 @@ A dependency-free static site for Tom Armstrong, ecologist and environmental tec
 - `tools/build_notes.py` — builds the notes pages, feeds, homepage timeline and sitemap entries
 - `writing.html`, `writing/` — an earlier writing section, `noindex` and not linked from the navigation
 - `assets/css/style.css` — the whole design system; colour tokens at the top come from the brand kit
-- `assets/js/main.js` — navigation, filters, lightbox and the on-demand 3D viewer
+- `assets/js/main.js` — navigation, filters, lightbox and the dashboard showcase tabs
 - `assets/brand/` — logo marks, favicons and the social preview image used by the site
 - `assets/fonts/` — Inter v4.1 web fonts, self-hosted, with their licence
 - `assets/project_pics/` — project images as WebP at 1600, 800 and 400 px wide
 - `assets/partners/` — partner logos (OekoFor, UNE, REWI)
-- `assets/models/` — 3D models, loaded only when a visitor asks for them
 - `favicon.ico`, `site.webmanifest` — kept at the root, where browsers look for them
 - `TA_Sensor_Complete_Brand_Kit/` — the source brand kit (logos, favicons, style guide). Copy files from here into `assets/brand/` rather than linking to the kit directly.
 
@@ -25,7 +24,7 @@ A dependency-free static site for Tom Armstrong, ecologist and environmental tec
 python3 serve.py
 ```
 
-Then open `http://localhost:8000/`. `serve.py` is a plain static server that also sends the right MIME type for `.glb` models.
+Then open `http://localhost:8000/`. `serve.py` is a plain static file server.
 
 ## Changing the site
 
