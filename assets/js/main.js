@@ -85,7 +85,7 @@
         item.tabIndex = selected ? 0 : -1;
       });
       panel.setAttribute('aria-labelledby', tab.id);
-      link.href = tab.dataset.src;
+      link.href = tab.dataset.full || tab.dataset.src;
       link.dataset.alt = tab.dataset.alt;
       caption.textContent = tab.dataset.caption;
       if (focus) tab.focus();
