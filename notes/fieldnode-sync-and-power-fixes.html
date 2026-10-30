@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FieldNode — Sync and Power-Off Fixes | Tom Armstrong</title>
+  <meta name="description" content="The sync sweep showed nodes missing windows even when the hub was on time. The cause was in the node firmware, and fixing it became a set of small changes, each checked on the bench before the next." />
+  <meta name="theme-color" content="#556241" />
+  <link rel="canonical" href="https://armsto88.github.io/notes/fieldnode-sync-and-power-fixes.html" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Tom Armstrong — workbench notes" href="feed.xml" />
+  <meta property="og:title" content="FieldNode — Sync and Power-Off Fixes | Tom Armstrong" />
+  <meta property="og:description" content="The sync sweep showed nodes missing windows even when the hub was on time. The cause was in the node firmware, and fixing it became a set of small changes, each checked on the bench before the next." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://armsto88.github.io/notes/fieldnode-sync-and-power-fixes.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/brand/social-preview-1200x630.png" />
+  <meta property="og:image:alt" content="Tom Armstrong — ecologist and environmental technologist" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta property="article:published_time" content="2026-10" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "FieldNode — Sync and Power-Off Fixes",
+    "description": "The sync sweep showed nodes missing windows even when the hub was on time. The cause was in the node firmware, and fixing it became a set of small changes, each checked on the bench before the next.",
+    "author": {
+      "@type": "Person",
+      "name": "Tom Armstrong",
+      "url": "https://armsto88.github.io/"
+    },
+    "mainEntityOfPage": "https://armsto88.github.io/notes/fieldnode-sync-and-power-fixes.html",
+    "keywords": [
+      "fieldnode",
+      "firmware",
+      "sync",
+      "power"
+    ],
+    "datePublished": "2026-10"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img class="nav__mark" src="../assets/brand/ta-mark-olive.svg" width="58" height="32" alt="" />
+        <span>Tom Armstrong</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu">
+        <span class="nav__toggle-lines" aria-hidden="true">
+          <span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span>
+        </span>
+      </button>
+      <ul class="nav__links" id="primary-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li>
+        <li><a href="../cv.html">Experience</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <header class="article-header">
+      <div class="article-body">
+        <a href="index.html" class="back-link">All workbench notes</a>
+        <p class="article-kicker"><span class="note-type" data-note-type="project-update">Project update</span></p>
+        <h1>FieldNode — Sync and Power-Off Fixes</h1>
+        <p class="article-header__intro">The sync sweep showed nodes missing windows even when the hub was on time. The cause was in the node firmware, and fixing it became a set of small changes, each checked on the bench before the next.</p>
+        <div class="article-meta"><time datetime="2026-10">Oct 2026</time><span>FieldMesh</span><span>fieldnode, firmware, sync, power</span></div>
+      </div>
+    </header>
+
+    <article class="article-content">
+      <div class="article-body">
+<p>After each reading a node set its next wake for one interval from now, so every wake drifted later by the length of the wake. Nodes released by the same sync window drifted together. When a reading was still running at the pre-wake minute of the next sync, the node skipped that window completely and powered off with its radio never switched on.</p>
+<p>The fix went in as seven small changes, each checked on the bench before the next:</p>
+<ul><li>Readings are scheduled on the UTC clock grid, so all nodes sample in the same minute and nothing drifts.</li><li>An alarm that comes due while a node is awake is handled before it sleeps, instead of being cleared.</li><li>A node never releases power over a pending RTC alarm. On the V3 board a set alarm can hold the power switch on, which used to leave the node awake and doing nothing.</li><li>A node that loses its clock listens for the hub for 4 s of every 45 s, then recovers its time from the next window. Before, it stayed awake with its radio off until the battery was flat.</li><li>A node removed from a hub stays on the radio for its idle period instead of cutting power at once.</li><li>A queued time update is aged by however long it waited before it is applied.</li><li>Daily sync mode is removed, so the interval is the only schedule.</li></ul>
+      </div>
+    </article>
+
+    <aside class="next-item" aria-labelledby="related-title">
+      <div class="article-body">
+        <p class="next-item__label">Previous note</p>
+        <h2 id="related-title"><a href="auris-audio-front-end-parts.html">Auris — Choosing Parts for the Audio Front End →</a></h2>
+        <p>Every part in the Auris audio front end now has an exact part number, and the passives were chosen for what they do to the signal. Ceramic capacitors, for example, can turn enclosure vibration into noise.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__brand"><img class="footer__mark" src="../assets/brand/ta-mark-white.svg" width="47" height="26" alt="" /><span>Tom Armstrong</span></p>
+        <p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__links">
+          <li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <ul class="footer__links">
+          <li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

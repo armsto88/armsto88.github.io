@@ -227,6 +227,18 @@
                 <ol class="log__entries">
                   <li class="log__entry" data-category="project-update">
                     <div class="log__text">
+                      <h4 class="log__title"><a href="notes/fieldnode-sync-and-power-fixes.html">FieldNode — Sync and Power-Off Fixes</a></h4>
+                      <ul class="log__highlights"><li>Readings now sit on a fixed UTC clock grid, so nodes no longer drift into the sync window together</li><li>An alarm that comes due during a wake is now handled, not wiped</li><li>A node never powers off over a pending RTC alarm</li><li>A node that loses its clock listens for the hub in short bursts and recovers by itself</li></ul>
+                    </div>
+                  </li>
+                  <li class="log__entry" data-category="project-update">
+                    <div class="log__text">
+                      <h4 class="log__title"><a href="notes/fieldhub-v2-sync-sweep-results.html">FieldHub V2 — Sync Sweep Results</a></h4>
+                      <ul class="log__highlights"><li>Two nodes against Hub V2, with a hub boot delay injected from 0 to 85 s</li><li>Original timing: both nodes joined up to a 30 s delay, neither from 35 s</li><li>Hub woken 45 s before the slot: the edge moved to 70 s, as the timing model predicts</li><li>A missed window costs time, not data: queued readings upload at the next one</li></ul>
+                    </div>
+                  </li>
+                  <li class="log__entry" data-category="project-update">
+                    <div class="log__text">
                       <h4 class="log__title"><a href="notes/fieldhub-v2-sensor-bring-up.html">FieldHub V2 — Sensor Bring-Up</a></h4>
                       <ul class="log__highlights"><li>Four I²C sensor ports verified with an SHT40, including at 400 kHz</li><li>ADS1015 inputs within about 1% of a reference meter, no crosstalk</li><li>Reed input works, but its GPIO moves in the next revision</li><li>Still to test: ESP-NOW, RTC backup retention, longer wake cycles</li></ul>
                     </div>
@@ -237,18 +249,6 @@
                       <ul class="log__highlights"><li>First test: controlled hub boot delays, two nodes against Hub V2</li><li>Goal: measured node capacity instead of theoretical estimates</li></ul>
                     </div>
                   </li>
-                  <li class="log__entry" data-category="project-update">
-                    <div class="log__text">
-                      <h4 class="log__title"><a href="notes/fieldnode-v4-pcb-layout-complete.html">FieldNode V4 — PCB Layout Complete</a></h4>
-                      <ul class="log__highlights"><li>Layout complete and prototype manufacturing package prepared</li><li>Final review fixes: SDI-12 resistor value, reverse-battery protection</li></ul>
-                    </div>
-                  </li>
-                  <li class="log__entry" data-category="project-update">
-                    <div class="log__text">
-                      <h4 class="log__title"><a href="notes/fieldmesh-updating-the-public-project.html">FieldMesh — Updating the Public Project</a></h4>
-                      <ul class="log__highlights"><li>New FieldHub V2 renders on the FieldMesh pages</li><li>Case study checked against the repositories: built, tested, planned</li></ul>
-                    </div>
-                  </li>
                 </ol>
               </li>
               <li class="log__project-group" data-accent="2">
@@ -256,8 +256,8 @@
                 <ol class="log__entries">
                   <li class="log__entry" data-category="project-update">
                     <div class="log__text">
-                      <h4 class="log__title"><a href="notes/auris-from-concept-to-hardware.html">Auris — From Concept to Hardware</a></h4>
-                      <ul class="log__highlights"><li>Audio front end, solar power and LTE sections defined</li><li>Next: MCU and processing architecture</li></ul>
+                      <h4 class="log__title"><a href="notes/auris-audio-front-end-parts.html">Auris — Choosing Parts for the Audio Front End</a></h4>
+                      <ul class="log__highlights"><li>Every fitted part in the audio front end has an exact LCSC part number, test pads aside</li><li>Signal-path capacitors are C0G, and bias and DC-blocking capacitors are tantalum</li><li>One ceramic that didn't belong on a bias node was caught and replaced</li><li>Next: the same check for the power and LTE sections</li></ul>
                     </div>
                   </li>
                 </ol>

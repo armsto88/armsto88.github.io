@@ -66,6 +66,18 @@
             <li class="log__project-group" data-accent="1">
               <p class="log__project">FieldMesh</p>
               <ol class="log__entries">
+                <li class="log__entry" data-category="project-update">
+                  <div class="log__text">
+                    <h3 class="log__title"><a href="../notes/fieldnode-sync-and-power-fixes.html">FieldNode — Sync and Power-Off Fixes</a></h3>
+                    <ul class="log__highlights"><li>Readings now sit on a fixed UTC clock grid, so nodes no longer drift into the sync window together</li><li>An alarm that comes due during a wake is now handled, not wiped</li><li>A node never powers off over a pending RTC alarm</li><li>A node that loses its clock listens for the hub in short bursts and recovers by itself</li></ul>
+                  </div>
+                </li>
+                <li class="log__entry" data-category="project-update">
+                  <div class="log__text">
+                    <h3 class="log__title"><a href="../notes/fieldhub-v2-sync-sweep-results.html">FieldHub V2 — Sync Sweep Results</a></h3>
+                    <ul class="log__highlights"><li>Two nodes against Hub V2, with a hub boot delay injected from 0 to 85 s</li><li>Original timing: both nodes joined up to a 30 s delay, neither from 35 s</li><li>Hub woken 45 s before the slot: the edge moved to 70 s, as the timing model predicts</li><li>A missed window costs time, not data: queued readings upload at the next one</li></ul>
+                  </div>
+                </li>
                 <li class="log__entry log__entry--image" data-category="project-update">
                   <div class="log__text">
                     <h3 class="log__title"><a href="../notes/fieldhub-v2-sensor-bring-up.html">FieldHub V2 — Sensor Bring-Up</a></h3>
@@ -117,6 +129,12 @@
             <li class="log__project-group" data-accent="2">
               <p class="log__project">Auris</p>
               <ol class="log__entries">
+                <li class="log__entry" data-category="project-update">
+                  <div class="log__text">
+                    <h3 class="log__title"><a href="../notes/auris-audio-front-end-parts.html">Auris — Choosing Parts for the Audio Front End</a></h3>
+                    <ul class="log__highlights"><li>Every fitted part in the audio front end has an exact LCSC part number, test pads aside</li><li>Signal-path capacitors are C0G, and bias and DC-blocking capacitors are tantalum</li><li>One ceramic that didn't belong on a bias node was caught and replaced</li><li>Next: the same check for the power and LTE sections</li></ul>
+                  </div>
+                </li>
                 <li class="log__entry" data-category="project-update">
                   <div class="log__text">
                     <h3 class="log__title"><a href="../notes/auris-from-concept-to-hardware.html">Auris — From Concept to Hardware</a></h3>

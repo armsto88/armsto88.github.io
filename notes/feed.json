@@ -3,6 +3,102 @@
   "generated_from": "content/notes/*.md",
   "posts": [
     {
+      "title": "FieldNode — Sync and Power-Off Fixes",
+      "slug": "fieldnode-sync-and-power-fixes",
+      "url": "https://armsto88.github.io/notes/fieldnode-sync-and-power-fixes.html",
+      "date": "2026-10",
+      "date_precision": "month",
+      "stage": null,
+      "project": "FieldMesh",
+      "highlights": [
+        "Readings now sit on a fixed UTC clock grid, so nodes no longer drift into the sync window together",
+        "An alarm that comes due during a wake is now handled, not wiped",
+        "A node never powers off over a pending RTC alarm",
+        "A node that loses its clock listens for the hub in short bursts and recovers by itself"
+      ],
+      "type": "project-update",
+      "type_label": "Project update",
+      "tags": [
+        "fieldnode",
+        "firmware",
+        "sync",
+        "power"
+      ],
+      "excerpt": "The sync sweep showed nodes missing windows even when the hub was on time. The cause was in the node firmware, and fixing it became a set of small changes, each checked on the bench before the next.",
+      "image": null,
+      "image_alt": null,
+      "canonical_url": null,
+      "linkedin": null,
+      "reading_minutes": 1,
+      "sample": false,
+      "body_markdown": "After each reading a node set its next wake for one interval from now, so every wake drifted later by the length of the wake. Nodes released by the same sync window drifted together. When a reading was still running at the pre-wake minute of the next sync, the node skipped that window completely and powered off with its radio never switched on.\n\nThe fix went in as seven small changes, each checked on the bench before the next:\n\n- Readings are scheduled on the UTC clock grid, so all nodes sample in the same minute and nothing drifts.\n- An alarm that comes due while a node is awake is handled before it sleeps, instead of being cleared.\n- A node never releases power over a pending RTC alarm. On the V3 board a set alarm can hold the power switch on, which used to leave the node awake and doing nothing.\n- A node that loses its clock listens for the hub for 4 s of every 45 s, then recovers its time from the next window. Before, it stayed awake with its radio off until the battery was flat.\n- A node removed from a hub stays on the radio for its idle period instead of cutting power at once.\n- A queued time update is aged by however long it waited before it is applied.\n- Daily sync mode is removed, so the interval is the only schedule.",
+      "body_html": "<p>After each reading a node set its next wake for one interval from now, so every wake drifted later by the length of the wake. Nodes released by the same sync window drifted together. When a reading was still running at the pre-wake minute of the next sync, the node skipped that window completely and powered off with its radio never switched on.</p>\n<p>The fix went in as seven small changes, each checked on the bench before the next:</p>\n<ul><li>Readings are scheduled on the UTC clock grid, so all nodes sample in the same minute and nothing drifts.</li><li>An alarm that comes due while a node is awake is handled before it sleeps, instead of being cleared.</li><li>A node never releases power over a pending RTC alarm. On the V3 board a set alarm can hold the power switch on, which used to leave the node awake and doing nothing.</li><li>A node that loses its clock listens for the hub for 4 s of every 45 s, then recovers its time from the next window. Before, it stayed awake with its radio off until the battery was flat.</li><li>A node removed from a hub stays on the radio for its idle period instead of cutting power at once.</li><li>A queued time update is aged by however long it waited before it is applied.</li><li>Daily sync mode is removed, so the interval is the only schedule.</li></ul>"
+    },
+    {
+      "title": "Auris — Choosing Parts for the Audio Front End",
+      "slug": "auris-audio-front-end-parts",
+      "url": "https://armsto88.github.io/notes/auris-audio-front-end-parts.html",
+      "date": "2026-10",
+      "date_precision": "month",
+      "stage": null,
+      "project": "Auris",
+      "highlights": [
+        "Every fitted part in the audio front end has an exact LCSC part number, test pads aside",
+        "Signal-path capacitors are C0G, and bias and DC-blocking capacitors are tantalum",
+        "One ceramic that didn't belong on a bias node was caught and replaced",
+        "Next: the same check for the power and LTE sections"
+      ],
+      "type": "project-update",
+      "type_label": "Project update",
+      "tags": [
+        "auris",
+        "acoustics",
+        "audio",
+        "hardware"
+      ],
+      "excerpt": "Every part in the Auris audio front end now has an exact part number, and the passives were chosen for what they do to the signal. Ceramic capacitors, for example, can turn enclosure vibration into noise.",
+      "image": null,
+      "image_alt": null,
+      "canonical_url": null,
+      "linkedin": null,
+      "reading_minutes": 1,
+      "sample": false,
+      "body_markdown": "The audio front end is the first part of Auris to reach exact part numbers. Every fitted component now has a specific LCSC part, apart from the test pads, which are bare copper. The guide's build stops if one is missing, so the parts list and the design can't drift apart.\n\nPicking the parts meant checking each passive against what it does in the signal path. Class II ceramic capacitors (X5R, X7R) are piezoelectric, so on a high-impedance bias node, wind or rain vibration on the enclosure can show up as signal. The signal-path capacitors are therefore C0G, and the bias and DC-blocking capacitors are tantalum. The mic-bias filter moved from \"tantalum or polymer\" to a tantalum part, because polymer capacitors leak more and that leakage would add noise to the bias. Where no DC flows, as in the ADC input series resistors, thick film does the job. Thin film stays on the resistors that carry DC or set the gain.\n\nThe check also caught one of my own mistakes. The preamp mid-rail capacitor was listed as a ceramic, which is exactly what the reasoning above rules out, and it is now tantalum.\n\nThe power and LTE sections get the same check next.",
+      "body_html": "<p>The audio front end is the first part of Auris to reach exact part numbers. Every fitted component now has a specific LCSC part, apart from the test pads, which are bare copper. The guide's build stops if one is missing, so the parts list and the design can't drift apart.</p>\n<p>Picking the parts meant checking each passive against what it does in the signal path. Class II ceramic capacitors (X5R, X7R) are piezoelectric, so on a high-impedance bias node, wind or rain vibration on the enclosure can show up as signal. The signal-path capacitors are therefore C0G, and the bias and DC-blocking capacitors are tantalum. The mic-bias filter moved from \"tantalum or polymer\" to a tantalum part, because polymer capacitors leak more and that leakage would add noise to the bias. Where no DC flows, as in the ADC input series resistors, thick film does the job. Thin film stays on the resistors that carry DC or set the gain.</p>\n<p>The check also caught one of my own mistakes. The preamp mid-rail capacitor was listed as a ceramic, which is exactly what the reasoning above rules out, and it is now tantalum.</p>\n<p>The power and LTE sections get the same check next.</p>"
+    },
+    {
+      "title": "FieldHub V2 — Sync Sweep Results",
+      "slug": "fieldhub-v2-sync-sweep-results",
+      "url": "https://armsto88.github.io/notes/fieldhub-v2-sync-sweep-results.html",
+      "date": "2026-10",
+      "date_precision": "month",
+      "stage": null,
+      "project": "FieldMesh",
+      "highlights": [
+        "Two nodes against Hub V2, with a hub boot delay injected from 0 to 85 s",
+        "Original timing: both nodes joined up to a 30 s delay, neither from 35 s",
+        "Hub woken 45 s before the slot: the edge moved to 70 s, as the timing model predicts",
+        "A missed window costs time, not data: queued readings upload at the next one"
+      ],
+      "type": "project-update",
+      "type_label": "Project update",
+      "tags": [
+        "fieldhub",
+        "esp-now",
+        "sync",
+        "scaling"
+      ],
+      "excerpt": "I ran the sync test I had planned, adding a controlled boot delay to the hub and counting how many nodes still made the sync window. Nodes were lost from a 35 s delay, and waking the hub earlier moved that edge to 70 s.",
+      "image": null,
+      "image_alt": null,
+      "canonical_url": null,
+      "linkedin": null,
+      "reading_minutes": 2,
+      "sample": false,
+      "body_markdown": "In the last update I said I would test how hub boot time affects synchronisation. The test is done. I injected a controlled delay of up to 85 s before each sync window on Hub V2 and counted how many of the two nodes made it in. Each delay was sampled twice, apart from the 0 s step in the second run, whose first window wasn't logged.\n\nWith the original timing, both nodes joined at every delay up to 30 s and neither did from 35 s. That is where the timing model puts the edge. Nodes stop listening 25 s after the slot, so a hub whose boot takes longer than its wake-up lead plus 25 s misses them completely.\n\nWaking the hub 45 s before the slot instead of 10 s, and closing the window as soon as every node has checked in, moved the edge to 70 s, again where the model predicts. Both nodes joined at every delay up to 65 s, except one step at 30 s where a node-side bug lost the window in both passes. With both nodes present a window now takes about four seconds. A missed window costs time rather than data: after four empty windows each node arrived with ten queued readings, and the hub took all twenty in under seven seconds.\n\n![Dot plot of how many of the two nodes joined each sync window against injected hub boot delay, in two panels. With the original timing both nodes joined up to a 30 s delay and neither from 35 s. With the hub woken 45 s before the slot both nodes joined up to 65 s, except at 30 s where one pass lost one node and the other lost both because of a node-side bug, and neither joined from 70 s.](assets/project_pics/fieldmesh/fieldhub-sync-sweep.webp \"Nodes that joined each sync window against injected hub boot delay, two nodes against Hub V2. Each dot is one window.\")\n\nThis was two nodes in one room, with a bench hub that has no modem, so it says nothing yet about fleet size or radio contention. A later single-pass re-run put the edge in the same place. The node-side bug is fixed in the next note, but I haven't repeated the sweep since.",
+      "body_html": "<p>In the last update I said I would test how hub boot time affects synchronisation. The test is done. I injected a controlled delay of up to 85 s before each sync window on Hub V2 and counted how many of the two nodes made it in. Each delay was sampled twice, apart from the 0 s step in the second run, whose first window wasn't logged.</p>\n<p>With the original timing, both nodes joined at every delay up to 30 s and neither did from 35 s. That is where the timing model puts the edge. Nodes stop listening 25 s after the slot, so a hub whose boot takes longer than its wake-up lead plus 25 s misses them completely.</p>\n<p>Waking the hub 45 s before the slot instead of 10 s, and closing the window as soon as every node has checked in, moved the edge to 70 s, again where the model predicts. Both nodes joined at every delay up to 65 s, except one step at 30 s where a node-side bug lost the window in both passes. With both nodes present a window now takes about four seconds. A missed window costs time rather than data: after four empty windows each node arrived with ten queued readings, and the hub took all twenty in under seven seconds.</p>\n<figure><img src=\"https://armsto88.github.io/assets/project_pics/fieldmesh/fieldhub-sync-sweep.webp\" alt=\"Dot plot of how many of the two nodes joined each sync window against injected hub boot delay, in two panels. With the original timing both nodes joined up to a 30 s delay and neither from 35 s. With the hub woken 45 s before the slot both nodes joined up to 65 s, except at 30 s where one pass lost one node and the other lost both because of a node-side bug, and neither joined from 70 s.\" title=\"Nodes that joined each sync window against injected hub boot delay, two nodes against Hub V2. Each dot is one window.\" loading=\"lazy\" decoding=\"async\" /><figcaption>Nodes that joined each sync window against injected hub boot delay, two nodes against Hub V2. Each dot is one window.</figcaption></figure>\n<p>This was two nodes in one room, with a bench hub that has no modem, so it says nothing yet about fleet size or radio contention. A later single-pass re-run put the edge in the same place. The node-side bug is fixed in the next note, but I haven't repeated the sweep since.</p>"
+    },
+    {
       "title": "FieldHub V2 — Sensor Bring-Up",
       "slug": "fieldhub-v2-sensor-bring-up",
       "url": "https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html",

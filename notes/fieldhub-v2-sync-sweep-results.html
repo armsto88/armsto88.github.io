@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FieldHub V2 — Sync Sweep Results | Tom Armstrong</title>
+  <meta name="description" content="I ran the sync test I had planned, adding a controlled boot delay to the hub and counting how many nodes still made the sync window. Nodes were lost from a 35 s delay, and waking the hub earlier moved that edge to 70 s." />
+  <meta name="theme-color" content="#556241" />
+  <link rel="canonical" href="https://armsto88.github.io/notes/fieldhub-v2-sync-sweep-results.html" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Tom Armstrong — workbench notes" href="feed.xml" />
+  <meta property="og:title" content="FieldHub V2 — Sync Sweep Results | Tom Armstrong" />
+  <meta property="og:description" content="I ran the sync test I had planned, adding a controlled boot delay to the hub and counting how many nodes still made the sync window. Nodes were lost from a 35 s delay, and waking the hub earlier moved that edge to 70 s." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://armsto88.github.io/notes/fieldhub-v2-sync-sweep-results.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://armsto88.github.io/assets/brand/social-preview-1200x630.png" />
+  <meta property="og:image:alt" content="Tom Armstrong — ecologist and environmental technologist" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta property="article:published_time" content="2026-10" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "FieldHub V2 — Sync Sweep Results",
+    "description": "I ran the sync test I had planned, adding a controlled boot delay to the hub and counting how many nodes still made the sync window. Nodes were lost from a 35 s delay, and waking the hub earlier moved that edge to 70 s.",
+    "author": {
+      "@type": "Person",
+      "name": "Tom Armstrong",
+      "url": "https://armsto88.github.io/"
+    },
+    "mainEntityOfPage": "https://armsto88.github.io/notes/fieldhub-v2-sync-sweep-results.html",
+    "keywords": [
+      "fieldhub",
+      "esp-now",
+      "sync",
+      "scaling"
+    ],
+    "datePublished": "2026-10"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img class="nav__mark" src="../assets/brand/ta-mark-olive.svg" width="58" height="32" alt="" />
+        <span>Tom Armstrong</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu">
+        <span class="nav__toggle-lines" aria-hidden="true">
+          <span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span>
+        </span>
+      </button>
+      <ul class="nav__links" id="primary-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li>
+        <li><a href="../cv.html">Experience</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <header class="article-header">
+      <div class="article-body">
+        <a href="index.html" class="back-link">All workbench notes</a>
+        <p class="article-kicker"><span class="note-type" data-note-type="project-update">Project update</span></p>
+        <h1>FieldHub V2 — Sync Sweep Results</h1>
+        <p class="article-header__intro">I ran the sync test I had planned, adding a controlled boot delay to the hub and counting how many nodes still made the sync window. Nodes were lost from a 35 s delay, and waking the hub earlier moved that edge to 70 s.</p>
+        <div class="article-meta"><time datetime="2026-10">Oct 2026</time><span>FieldMesh</span><span>2 min read</span><span>fieldhub, esp-now, sync, scaling</span></div>
+      </div>
+    </header>
+
+    <article class="article-content">
+      <div class="article-body">
+<p>In the last update I said I would test how hub boot time affects synchronisation. The test is done. I injected a controlled delay of up to 85 s before each sync window on Hub V2 and counted how many of the two nodes made it in. Each delay was sampled twice, apart from the 0 s step in the second run, whose first window wasn't logged.</p>
+<p>With the original timing, both nodes joined at every delay up to 30 s and neither did from 35 s. That is where the timing model puts the edge. Nodes stop listening 25 s after the slot, so a hub whose boot takes longer than its wake-up lead plus 25 s misses them completely.</p>
+<p>Waking the hub 45 s before the slot instead of 10 s, and closing the window as soon as every node has checked in, moved the edge to 70 s, again where the model predicts. Both nodes joined at every delay up to 65 s, except one step at 30 s where a node-side bug lost the window in both passes. With both nodes present a window now takes about four seconds. A missed window costs time rather than data: after four empty windows each node arrived with ten queued readings, and the hub took all twenty in under seven seconds.</p>
+<figure><img src="../assets/project_pics/fieldmesh/fieldhub-sync-sweep.webp" alt="Dot plot of how many of the two nodes joined each sync window against injected hub boot delay, in two panels. With the original timing both nodes joined up to a 30 s delay and neither from 35 s. With the hub woken 45 s before the slot both nodes joined up to 65 s, except at 30 s where one pass lost one node and the other lost both because of a node-side bug, and neither joined from 70 s." title="Nodes that joined each sync window against injected hub boot delay, two nodes against Hub V2. Each dot is one window." loading="lazy" decoding="async" /><figcaption>Nodes that joined each sync window against injected hub boot delay, two nodes against Hub V2. Each dot is one window.</figcaption></figure>
+<p>This was two nodes in one room, with a bench hub that has no modem, so it says nothing yet about fleet size or radio contention. A later single-pass re-run put the edge in the same place. The node-side bug is fixed in the next note, but I haven't repeated the sweep since.</p>
+      </div>
+    </article>
+
+    <aside class="next-item" aria-labelledby="related-title">
+      <div class="article-body">
+        <p class="next-item__label">Previous note</p>
+        <h2 id="related-title"><a href="fieldhub-v2-sensor-bring-up.html">FieldHub V2 — Sensor Bring-Up →</a></h2>
+        <p>The latest FieldHub V2 prototype is now well into bench bring-up.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__brand"><img class="footer__mark" src="../assets/brand/ta-mark-white.svg" width="47" height="26" alt="" /><span>Tom Armstrong</span></p>
+        <p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__links">
+          <li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <ul class="footer__links">
+          <li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
