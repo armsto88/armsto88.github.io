@@ -2417,8 +2417,34 @@ code {
   color: var(--ta-on-dark-accent-hover);
 }
 
-.note-feed-link {
-  margin-top: 1.25rem;
+.note-feed {
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+.note-feed__text {
+  margin: 0 0 0.75rem;
+}
+
+.note-feed__url {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.note-feed__url code {
+  padding: 0.45em 0.65em;
+  font-size: 0.85rem;
+}
+
+.note-feed__copy {
+  min-height: 40px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
 }
 
 .note-empty {

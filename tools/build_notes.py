@@ -866,6 +866,7 @@ def index_page(posts: list[Post], nav: str, footer: str) -> str:
         listing = log_list(posts, "../", "h2", "h3").strip()
     else:
         listing = '<p class="note-empty">Nothing published yet.</p>'
+    feed_url = esc(f"{SITE_URL}/notes/feed.xml")
     main = f"""    <header class="hero hero--compact">
       <div class="container">
         <p class="hero__eyebrow">{SECTION_LABEL}</p>
@@ -877,7 +878,10 @@ def index_page(posts: list[Post], nav: str, footer: str) -> str:
     <section class="section section--compact notes-index" aria-label="All {SECTION_NOUN}">
       <div class="container">{filters}
         {listing}
-        <p class="note-feed-link"><a class="text-link" href="feed.xml">Subscribe via RSS</a></p>
+        <div class="note-feed">
+          <p class="note-feed__text"><strong>Subscribe via RSS.</strong> Add this address to a feed reader, such as Feedly or NetNewsWire, to get new notes as they’re posted.</p>
+          <p class="note-feed__url"><code>{feed_url}</code> <button type="button" class="btn btn--ghost note-feed__copy" data-copy="{feed_url}" aria-live="polite" hidden>Copy</button></p>
+        </div>
       </div>
     </section>"""
     return page(head_html, nav, main, footer)

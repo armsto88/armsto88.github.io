@@ -130,6 +130,24 @@
     button.addEventListener('click', () => window.print());
   });
 
+  // The button stays hidden where the clipboard API is unavailable; the address is still selectable.
+  document.querySelectorAll('[data-copy]').forEach((button) => {
+    if (!navigator.clipboard) return;
+    const label = button.textContent;
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        button.textContent = 'Copied';
+      } catch {
+        button.textContent = 'Copy failed';
+      }
+      window.setTimeout(() => {
+        button.textContent = label;
+      }, 2000);
+    });
+  });
+
   document.querySelectorAll('[data-filter-group]').forEach((group) => {
     const buttons = group.querySelectorAll('[data-filter]');
     const targetSelector = group.dataset.filterTargets;
