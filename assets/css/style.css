@@ -2672,6 +2672,14 @@ code {
   font-size: 0.66rem;
 }
 
+.footer__copy a {
+  color: inherit;
+}
+
+.footer__copy a:hover {
+  color: #ffffff;
+}
+
 .error-page {
   display: grid;
   min-height: calc(100svh - var(--nav-height));
