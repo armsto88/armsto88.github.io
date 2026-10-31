@@ -878,9 +878,22 @@ def index_page(posts: list[Post], nav: str, footer: str) -> str:
     <section class="section section--compact notes-index" aria-label="All {SECTION_NOUN}">
       <div class="container">{filters}
         {listing}
-        <div class="note-feed">
-          <p class="note-feed__text"><strong>Subscribe via RSS.</strong> Add this address to a feed reader, such as Feedly or NetNewsWire, to get new notes as they’re posted.</p>
-          <p class="note-feed__url"><code>{feed_url}</code> <button type="button" class="btn btn--ghost note-feed__copy" data-copy="{feed_url}" aria-live="polite" hidden>Copy</button></p>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="subscribe-title">
+      <div class="container cta-section__inner cta-section__inner--feed">
+        <div>
+          <p class="section-header__label">Follow along</p>
+          <h2 id="subscribe-title">Get new notes as they’re posted</h2>
+          <p>Add the RSS feed to a reader app, such as Feedly or NetNewsWire, and new notes arrive there automatically.</p>
+        </div>
+        <div class="feed-copy">
+          <p class="feed-copy__label">RSS feed address</p>
+          <div class="feed-copy__field">
+            <code class="feed-copy__url">{feed_url.replace("/notes/", "/notes/<wbr>")}</code>
+            <button type="button" class="btn btn--primary feed-copy__btn" data-copy="{feed_url}" aria-live="polite" hidden>Copy</button>
+          </div>
         </div>
       </div>
     </section>"""
