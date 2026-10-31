@@ -747,6 +747,7 @@ def page(head_html: str, nav: str, main: str, footer: str) -> str:
   {footer}
 
   <script src="../assets/js/main.js"></script>
+  <script data-goatcounter="https://tomarmstrong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
 """
