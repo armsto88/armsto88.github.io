@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://armsto88.github.io/</loc></url>
-  <url><loc>https://armsto88.github.io/about.html</loc></url>
-  <url><loc>https://armsto88.github.io/projects.html</loc></url>
-  <url><loc>https://armsto88.github.io/projects/ecopi.html</loc></url>
-  <url><loc>https://armsto88.github.io/projects/fieldmesh.html</loc></url>
-  <url><loc>https://armsto88.github.io/cv.html</loc></url>
-  <url><loc>https://armsto88.github.io/contact.html</loc></url>
+  <url><loc>https://tomarmstrong.net/</loc></url>
+  <url><loc>https://tomarmstrong.net/about.html</loc></url>
+  <url><loc>https://tomarmstrong.net/projects.html</loc></url>
+  <url><loc>https://tomarmstrong.net/projects/ecopi.html</loc></url>
+  <url><loc>https://tomarmstrong.net/projects/fieldmesh.html</loc></url>
+  <url><loc>https://tomarmstrong.net/cv.html</loc></url>
+  <url><loc>https://tomarmstrong.net/contact.html</loc></url>
   <!-- notes:start -->
-  <url><loc>https://armsto88.github.io/notes/index.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldnode-sync-and-power-fixes.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/auris-audio-front-end-parts.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldhub-v2-sync-sweep-results.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldhub-v2-sensor-bring-up.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldhub-v2-scaling-the-network.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldnode-v4-pcb-layout-complete.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/auris-from-concept-to-hardware.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldmesh-updating-the-public-project.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldmesh-node-v4.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/sketch-surf.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldhub-v2.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/fieldmesh-platform.html</loc></url>
-  <url><loc>https://armsto88.github.io/notes/auris.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/index.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldnode-sync-and-power-fixes.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/auris-audio-front-end-parts.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldhub-v2-sync-sweep-results.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldhub-v2-sensor-bring-up.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldhub-v2-scaling-the-network.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldnode-v4-pcb-layout-complete.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/auris-from-concept-to-hardware.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldmesh-updating-the-public-project.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldmesh-node-v4.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/sketch-surf.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldhub-v2.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/fieldmesh-platform.html</loc></url>
+  <url><loc>https://tomarmstrong.net/notes/auris.html</loc></url>
   <!-- notes:end -->
 </urlset>

@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "notes"
 OUT_DIR = ROOT / "notes"
 
-SITE_URL = "https://armsto88.github.io"
+SITE_URL = "https://tomarmstrong.net"
 SITE_NAME = "Tom Armstrong"
 AUTHOR = "Tom Armstrong"
 DEFAULT_IMAGE = "assets/brand/social-preview-1200x630.png"
