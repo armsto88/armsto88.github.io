@@ -168,8 +168,7 @@
       <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
       <category>Project update</category><category>fieldmesh</category><category>firmware</category><category>backend</category>
       <description>FieldMesh completed a substantial backend and firmware hardening pass.</description>
-      <content:encoded><![CDATA[<p>The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.</p>
-<p>A read-only demo project is also available for demonstrations and conference use.</p>]]></content:encoded>
+      <content:encoded><![CDATA[<p>The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.</p>]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -9,5 +9,3 @@ tags: [fieldmesh, firmware, backend]
 ---
 
 The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.
-
-A read-only demo project is also available for demonstrations and conference use.

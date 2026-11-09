@@ -444,8 +444,8 @@
       "linkedin": null,
       "reading_minutes": 1,
       "sample": false,
-      "body_markdown": "The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.\n\nA read-only demo project is also available for demonstrations and conference use.",
-      "body_html": "<p>The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.</p>\n<p>A read-only demo project is also available for demonstrations and conference use.</p>"
+      "body_markdown": "The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.",
+      "body_html": "<p>The system now uses a single backend, signed firmware updates, short-lived provisioning codes, stronger device-state handling, and additional race-condition testing.</p>"
     },
     {
       "title": "Auris",
