@@ -3,6 +3,102 @@
   "generated_from": "content/notes/*.md",
   "posts": [
     {
+      "title": "FieldNode V4 — First Board Bring-Up",
+      "slug": "fieldnode-v4-first-board-bring-up",
+      "url": "https://tomarmstrong.net/notes/fieldnode-v4-first-board-bring-up.html",
+      "date": "2026-11",
+      "date_precision": "month",
+      "stage": null,
+      "project": "FieldMesh",
+      "highlights": [
+        "From a 4.14 V battery the 3.3 V, 5 V and 12 V rails measure 3.31 V, 5.05 V and 12.14 V",
+        "25 consecutive RTC wake cycles pass, and the battery reads within about 1% of a meter",
+        "All four I²C ports read an SHT40 cleanly, and the selectable 3.3, 5 and 12 V port supply is right on a meter",
+        "Still to do: reed input, real sensors on SDI-12 and RS-485, sleep current"
+      ],
+      "type": "project-update",
+      "type_label": "Project update",
+      "tags": [
+        "fieldnode",
+        "hardware",
+        "bring-up",
+        "v4"
+      ],
+      "excerpt": "The first FieldNode V4 boards arrived on 6 November. The first one has been through the bring-up suite: the power rails, RTC wake cycles and I²C ports all behave as designed, and the SDI-12 and RS-485 interfaces pass their first checks.",
+      "image": null,
+      "image_alt": null,
+      "canonical_url": null,
+      "linkedin": null,
+      "reading_minutes": 1,
+      "sample": false,
+      "body_markdown": "The first FieldNode V4 boards arrived on 6 November, so last month's PCB design is now hardware. I adapted the bring-up suite I used for the FieldHub and ran the first board through it, powered from a single battery cell.\n\nThe rails came up as designed. With the battery at 4.14 V the 3.3 V, 5 V and 12 V rails measured 3.31 V, 5.05 V and 12.14 V, and the battery reading was within about 1% of a meter. The wake path works too: all 11 RTC alarm checks and 25 consecutive wake cycles passed, and the board cuts its own power within 0.1 s of releasing it. All four I²C ports read an SHT40 moved between them with no bus errors, the ADC passes its checks, and the selectable analogue-port supply gives the right 3.3, 5 or 12 V on a meter.\n\nSome of the board is still unproven. The reed input needs a connector I don't have yet, and the SDI-12 and RS-485 ports have only passed their checks with nothing attached. I haven't measured sleep current either, because I don't have a suitable meter. Real sensors are next, starting with a soil probe on the analogue inputs.",
+      "body_html": "<p>The first FieldNode V4 boards arrived on 6 November, so last month's PCB design is now hardware. I adapted the bring-up suite I used for the FieldHub and ran the first board through it, powered from a single battery cell.</p>\n<p>The rails came up as designed. With the battery at 4.14 V the 3.3 V, 5 V and 12 V rails measured 3.31 V, 5.05 V and 12.14 V, and the battery reading was within about 1% of a meter. The wake path works too: all 11 RTC alarm checks and 25 consecutive wake cycles passed, and the board cuts its own power within 0.1 s of releasing it. All four I²C ports read an SHT40 moved between them with no bus errors, the ADC passes its checks, and the selectable analogue-port supply gives the right 3.3, 5 or 12 V on a meter.</p>\n<p>Some of the board is still unproven. The reed input needs a connector I don't have yet, and the SDI-12 and RS-485 ports have only passed their checks with nothing attached. I haven't measured sleep current either, because I don't have a suitable meter. Real sensors are next, starting with a soil probe on the analogue inputs.</p>"
+    },
+    {
+      "title": "FieldNode — Sweep After the Fixes",
+      "slug": "fieldnode-sweep-after-the-fixes",
+      "url": "https://tomarmstrong.net/notes/fieldnode-sweep-after-the-fixes.html",
+      "date": "2026-11",
+      "date_precision": "month",
+      "stage": null,
+      "project": "FieldMesh",
+      "highlights": [
+        "Same sweep as 24 Oct, run after the node fixes and the hub changes since",
+        "The 30 s step that lost nodes before now passes in both passes",
+        "Edge unchanged at 70 s: both nodes joined up to 65 s, neither from 70 s",
+        "193 readings from each node, in order, with no gaps or duplicates"
+      ],
+      "type": "project-update",
+      "type_label": "Project update",
+      "tags": [
+        "fieldnode",
+        "esp-now",
+        "sync",
+        "firmware"
+      ],
+      "excerpt": "With all the node fixes in, I repeated the sync sweep. Both nodes now join at every delay up to 65 s, including the 30 s step that failed before, and the edge is unchanged at 70 s.",
+      "image": null,
+      "image_alt": null,
+      "canonical_url": null,
+      "linkedin": null,
+      "reading_minutes": 1,
+      "sample": false,
+      "body_markdown": "Two weeks ago the sync sweep showed nodes missing windows even when the hub was on time, and I fixed the cause in the node firmware. This is the check that the fixes did what I hoped.\n\nI ran the same sweep again on 8 November, with the current hub firmware and nodes carrying every node fix. Each delay from 0 to 85 s was run twice with both nodes present. Both nodes joined at every delay up to 65 s and neither from 70 s, so the edge is where it was. The difference is the 30 s step. It lost nodes in both passes on 24 October and now passes in both.\n\n![Dot plot of how many of the two nodes joined each sync window against injected hub boot delay, in two panels with the same hub timing. On 24 Oct, before the node fixes, both nodes joined up to 65 s except at 30 s, where one pass lost one node and the other lost both, and neither joined from 70 s. On 8 Nov, after the node fixes, both nodes joined at every delay up to 65 s, including 30 s, and neither joined from 70 s.](assets/project_pics/fieldmesh/fieldnode-sweep-after-fixes.webp \"Nodes that joined each sync window against injected hub boot delay, before and after the node fixes. Same hub timing; each dot is one window.\")\n\nNothing was lost along the way. The hub received 193 readings from each node with consecutive sequence numbers, no gaps and no duplicates, and each node's clock was within a second of the hub's in every window.\n\nThis is still two nodes in one room on a shared battery, so it says nothing yet about larger networks or radio contention.",
+      "body_html": "<p>Two weeks ago the sync sweep showed nodes missing windows even when the hub was on time, and I fixed the cause in the node firmware. This is the check that the fixes did what I hoped.</p>\n<p>I ran the same sweep again on 8 November, with the current hub firmware and nodes carrying every node fix. Each delay from 0 to 85 s was run twice with both nodes present. Both nodes joined at every delay up to 65 s and neither from 70 s, so the edge is where it was. The difference is the 30 s step. It lost nodes in both passes on 24 October and now passes in both.</p>\n<figure><img src=\"https://tomarmstrong.net/assets/project_pics/fieldmesh/fieldnode-sweep-after-fixes.webp\" alt=\"Dot plot of how many of the two nodes joined each sync window against injected hub boot delay, in two panels with the same hub timing. On 24 Oct, before the node fixes, both nodes joined up to 65 s except at 30 s, where one pass lost one node and the other lost both, and neither joined from 70 s. On 8 Nov, after the node fixes, both nodes joined at every delay up to 65 s, including 30 s, and neither joined from 70 s.\" title=\"Nodes that joined each sync window against injected hub boot delay, before and after the node fixes. Same hub timing; each dot is one window.\" loading=\"lazy\" decoding=\"async\" /><figcaption>Nodes that joined each sync window against injected hub boot delay, before and after the node fixes. Same hub timing; each dot is one window.</figcaption></figure>\n<p>Nothing was lost along the way. The hub received 193 readings from each node with consecutive sequence numbers, no gaps and no duplicates, and each node's clock was within a second of the hub's in every window.</p>\n<p>This is still two nodes in one room on a shared battery, so it says nothing yet about larger networks or radio contention.</p>"
+    },
+    {
+      "title": "FieldHub — Honest Status and Faster Uploads",
+      "slug": "fieldhub-honest-status-faster-uploads",
+      "url": "https://tomarmstrong.net/notes/fieldhub-honest-status-faster-uploads.html",
+      "date": "2026-11",
+      "date_precision": "month",
+      "stage": null,
+      "project": "FieldMesh",
+      "highlights": [
+        "Hub pages show each sync window, each node's clock and the last upload, not just the serial log",
+        "A deployment shows as requested until the node confirms it, and a refusal shows as a refusal",
+        "Uploads: about 50 readings in 7.6 s, where 13 used to take about 15 s",
+        "Each node's signal strength is shown on the hub and sent to the dashboard"
+      ],
+      "type": "project-update",
+      "type_label": "Project update",
+      "tags": [
+        "fieldhub",
+        "firmware",
+        "uploads",
+        "status"
+      ],
+      "excerpt": "The first batch of FieldHub firmware work is done. The hub now reports what happened in each sync window, whether a deployment reached each node and how strong each node's signal is, and it uploads readings close to eight times faster.",
+      "image": null,
+      "image_alt": null,
+      "canonical_url": null,
+      "linkedin": null,
+      "reading_minutes": 1,
+      "sample": false,
+      "body_markdown": "After the sync work I spent the week making the FieldHub tell the truth. Until now most of what a hub knew about a sync window, a node's clock or an upload only appeared in its serial log. The hub's own pages now show each window, whether each node attended, whether each clock is right and how the last upload went.\n\nDeploying a node now reports \"requested\" until the node actually confirms, and shows a refusal as a refusal. The setup session also survives the phone going to sleep: if no phone has been on the hub's Wi-Fi for three minutes, the hub finishes by itself, uploads, and shows the result the next time the page is opened.\n\nUploads were the slowest part. Dropping a time check the hub never used, and waiting for the modem's replies instead of fixed delays, cut a batch from about 15 s to a median of 4.6 s. Bigger batches then took it further: about 50 readings in 7.6 s, against about 15 s for 13 readings at the start. The hub now only moves on once the backend confirms how many readings it received, so a lost reply can no longer leave it stuck, and on a slow link it steps down to smaller batches.\n\nEach node's signal strength in the sync window is now shown on the hub as Good, Weak or Too weak, with the figure in dBm on its detail page, and the dashboard can show the same. That has run on the bench with one hub and two nodes. A proper range test with a node on its own battery is still to do, and the pages themselves need a tidy-up on a phone.",
+      "body_html": "<p>After the sync work I spent the week making the FieldHub tell the truth. Until now most of what a hub knew about a sync window, a node's clock or an upload only appeared in its serial log. The hub's own pages now show each window, whether each node attended, whether each clock is right and how the last upload went.</p>\n<p>Deploying a node now reports \"requested\" until the node actually confirms, and shows a refusal as a refusal. The setup session also survives the phone going to sleep: if no phone has been on the hub's Wi-Fi for three minutes, the hub finishes by itself, uploads, and shows the result the next time the page is opened.</p>\n<p>Uploads were the slowest part. Dropping a time check the hub never used, and waiting for the modem's replies instead of fixed delays, cut a batch from about 15 s to a median of 4.6 s. Bigger batches then took it further: about 50 readings in 7.6 s, against about 15 s for 13 readings at the start. The hub now only moves on once the backend confirms how many readings it received, so a lost reply can no longer leave it stuck, and on a slow link it steps down to smaller batches.</p>\n<p>Each node's signal strength in the sync window is now shown on the hub as Good, Weak or Too weak, with the figure in dBm on its detail page, and the dashboard can show the same. That has run on the bench with one hub and two nodes. A proper range test with a node on its own battery is still to do, and the pages themselves need a tidy-up on a phone.</p>"
+    },
+    {
       "title": "FieldNode — Sync and Power-Off Fixes",
       "slug": "fieldnode-sync-and-power-fixes",
       "url": "https://tomarmstrong.net/notes/fieldnode-sync-and-power-fixes.html",

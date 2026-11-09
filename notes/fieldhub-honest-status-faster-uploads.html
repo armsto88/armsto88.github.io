@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FieldHub — Honest Status and Faster Uploads | Tom Armstrong</title>
+  <meta name="description" content="The first batch of FieldHub firmware work is done. The hub now reports what happened in each sync window, whether a deployment reached each node and how strong each node&#x27;s signal is, and it uploads readings close to eight times faster." />
+  <meta name="theme-color" content="#556241" />
+  <link rel="canonical" href="https://tomarmstrong.net/notes/fieldhub-honest-status-faster-uploads.html" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Tom Armstrong — workbench notes" href="feed.xml" />
+  <meta property="og:title" content="FieldHub — Honest Status and Faster Uploads | Tom Armstrong" />
+  <meta property="og:description" content="The first batch of FieldHub firmware work is done. The hub now reports what happened in each sync window, whether a deployment reached each node and how strong each node&#x27;s signal is, and it uploads readings close to eight times faster." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://tomarmstrong.net/notes/fieldhub-honest-status-faster-uploads.html" />
+  <meta property="og:site_name" content="Tom Armstrong" />
+  <meta property="og:image" content="https://tomarmstrong.net/assets/brand/social-preview-1200x630.png" />
+  <meta property="og:image:alt" content="Tom Armstrong — ecologist and environmental technologist" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta property="article:published_time" content="2026-11" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "FieldHub — Honest Status and Faster Uploads",
+    "description": "The first batch of FieldHub firmware work is done. The hub now reports what happened in each sync window, whether a deployment reached each node and how strong each node's signal is, and it uploads readings close to eight times faster.",
+    "author": {
+      "@type": "Person",
+      "name": "Tom Armstrong",
+      "url": "https://tomarmstrong.net/"
+    },
+    "mainEntityOfPage": "https://tomarmstrong.net/notes/fieldhub-honest-status-faster-uploads.html",
+    "keywords": [
+      "fieldhub",
+      "firmware",
+      "uploads",
+      "status"
+    ],
+    "datePublished": "2026-11"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img class="nav__mark" src="../assets/brand/ta-mark-olive.svg" width="58" height="32" alt="" />
+        <span>Tom Armstrong</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu">
+        <span class="nav__toggle-lines" aria-hidden="true">
+          <span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span>
+        </span>
+      </button>
+      <ul class="nav__links" id="primary-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li>
+        <li><a href="../cv.html">Experience</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <header class="article-header">
+      <div class="article-body">
+        <a href="index.html" class="back-link">All workbench notes</a>
+        <p class="article-kicker"><span class="note-type" data-note-type="project-update">Project update</span></p>
+        <h1>FieldHub — Honest Status and Faster Uploads</h1>
+        <p class="article-header__intro">The first batch of FieldHub firmware work is done. The hub now reports what happened in each sync window, whether a deployment reached each node and how strong each node&#x27;s signal is, and it uploads readings close to eight times faster.</p>
+        <div class="article-meta"><time datetime="2026-11">Nov 2026</time><span>FieldMesh</span><span>fieldhub, firmware, uploads, status</span></div>
+      </div>
+    </header>
+
+    <article class="article-content">
+      <div class="article-body">
+<p>After the sync work I spent the week making the FieldHub tell the truth. Until now most of what a hub knew about a sync window, a node's clock or an upload only appeared in its serial log. The hub's own pages now show each window, whether each node attended, whether each clock is right and how the last upload went.</p>
+<p>Deploying a node now reports "requested" until the node actually confirms, and shows a refusal as a refusal. The setup session also survives the phone going to sleep: if no phone has been on the hub's Wi-Fi for three minutes, the hub finishes by itself, uploads, and shows the result the next time the page is opened.</p>
+<p>Uploads were the slowest part. Dropping a time check the hub never used, and waiting for the modem's replies instead of fixed delays, cut a batch from about 15 s to a median of 4.6 s. Bigger batches then took it further: about 50 readings in 7.6 s, against about 15 s for 13 readings at the start. The hub now only moves on once the backend confirms how many readings it received, so a lost reply can no longer leave it stuck, and on a slow link it steps down to smaller batches.</p>
+<p>Each node's signal strength in the sync window is now shown on the hub as Good, Weak or Too weak, with the figure in dBm on its detail page, and the dashboard can show the same. That has run on the bench with one hub and two nodes. A proper range test with a node on its own battery is still to do, and the pages themselves need a tidy-up on a phone.</p>
+      </div>
+    </article>
+
+    <aside class="next-item" aria-labelledby="related-title">
+      <div class="article-body">
+        <p class="next-item__label">Previous note</p>
+        <h2 id="related-title"><a href="fieldnode-sync-and-power-fixes.html">FieldNode — Sync and Power-Off Fixes →</a></h2>
+        <p>The sync sweep showed nodes missing windows even when the hub was on time. The cause was in the node firmware, and fixing it became a set of small changes, each checked on the bench before the next.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__brand"><img class="footer__mark" src="../assets/brand/ta-mark-white.svg" width="47" height="26" alt="" /><span>Tom Armstrong</span></p>
+        <p class="footer__tagline">Ecologist and environmental technologist working across field monitoring, hardware, software and ecological data.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__links">
+          <li><a href="../about.html">About</a></li><li><a href="../projects.html">Projects</a></li><li><a href="../notes/index.html" data-nav="notes">Workbench</a></li><li><a href="../cv.html">Experience</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <ul class="footer__links">
+          <li><a href="https://github.com/armsto88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/tomarmstrong88/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">© <span data-current-year>2026</span> Tom Armstrong · <a href="../privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script data-goatcounter="https://tomarmstrong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

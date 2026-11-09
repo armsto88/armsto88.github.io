@@ -220,6 +220,34 @@
         </div>
         <div class="log">
           <div class="log__group">
+            <h3 class="log__month"><time datetime="2026-11">November 2026</time></h3>
+            <ol class="log__projects">
+              <li class="log__project-group" data-accent="1">
+                <p class="log__project">FieldMesh</p>
+                <ol class="log__entries">
+                  <li class="log__entry" data-category="project-update">
+                    <div class="log__text">
+                      <h4 class="log__title"><a href="notes/fieldnode-v4-first-board-bring-up.html">FieldNode V4 — First Board Bring-Up</a></h4>
+                      <ul class="log__highlights"><li>From a 4.14 V battery the 3.3 V, 5 V and 12 V rails measure 3.31 V, 5.05 V and 12.14 V</li><li>25 consecutive RTC wake cycles pass, and the battery reads within about 1% of a meter</li><li>All four I²C ports read an SHT40 cleanly, and the selectable 3.3, 5 and 12 V port supply is right on a meter</li><li>Still to do: reed input, real sensors on SDI-12 and RS-485, sleep current</li></ul>
+                    </div>
+                  </li>
+                  <li class="log__entry" data-category="project-update">
+                    <div class="log__text">
+                      <h4 class="log__title"><a href="notes/fieldnode-sweep-after-the-fixes.html">FieldNode — Sweep After the Fixes</a></h4>
+                      <ul class="log__highlights"><li>Same sweep as 24 Oct, run after the node fixes and the hub changes since</li><li>The 30 s step that lost nodes before now passes in both passes</li><li>Edge unchanged at 70 s: both nodes joined up to 65 s, neither from 70 s</li><li>193 readings from each node, in order, with no gaps or duplicates</li></ul>
+                    </div>
+                  </li>
+                  <li class="log__entry" data-category="project-update">
+                    <div class="log__text">
+                      <h4 class="log__title"><a href="notes/fieldhub-honest-status-faster-uploads.html">FieldHub — Honest Status and Faster Uploads</a></h4>
+                      <ul class="log__highlights"><li>Hub pages show each sync window, each node's clock and the last upload, not just the serial log</li><li>A deployment shows as requested until the node confirms it, and a refusal shows as a refusal</li><li>Uploads: about 50 readings in 7.6 s, where 13 used to take about 15 s</li><li>Each node's signal strength is shown on the hub and sent to the dashboard</li></ul>
+                    </div>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+          <div class="log__group">
             <h3 class="log__month"><time datetime="2026-10">October 2026</time></h3>
             <ol class="log__projects">
               <li class="log__project-group" data-accent="1">
@@ -229,24 +257,6 @@
                     <div class="log__text">
                       <h4 class="log__title"><a href="notes/fieldnode-sync-and-power-fixes.html">FieldNode — Sync and Power-Off Fixes</a></h4>
                       <ul class="log__highlights"><li>Readings now sit on a fixed UTC clock grid, so nodes no longer drift into the sync window together</li><li>An alarm that comes due during a wake is now handled, not wiped</li><li>A node never powers off over a pending RTC alarm</li><li>A node that loses its clock listens for the hub in short bursts and recovers by itself</li></ul>
-                    </div>
-                  </li>
-                  <li class="log__entry" data-category="project-update">
-                    <div class="log__text">
-                      <h4 class="log__title"><a href="notes/fieldhub-v2-sync-sweep-results.html">FieldHub V2 — Sync Sweep Results</a></h4>
-                      <ul class="log__highlights"><li>Two nodes against Hub V2, with a hub boot delay injected from 0 to 85 s</li><li>Original timing: both nodes joined up to a 30 s delay, neither from 35 s</li><li>Hub woken 45 s before the slot: the edge moved to 70 s, as the timing model predicts</li><li>A missed window costs time, not data: queued readings upload at the next one</li></ul>
-                    </div>
-                  </li>
-                  <li class="log__entry" data-category="project-update">
-                    <div class="log__text">
-                      <h4 class="log__title"><a href="notes/fieldhub-v2-sensor-bring-up.html">FieldHub V2 — Sensor Bring-Up</a></h4>
-                      <ul class="log__highlights"><li>Four I²C sensor ports verified with an SHT40, including at 400 kHz</li><li>ADS1015 inputs within about 1% of a reference meter, no crosstalk</li><li>Reed input works, but its GPIO moves in the next revision</li><li>Still to test: ESP-NOW, RTC backup retention, longer wake cycles</li></ul>
-                    </div>
-                  </li>
-                  <li class="log__entry" data-category="project-update">
-                    <div class="log__text">
-                      <h4 class="log__title"><a href="notes/fieldhub-v2-scaling-the-network.html">FieldHub V2 — Scaling the Network</a></h4>
-                      <ul class="log__highlights"><li>First test: controlled hub boot delays, two nodes against Hub V2</li><li>Goal: measured node capacity instead of theoretical estimates</li></ul>
                     </div>
                   </li>
                 </ol>
